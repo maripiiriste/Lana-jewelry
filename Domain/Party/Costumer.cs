@@ -1,9 +1,4 @@
 ﻿using Lana_jewelry.Data.Party;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lana_jewelry.Domain.Party
 {

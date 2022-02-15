@@ -14,26 +14,9 @@
         <form method="post" asp-page-handler="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Costumer.Id" />
-            <div class="form-group">
-                <label asp-for="Costumer.FirstName" class="control-label"></label>
-                <input asp-for="Costumer.FirstName" class="form-control" />
-                <span asp-validation-for="Costumer.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Costumer.LastName" class="control-label"></label>
-                <input asp-for="Costumer.LastName" class="form-control" />
-                <span asp-validation-for="Costumer.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Costumer.DoB" class="control-label"></label>
-                <input asp-for="Costumer.DoB" class="form-control" />
-                <span asp-validation-for="Costumer.DoB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Costumer.Email" class="control-label"></label>
-                <input asp-for="Costumer.Email" class="form-control" />
-                <span asp-validation-for="Costumer.Email" class="text-danger"></span>
-            </div>
+            
+            <partial name="_EditCostumer" />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
