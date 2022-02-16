@@ -1,24 +1,20 @@
-﻿using Lana_jewelry.Data.Party;
+﻿using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain.Shipment;
 
 namespace Lana_jewelry.Facade.Shipment{
     public class TransportViewFactory{
-        public Transport Greate(TransportView v) => new Transport(new TransportData {
-            TansportId = v.TansportId,
+        public Transport Create(TransportView v) => new Transport(new TransportData {
+            TransportId = v.TransportId,
             CostumerAddress = v.CostumerAddress,
             TransportPrice = v.TransportPrice,
-            TrasnportDuration = v.TrasnportDuration
+            TransportDuration = v.TransportDuration
         });
-        public TransportView Greate(Transport o) => new(){
-        TansportId = o.TansportId,
+        public TransportView Create(Transport o) => new(){
+        TransportId = o.TransportId,
         CostumerAddress = o.CostumerAddress,
         TransportPrice = o.TransportPrice,
-        TrasnportDuration = o.TrasnportDuration
+        TransportDuration = o.TransportDuration
         };
 
-        public TransportView Greate(Lana_jewelry.Pages.Transports transports)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

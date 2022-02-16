@@ -20,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.Transport[0].TransportPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Transport[0].TrasnportDuration)
+                @Html.DisplayNameFor(model => model.Transport[0].TransportDuration)
             </th>
             <th></th>
         </tr>
@@ -35,12 +35,12 @@
                 @Html.DisplayFor(modelItem => item.TransportPrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TrasnportDuration)
+                @Html.DisplayFor(modelItem => item.TransportDuration)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.TansportId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TansportId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TansportId">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.TransportId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TransportId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TransportId">Delete</a>
             </td>
         </tr>
 }

@@ -26,11 +26,11 @@ namespace Lana_jewelry.Pages.Transports
         public async Task OnGetAsync()
         {
             var list = await _context.Transports.ToListAsync();
-            Transports = new List<TransportView>();
+            Transport = new List<TransportView>();
             foreach(var d in list)
             {
-                var v = new TransportViewFactory().Greate(new Transport(d));
-                Transports.Add(v);
+                var v = new TransportViewFactory().Create(new Transport(d));
+                Transport.Add(v);
             }
         }
     }

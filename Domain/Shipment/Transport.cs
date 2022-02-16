@@ -1,4 +1,4 @@
-﻿using Lana_jewelry.Data.Party;
+﻿using Lana_jewelry.Data.Shipment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +17,9 @@ namespace Lana_jewelry.Domain.Shipment
         private TransportData data;
         public Transport() : this(new TransportData()) { }
         public Transport(TransportData d) => data = d;
-        public string TansportId => data?.TansportId ?? defaultStr;
+        public string TransportId => data?.TransportId ?? defaultStr;
         public string CostumerAddress => data?.CostumerAddress ?? defaultStr;
-        public DateTime TrasnportDuration => data?.TrasnportDuration ?? defaultDate;
+        public DateTime TransportDuration => data?.TransportDuration ?? defaultDate;
         public double TransportPrice => data?.TransportPrice ??defaultNr;
         public TransportData Data => data;
     }

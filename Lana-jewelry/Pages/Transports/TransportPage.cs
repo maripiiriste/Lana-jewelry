@@ -1,7 +1,9 @@
 ﻿using Lana_jewelry.Data;
+using Lana_jewelry.Domain.Shipment;
 using Lana_jewelry.Facade.Shipment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Web.Mvc;
 
 namespace Lana_jewelry.Pages.Transports
 {
@@ -10,7 +12,6 @@ namespace Lana_jewelry.Pages.Transports
         private readonly ApplicationDbContext context;
 
         public TransportPage(ApplicationDbContext c) => context = c;
-        }
 
         public IActionResult OnGet()
         {
@@ -27,7 +28,8 @@ namespace Lana_jewelry.Pages.Transports
             {
                 return Page();
             }
-            var d = new TransportViewFactory().Greate(Transport).Data;
+            var d = new TransportViewFactory().Create(Transport).Data;
+
             context.Transports.Add(d);
             await context.SaveChangesAsync();
 

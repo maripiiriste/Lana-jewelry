@@ -35,7 +35,7 @@ namespace Lana_jewelry.Pages.Transports
             {
                 return Page();
             }
-            var d = new TransportViewFactory().Greate(Transport).Data;
+            var d = new TransportViewFactory().Create(Transport).Data;
             _context.Transports.Add(d);
             await _context.SaveChangesAsync();
 
