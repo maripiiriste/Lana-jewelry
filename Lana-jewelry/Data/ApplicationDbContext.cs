@@ -12,5 +12,6 @@ namespace Lana_jewelry.Data
         {
         }
         public DbSet<CostumerData> Costumers { get; set; }
+        public DbSet<TransportData> Transports { get; set; }
     }
 }

@@ -1,0 +1,48 @@
+﻿@page
+@model Lana_jewelry.Pages.Transports.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Transport[0].CostumerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transport[0].TransportPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transport[0].TrasnportDuration)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Transport) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostumerAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransportPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrasnportDuration)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TansportId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TansportId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TansportId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
