@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Lana_jewelry.Data;
 using Lana_jewelry.Data.Party;
+using Lana_jewelry.Data.Shipment;
 
 namespace Lana_jewelry.Data
 {

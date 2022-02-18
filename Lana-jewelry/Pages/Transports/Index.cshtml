@@ -1,5 +1,5 @@
 ﻿@page
-@model Lana_jewelry.Pages.Transports.IndexModel
+@model Lana_jewelry.Pages.Transports.TransportPage
 
 @{
     ViewData["Title"] = "Index";
@@ -8,25 +8,25 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" asp-page-handler="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Transport[0].CostumerAddress)
+                @Html.DisplayNameFor(model => model.Transports[0].CostumerAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Transport[0].TransportPrice)
+                @Html.DisplayNameFor(model => model.Transports[0].TransportPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Transport[0].TransportDuration)
+                @Html.DisplayNameFor(model => model.Transports[0].TransportDuration)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Transport) {
+@foreach (var item in Model.Transports) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CostumerAddress)
@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.TransportDuration)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.TransportId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TransportId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TransportId">Delete</a>
+                <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@item.TransportId">Edit</a> |
+                <a asp-page="./Details" asp-page-handler="Details" asp-route-id="@item.TransportId">Details</a> |
+                <a asp-page="./Delete" asp-page-handler="Delete" asp-route-id="@item.TransportId">Delete</a>
             </td>
         </tr>
 }

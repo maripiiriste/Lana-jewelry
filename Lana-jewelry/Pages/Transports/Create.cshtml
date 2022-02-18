@@ -1,5 +1,5 @@
 ﻿@page
-@model Lana_jewelry.Pages.Transports.CreateModel
+@model Lana_jewelry.Pages.Transports.TransportPage
 
 @{
     ViewData["Title"] = "Create";
@@ -11,12 +11,12 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" asp-page-handler="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Transport.TansportId" class="control-label"></label>
-                <input asp-for="Transport.TansportId" class="form-control" />
-                <span asp-validation-for="Transport.TansportId" class="text-danger"></span>
+                <label asp-for="Transport.TransportId" class="control-label"></label>
+                <input asp-for="Transport.TransportId" class="form-control" />
+                <span asp-validation-for="Transport.TransportId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Transport.CostumerAddress" class="control-label"></label>
@@ -29,9 +29,9 @@
                 <span asp-validation-for="Transport.TransportPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Transport.TrasnportDuration" class="control-label"></label>
-                <input asp-for="Transport.TrasnportDuration" class="form-control" />
-                <span asp-validation-for="Transport.TrasnportDuration" class="text-danger"></span>
+                <label asp-for="Transport.TransportDuration" class="control-label"></label>
+                <input asp-for="Transport.TransportDuration" class="form-control" />
+                <span asp-validation-for="Transport.TransportDuration" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -41,7 +41,7 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index"asp-page-handler="Index">Back to List</a>
 </div>
 
 @section Scripts {

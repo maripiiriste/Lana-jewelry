@@ -1,5 +1,5 @@
 ﻿@page
-@model Lana_jewelry.Pages.Transports.DetailsModel
+@model Lana_jewelry.Pages.Transports.TransportPage
 
 @{
     ViewData["Title"] = "Details";
@@ -32,6 +32,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Transport.TransportId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@Model.Transport.TransportId">Edit</a> |
+    <a asp-page="./Index"asp-page-handler="Index">Back to List</a>
 </div>

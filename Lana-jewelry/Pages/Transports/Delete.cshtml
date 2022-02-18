@@ -1,5 +1,5 @@
 ﻿@page
-@model Lana_jewelry.Pages.Transports.DeleteModel
+@model Lana_jewelry.Pages.Transports.TransportPage
 
 @{
     ViewData["Title"] = "Delete";
@@ -32,9 +32,9 @@
         </dd>
     </dl>
     
-    <form method="post">
+    <form method="post" asp-page-handler="Delete">
         <input type="hidden" asp-for="Transport.TransportId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page="./Index"asp-page-handler="Index">Back to List</a>
     </form>
 </div>
