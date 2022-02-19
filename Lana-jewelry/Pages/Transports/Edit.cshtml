@@ -14,21 +14,9 @@
         <form method="post" asp-page-handler="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Transport.TransportId" />
-            <div class="form-group">
-                <label asp-for="Transport.CostumerAddress" class="control-label"></label>
-                <input asp-for="Transport.CostumerAddress" class="form-control" />
-                <span asp-validation-for="Transport.CostumerAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Transport.TransportPrice" class="control-label"></label>
-                <input asp-for="Transport.TransportPrice" class="form-control" />
-                <span asp-validation-for="Transport.TransportPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Transport.TransportDuration" class="control-label"></label>
-                <input asp-for="Transport.TransportDuration" class="form-control" />
-                <span asp-validation-for="Transport.TransportDuration" class="text-danger"></span>
-            </div>
+
+            <partial name="_EditTransport"/>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
