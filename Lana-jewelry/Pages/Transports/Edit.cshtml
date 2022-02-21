@@ -2,32 +2,10 @@
 @model Lana_jewelry.Pages.Transports.TransportPage
 
 @{
-    ViewData["Title"] = "Edit";
+    Layout = "_Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>Transport</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" asp-page-handler="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Transport.TransportId" />
-
-            <partial name="_EditTransport"/>
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="./Index"asp-page-handler="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<body>
+     <input type="hidden" asp-for="Transport.TransportId" />
+     <partial name="_EditTransport"/>
+</body>
+           

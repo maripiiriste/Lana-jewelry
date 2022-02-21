@@ -1,6 +1,6 @@
 ﻿@page
 @model Lana_jewelry.Pages.Transports.TransportPage
-
+@using Lana_jewelry.Pages.Extensions
 @{
     ViewData["Title"] = "Details";
 }
@@ -10,26 +10,9 @@
 <div>
     <h4>Transport</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Transport.CostumerAddress)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Transport.CostumerAddress)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Transport.TransportPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Transport.TransportPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Transport.TransportDuration)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Transport.TransportDuration)
-        </dd>
-    </dl>
+    @Html.MyViewerFor(x => x.Transport.CostumerAddress) 
+    @Html.MyViewerFor(x => x.Transport.TransportPrice)
+    @Html.MyViewerFor(x => x.Transport.TransportDuration)
 </div>
 <div>
     <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@Model.Transport.TransportId">Edit</a> |
