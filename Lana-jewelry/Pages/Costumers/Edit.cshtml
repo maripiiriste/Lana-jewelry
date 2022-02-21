@@ -1,13 +1,10 @@
 ﻿@page
 @model Lana_jewelry.Pages.Costumers.CostumersPage
-@using Lana_jewelry.Pages.Extensions
-
 
 @{
-    ViewData["Title"] = "Edit";
+    Layout = "_Edit";
 }
 <body>
-      @*<input type="hidden" asp-for="Costumer.Id" />   *@
-      @Html.MyEditorFor(x => x.Costumer.Id)
-      <partial name="_EditCostumer" />
+     <input type="hidden" asp-for="Costumer.Id" />
+     <partial name="_EditCostumer" />
 </body> 

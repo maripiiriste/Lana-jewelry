@@ -1,0 +1,8 @@
+﻿@page
+@model Lana_jewelry.Pages.Costumers.CostumersPage
+@using Lana_jewelry.Pages.Extensions
+
+@Html.MyViewerFor(x => x.Costumer.FirstName) 
+@Html.MyViewerFor(x => x.Costumer.LastName)
+@Html.MyViewerFor(x => x.Costumer.DoB)
+@Html.MyViewerFor(x => x.Costumer.Email)
