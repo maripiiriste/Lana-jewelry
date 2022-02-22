@@ -7,20 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lana_jewelry.Domain.Shipment
-{
-    public class Transport
-    {
+namespace Lana_jewelry.Domain.Shipment{
+    public class Transport: Entity<TransportData> {
         private const string defaultStr = "Undefined";
         private const double defaultNr = 00.00;
         private DateTime defaultDate => DateTime.MinValue;
-        private TransportData data;
         public Transport() : this(new TransportData()) { }
-        public Transport(TransportData d) => data = d;
-        public string TransportId => data?.TransportId ?? defaultStr;
-        public string CostumerAddress => data?.CostumerAddress ?? defaultStr;
-        public DateTime TransportDuration => data?.TransportDuration ?? defaultDate;
-        public double TransportPrice => data?.TransportPrice ??defaultNr;
-        public TransportData Data => data;
+        public Transport(TransportData d) : base(d) { }
+        public string TransportId => Data?.TransportId ?? defaultStr;
+        public string CostumerAddress => Data?.CostumerAddress ?? defaultStr;
+        public DateTime TransportDuration => Data?.TransportDuration ?? defaultDate;
+        public double TransportPrice => Data?.TransportPrice ??defaultNr;
     }
 }

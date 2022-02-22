@@ -24,8 +24,7 @@ namespace Lana_jewelry.Pages.Extensions
         l.Add(h.DisplayFor(e));
         l.Add(new HtmlString("</dd>"));
         l.Add(new HtmlString("</dl>"));
-
-            return l;
+        return l;
 
         } 
     }

@@ -1,20 +1,9 @@
 ﻿@page
 @model Lana_jewelry.Pages.Transports.TransportPage
-@using Lana_jewelry.Pages.Extensions
+
 @{
-    ViewData["Title"] = "Details";
+    Layout = "_Details";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>Transport</h4>
-    <hr />
-    @Html.MyViewerFor(x => x.Transport.CostumerAddress) 
-    @Html.MyViewerFor(x => x.Transport.TransportPrice)
-    @Html.MyViewerFor(x => x.Transport.TransportDuration)
-</div>
-<div>
-    <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@Model.Transport.TransportId">Edit</a> |
-    <a asp-page="./Index"asp-page-handler="Index">Back to List</a>
-</div>
+<Body>
+    <partial name="_ShowTransport"/>
+</Body>

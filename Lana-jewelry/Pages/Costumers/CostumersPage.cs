@@ -15,12 +15,10 @@ namespace Lana_jewelry.Pages.Costumers
         [BindProperty] public CostumerView Costumer { get; set; }
         public IList<CostumerView> Costumers { get; set; }
         public CostumersPage(Lana_jewelry.Data.ApplicationDbContext c) => context = c;
-
         public IActionResult OnGetCreate()
         {
             return Page();
         }
-
         public async Task<IActionResult> OnPostCreateAsync()
         {
             if (!ModelState.IsValid)
@@ -34,13 +32,11 @@ namespace Lana_jewelry.Pages.Costumers
 
             return RedirectToPage("./Index", "Index");
         }
-
         public async Task<IActionResult> OnGetDetailsAsync(string id)
         {
             Costumer = await getCostumer(id);
             return Costumer == null ? NotFound() : Page();
         }
-
         private async Task<CostumerView> getCostumer(string id)
         {
             if (id == null) return null;
@@ -49,13 +45,11 @@ namespace Lana_jewelry.Pages.Costumers
 
             return new CostumerViewFactory().Create(new Costumer(d));
         }
-
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
             Costumer = await getCostumer(id);
             return Costumer == null ? NotFound() : Page();
         }
-
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
             if (id == null)
