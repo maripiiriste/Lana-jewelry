@@ -1,12 +1,14 @@
 ﻿using Lana_jewelry.Data;
 using Lana_jewelry.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lana_jewelry.Infra
 {
     // TODO To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
     // TODO To protect from overposting attacks, enable the specific properties you want to bind to.
     // TODO For more details, see https://aka.ms/RazorPagesCRUD.
-    public abstract class Repo<TDomain, TData> : IRepo<TDomain> where TDomain : Entity<TData>,new() where TData:EntityData, new() {
+    public abstract class Repo<TDomain, TData> : IRepo<TDomain> where TDomain : Entity<TData>, new() where TData:EntityData, new()
+    {
         private readonly DbContext db;
         private readonly DbSet<TData> set;
         protected Repo(DbContext c, DbSet<TData> s){
@@ -51,7 +53,7 @@ namespace Lana_jewelry.Infra
                 var items = new List<TDomain>();
                 foreach (var d in list) items.Add(toDomain(d));
                 return items;
-            }catch { return new List<TDomain>(); }
+            } catch { return new List<TDomain>(); }
         }
         public async Task<List<TDomain>> GetAsync(string id){
             try{

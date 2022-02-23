@@ -1,21 +1,16 @@
 ﻿using Lana_jewelry.Data.Party;
 
-namespace Lana_jewelry.Domain.Party
-{
-    public class Costumer
-    {
+namespace Lana_jewelry.Domain.Party{
+    public class Costumer:Entity<CostumerData> {
         private const string defaultStr = "Undefined";
         private DateTime defaultDate => DateTime.MinValue;
-        private CostumerData data;
         public Costumer(): this(new CostumerData()) { }
-        public Costumer(CostumerData d) => data = d;
-        public string Id=>data?.Id?? defaultStr;
-        public string FirstName => data?.FirstName ?? defaultStr;
-        public string LastName => data?.LastName ?? defaultStr;
-        public DateTime DoB => data?.DoB ?? defaultDate;
-        public string Email=>data?.Email ?? defaultStr;
-        public CostumerData Data => data;
+        public Costumer(CostumerData d) : base(d) { }
+        public string Id=>Data?.Id?? defaultStr;
+        public string FirstName => Data?.FirstName ?? defaultStr;
+        public string LastName => Data?.LastName ?? defaultStr;
+        public DateTime DoB => Data?.DoB ?? defaultDate;
+        public string Email=>Data?.Email ?? defaultStr;
         public override string ToString() => $"{FirstName} {LastName} {Email} ({DoB})";
-
     }
 }
