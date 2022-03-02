@@ -55,11 +55,12 @@ namespace Lana_jewelry.Infra
                 return items;
             } catch { return new List<TDomain>(); }
         }
-        public async Task<List<TDomain>> GetAsync(string id){
+        public async Task<TDomain> GetAsync(string id){
             try{
                 if (id == null) return new TDomain();
+                //TODO Id vs transportID
                 var d = await set.FirstOrDefaultAsync(x => x.TransportId == id);
-                return d == null ? (List<TDomain>)new TDomain() : toDomain(d);
+                return d == null ? new TDomain() : toDomain(d);
             }catch { return new TDomain(); }
         }
         public async Task<bool> UpdateAsync(TDomain obj){
@@ -71,6 +72,6 @@ namespace Lana_jewelry.Infra
             }
             catch { return false; }
         }
-        protected abstract TDomain toDomain(object d);
+        protected abstract TDomain toDomain(TData d);
     }
 }

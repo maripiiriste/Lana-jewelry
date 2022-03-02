@@ -1,5 +1,6 @@
 ﻿using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain.Shipment;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lana_jewelry.Infra.Shipment
 {
