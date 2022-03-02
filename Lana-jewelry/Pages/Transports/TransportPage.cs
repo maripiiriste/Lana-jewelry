@@ -11,6 +11,7 @@ namespace Lana_jewelry.Pages.Transports{
     {
         private readonly ITransportsRepo repo;
         [BindProperty] public TransportView Transport { get; set; }
+        public string GetId=> Transport.Id;
         public IList<TransportView> Transports { get; set; }
         public TransportPage(ApplicationDbContext c) => repo = new TransportsRepo(c, c.Transports);
         public IActionResult OnGetCreate() => Page();

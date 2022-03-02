@@ -1,10 +1,9 @@
-﻿@page
-
+﻿
 @{
     ViewData["Title"] = "Details";
     ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page",string.Empty)?? "Unspecified";
     Layout = "_Layout";
-    var itemId = Model?.Costumer?.Id??string.Empty;
+    var itemId =Model?.GetId??string.Empty;
 }
 <h1>@ViewData["Title"]</h1>
 

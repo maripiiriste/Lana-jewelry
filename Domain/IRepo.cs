@@ -11,7 +11,7 @@ namespace Lana_jewelry.Domain
 
         Task<bool> AddAsync(T obj);
         Task<List<T>> GetAsync();
-        Task<List<T>> GetAsync(string id);
+        Task <T> GetAsync(string id);
         Task<bool> UpdateAsync(T obj);
         Task<bool> DeleteAsync(string id);
     }

@@ -2,8 +2,7 @@
     ViewData["Title"] = "Delete";
     ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page",string.Empty)?? "Unspecified";
     Layout = "_Layout";
-    var itemId = Model?.Costumer?.Id??string.Empty;
-    itemId = Model?.Transport?.TransportId??string.Empty;
+    var itemId = Model?.GetId??string.Empty;
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -12,7 +11,7 @@
     <h4>@ViewData["SubTitle"]</h4>
     <hr />
     @RenderBody()
-    <form method="post"> @*asp-page-handler="Delete">*@
+    <form method="post"> @*asp-page-handler="Delete"*@>
         <input type="hidden" asp-for_id=@itemId />
         <input type="submit" value="Delete" handler="Delete" class="btn btn-danger" /> |
         <a asp-page="./Index"asp-page-handler="Index">Back to List</a>
