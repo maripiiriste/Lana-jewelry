@@ -7,7 +7,7 @@ namespace Lana_jewelry.Facade.Shipment
     public class TransportView
     {
         [Key]
-        [Required] public string TransportId { get; set; }
+        [Required] public string Id { get; set; }
         [DisplayName("Your aadress")] [Required] public string CostumerAddress { get; set; }
         [DisplayName("Transportation cost")] [Required] public double TransportPrice { get; set; }
         [DisplayName("Arrival time")] [Required] public DateTime TransportDuration { get; set; }

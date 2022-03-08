@@ -14,6 +14,7 @@ namespace Lana_jewelry.Pages.Costumers
     {
         private readonly ICostumersRepo repo;
         [BindProperty] public CostumerView Costumer { get; set; }
+        public string GetId=>Costumer.Id;
         public IList<CostumerView> Costumers { get; set; }
         public CostumersPage(Lana_jewelry.Data.ApplicationDbContext c) => repo = new CostumersRepo(c, c.Costumers);
         public IActionResult OnGetCreate() => Page();

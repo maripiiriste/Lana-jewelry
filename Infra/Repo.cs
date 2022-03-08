@@ -58,8 +58,7 @@ namespace Lana_jewelry.Infra
         public async Task<TDomain> GetAsync(string id){
             try{
                 if (id == null) return new TDomain();
-                //TODO Id vs transportID
-                var d = await set.FirstOrDefaultAsync(x => x.TransportId == id);
+                var d = await set.FirstOrDefaultAsync(x => x.Id == id);
                 return d == null ? new TDomain() : toDomain(d);
             }catch { return new TDomain(); }
         }

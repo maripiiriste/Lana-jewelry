@@ -4,8 +4,8 @@ namespace Lana_jewelry.Data.Shipment
 {
     public class TransportData:EntityData{
         public string CostumerAddress { get; set; }
-        public double TransportPrice { get; set; }
-        public DateTime TransportDuration { get; set; }
+        public double Price { get; set; }
+        public DateTime Duration { get; set; }
     }
 }
   

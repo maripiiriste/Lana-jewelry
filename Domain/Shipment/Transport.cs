@@ -14,9 +14,9 @@ namespace Lana_jewelry.Domain.Shipment{
         private DateTime defaultDate => DateTime.MinValue;
         public Transport() : this(new TransportData()) { }
         public Transport(TransportData d) : base(d) { }
-        public string TransportId => Data?.TransportId ?? defaultStr;
+        public string TransportId => Data?.Id ?? defaultStr;
         public string CostumerAddress => Data?.CostumerAddress ?? defaultStr;
-        public DateTime TransportDuration => Data?.TransportDuration ?? defaultDate;
-        public double TransportPrice => Data?.TransportPrice ??defaultNr;
+        public DateTime TransportDuration => Data?.Duration ?? defaultDate;
+        public double TransportPrice => Data?.Price ??defaultNr;
     }
 }
