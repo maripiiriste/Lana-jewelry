@@ -1,4 +1,4 @@
-﻿@page
+﻿
 
 @{
     ViewData["Title"] = "Details";
@@ -11,7 +11,7 @@
 <div>
     <h4>@ViewData["SubTitle"]</h4>
     <hr />
-    @*@RenderBody()*@
+    @RenderBody()
 </div>
 <div>
     <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id=@itemId>Edit</a> |
