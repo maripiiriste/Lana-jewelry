@@ -3,13 +3,11 @@ using System.Reflection;
 
 using System.Diagnostics;
 
-namespace Lana_jewelry.Tests  
-{
-    public abstract class BaseTests<TClass>:AssertTests where TClass: class, new()  {
+namespace Lana_jewelry.Tests {
+    public abstract class BaseTests<TClass>:TestAsserts where TClass: class, new()  {
         protected TClass obj;
         protected BaseTests() => obj = new TClass();
-        protected void isProperty<T>(T? value = default, bool isReadOnly = false)
-        {
+        protected void isProperty<T>(T? value = default, bool isReadOnly = false){
             var memberName = getCallingMember(nameof(isProperty)).Replace("Test", string.Empty);
             var propertyInfo = obj.GetType().GetProperty(memberName);
             isNotNull(propertyInfo);
@@ -27,13 +25,15 @@ namespace Lana_jewelry.Tests
         private string getCallingMember(string memberName) {
                 var s = new StackTrace();
                 var isNext = false;
-                for (var i = 0; i < s.FrameCount; i++)
-                {
+                for (var i = 0; i < s.FrameCount; i++) {
                     var n = s.GetFrame(i)?.GetMethod()?.Name ?? string.Empty;
                     if (n is "MoveNext" or "Start") continue;
                     if (isNext) return n;
                     if (n == memberName) isNext = true;
                 }
                 return string.Empty;
-    }   }
+    } 
+    
+  }
+
 }
