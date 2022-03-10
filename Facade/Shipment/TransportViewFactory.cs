@@ -3,7 +3,7 @@ using Lana_jewelry.Domain.Shipment;
 
 namespace Lana_jewelry.Facade.Shipment{
     public class TransportViewFactory{
-        public Transport Create(TransportView v) => new Transport(new TransportData {
+        public Transport Create(TransportView v) => new (new TransportData {
             Id = v.Id,
             CostumerAddress = v.CostumerAddress,
             Price = v.TransportPrice,

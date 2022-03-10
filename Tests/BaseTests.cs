@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Diagnostics;
 
 namespace Lana_jewelry.Tests {
-    public abstract class BaseTests<TClass>:TestAsserts where TClass: class, new()  {
+    public abstract class BaseTests<TClass>:IsTypeTested where TClass: class, new()  {
         protected TClass obj;
         protected BaseTests() => obj = new TClass();
         protected void isProperty<T>(T? value = default, bool isReadOnly = false){

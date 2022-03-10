@@ -5,7 +5,7 @@ namespace Lana_jewelry.Facade.Party
 {
     public class CostumerViewFactory
     {
-        public Costumer Create(CostumerView v) => new Costumer(new CostumerData { 
+        public Costumer Create(CostumerView v) => new(new CostumerData { 
                 Id = v.Id,
                 DoB = v.DoB,
                 FirstName = v.FirstName,
