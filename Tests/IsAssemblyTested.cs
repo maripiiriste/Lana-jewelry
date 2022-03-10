@@ -40,9 +40,9 @@ namespace Lana_jewelry.Tests
         private bool allAreTested() => typesToBeTested.IsEmpty();
         private void removeTested() => typesToBeTested?.Remove(x => isItTested(x));
         private bool isItTested(Type x) => testingTypes?.ContainsItem(y => isTestFor(y, x) && isCorrectTest(y)) ?? false;
-        private static bool isCorrectTest(Type x) => isCCorrectlyInherited(x) && isTestClass(x);
+        private static bool isCorrectTest(Type x) => isCorrectlyInherited(x) && isTestClass(x);
         private static bool isTestClass(Type x) => x?.HasAttribute<TestClassAttribute>()?? false;
-        private static bool isCCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
+        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
         private static bool isTestFor(Type testingType, Type typeToBeTested)
             => testingType.NameEnds(typeToBeTested.Name + "Tests");
         private void removeNotNeedTesting() => typesToBeTested?.Remove(x => !isTypeToBeTested(x));

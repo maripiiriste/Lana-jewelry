@@ -49,7 +49,7 @@ namespace Lana_jewelry.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Costumers",
+                name: "Costumer",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -60,21 +60,21 @@ namespace Lana_jewelry.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Costumers", x => x.Id);
+                    table.PrimaryKey("PK_Costumer", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transports",
+                name: "Transport",
                 columns: table => new
                 {
-                    TransportId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CostumerAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TransportPrice = table.Column<double>(type: "float", nullable: false),
-                    TransportDuration = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Duration = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transports", x => x.TransportId);
+                    table.PrimaryKey("PK_Transport", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -241,10 +241,10 @@ namespace Lana_jewelry.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Costumers");
+                name: "Costumer");
 
             migrationBuilder.DropTable(
-                name: "Transports");
+                name: "Transport");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

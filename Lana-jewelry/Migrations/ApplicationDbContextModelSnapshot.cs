@@ -41,7 +41,7 @@ namespace Lana_jewelry.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Costumers");
+                    b.ToTable("Costumer", (string)null);
                 });
 
             modelBuilder.Entity("Lana_jewelry.Data.Shipment.TransportData", b =>
@@ -61,7 +61,7 @@ namespace Lana_jewelry.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Transports");
+                    b.ToTable("Transport", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -10,26 +10,26 @@ namespace Lana_jewelry.Pages.Transports{
     public class TransportPage:PageModel
     {
         private readonly ITransportsRepo repo;
-        [BindProperty] public TransportView Transport { get; set; }
-        public string GetId=> Transport.Id;
-        public IList<TransportView> Transports { get; set; }
-        public TransportPage(ApplicationDbContext c) => repo = new TransportsRepo(c, c.Transports);
+        [BindProperty] public TransportView Item { get; set; }
+        public string ItemId=> Item?.Id?? string.Empty;
+        public IList<TransportView> Items { get; set; }
+        public TransportPage(Lana_jewelryDb c) => repo = new TransportsRepo(c, c.Transports);
         public IActionResult OnGetCreate() => Page();
         public async Task<IActionResult> OnPostCreateAsync(){
             if (!ModelState.IsValid)return Page();
-            await repo.AddAsync(new TransportViewFactory().Create(Transport));
+            await repo.AddAsync(new TransportViewFactory().Create(Item));
             return RedirectToPage("./Index","Index");
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id)
         {
-            Transport = await getTransport(id);
-            return Transport == null ? NotFound() : Page();
+            Item = await getTransport(id);
+            return Item == null ? NotFound() : Page();
         }
         private async Task<TransportView> getTransport(string id) 
             => new TransportViewFactory().Create(await repo.GetAsync(id)); 
         public async Task<IActionResult> OnGetDeleteAsync(string id) {
-            Transport = await getTransport(id);
-            return Transport == null ? NotFound() : Page();
+            Item = await getTransport(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id){
             if (id == null) return NotFound();
@@ -38,22 +38,22 @@ namespace Lana_jewelry.Pages.Transports{
         }
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            Transport = await getTransport(id);
-            return Transport == null ? NotFound() : Page();
+            Item = await getTransport(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostEditAsync(){
             if (!ModelState.IsValid) return Page();
-            var obj = new TransportViewFactory().Create(Transport);
+            var obj = new TransportViewFactory().Create(Item);
             var updated= await repo.UpdateAsync(obj);
             if(!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetIndexAsync(){
             var list = await repo.GetAsync();
-            Transports = new List<TransportView>();
+            Items = new List<TransportView>();
             foreach (var obj in list){
                 var v = new TransportViewFactory().Create(obj);
-                Transports.Add(v);
+                Items.Add(v);
             }
             return Page();
         }

@@ -14,19 +14,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Transports[0].CostumerAddress)
+                @Html.DisplayNameFor(model => model.Items[0].CostumerAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Transports[0].TransportPrice)
+                @Html.DisplayNameFor(model => model.Items[0].TransportPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Transports[0].TransportDuration)
+                @Html.DisplayNameFor(model => model.Items[0].TransportDuration)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Transports) {
+@foreach (var item in Model.Items) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CostumerAddress)

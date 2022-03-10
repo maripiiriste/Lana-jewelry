@@ -1,9 +1,9 @@
 ﻿using Lana_jewelry.Domain.Party;
 using Lana_jewelry.Facade.Party;
 using Lana_jewelry.Infra.Party;
+using Lana_jewelry.Infra.Shipment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Lana_jewelry.Pages.Costumers
 {
@@ -13,25 +13,25 @@ namespace Lana_jewelry.Pages.Costumers
     public class CostumersPage : PageModel
     {
         private readonly ICostumersRepo repo;
-        [BindProperty] public CostumerView Costumer { get; set; }
-        public string GetId=>Costumer.Id;
-        public IList<CostumerView> Costumers { get; set; }
-        public CostumersPage(Lana_jewelry.Data.ApplicationDbContext c) => repo = new CostumersRepo(c, c.Costumers);
+        [BindProperty] public CostumerView Item { get; set; }
+        public string ItemId => Item?.Id ?? string.Empty;
+        public IList<CostumerView> Items { get; set; }
+        public CostumersPage(Lana_jewelryDb c) => repo = new CostumersRepo(c, c.Costumers);
         public IActionResult OnGetCreate() => Page();
         public async Task<IActionResult> OnPostCreateAsync() {
             if (!ModelState.IsValid) return Page();
-            await repo.AddAsync(new CostumerViewFactory().Create(Costumer));
+            await repo.AddAsync(new CostumerViewFactory().Create(Item));
             return RedirectToPage("./Index", "Index");
         }
         public async Task<IActionResult> OnGetDetailsAsync(string id)
         {
-            Costumer = await getCostumer(id);
-            return Costumer == null ? NotFound() : Page();
+            Item = await getCostumer(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnGetDeleteAsync(string id)
         {
-            Costumer = await getCostumer(id);
-            return Costumer == null ? NotFound() : Page();
+            Item = await getCostumer(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostDeleteAsync(string id) {
             if (id == null) return NotFound();
@@ -40,24 +40,24 @@ namespace Lana_jewelry.Pages.Costumers
         }
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            Costumer = await getCostumer(id);
-            return Costumer == null ? NotFound() : Page();
+            Item = await getCostumer(id);
+            return Item == null ? NotFound() : Page();
         }
         public async Task<IActionResult> OnPostEditAsync()
         {
             if (!ModelState.IsValid)return Page();
-            var obj = new CostumerViewFactory().Create(Costumer);
+            var obj = new CostumerViewFactory().Create(Item);
             var updated= await repo.UpdateAsync(obj);
             if (!updated) return NotFound();
             return RedirectToPage("./Index", "Index");
         }
         public async Task<ActionResult> OnGetIndexAsync() {
             var list = await repo.GetAsync();
-            Costumers = new List<CostumerView>();
+            Items = new List<CostumerView>();
             foreach (var obj in list)
             {
                 var v = new CostumerViewFactory().Create(obj);
-                Costumers.Add(v);
+                Items.Add(v);
             }
             return Page();
         }

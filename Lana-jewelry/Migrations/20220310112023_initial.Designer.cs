@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lana_jewelry.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220217092908_initial")]
+    [Migration("20220310112023_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,27 +43,27 @@ namespace Lana_jewelry.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Costumers");
+                    b.ToTable("Costumer", (string)null);
                 });
 
             modelBuilder.Entity("Lana_jewelry.Data.Shipment.TransportData", b =>
                 {
-                    b.Property<string>("TransportId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CostumerAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("TransportDuration")
+                    b.Property<DateTime>("Duration")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("TransportPrice")
+                    b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.HasKey("TransportId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Transports");
+                    b.ToTable("Transport", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
