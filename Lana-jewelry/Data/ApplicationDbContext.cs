@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Lana_jewelry.Data;
-using Lana_jewelry.Data.Party;
-using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Infra.Shipment;
 
 namespace Lana_jewelry.Data
@@ -10,10 +7,12 @@ namespace Lana_jewelry.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-            Lana_jewelryDb.CreateTable(builder);
+        protected override void OnModelCreating(ModelBuilder model) {
+            base.OnModelCreating(model);
+            InitializeTables(model);
+        }
+        private static void InitializeTables(ModelBuilder model) {
+            Lana_jewelryDb.InitializeTables(model);
         }
     }
 }

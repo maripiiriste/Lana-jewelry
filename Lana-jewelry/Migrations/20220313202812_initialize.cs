@@ -5,10 +5,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lana_jewelry.Migrations
 {
-    public partial class initial : Migration
+    public partial class initialize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "Lana_jewelryDb");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -49,7 +52,8 @@ namespace Lana_jewelry.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Costumer",
+                name: "Costumers",
+                schema: "Lana_jewelryDb",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -60,11 +64,12 @@ namespace Lana_jewelry.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Costumer", x => x.Id);
+                    table.PrimaryKey("PK_Costumers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transport",
+                name: "Transports",
+                schema: "Lana_jewelryDb",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -74,7 +79,7 @@ namespace Lana_jewelry.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transport", x => x.Id);
+                    table.PrimaryKey("PK_Transports", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -241,10 +246,12 @@ namespace Lana_jewelry.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Costumer");
+                name: "Costumers",
+                schema: "Lana_jewelryDb");
 
             migrationBuilder.DropTable(
-                name: "Transport");
+                name: "Transports",
+                schema: "Lana_jewelryDb");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
