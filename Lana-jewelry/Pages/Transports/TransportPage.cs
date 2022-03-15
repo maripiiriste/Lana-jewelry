@@ -1,10 +1,9 @@
-﻿using Lana_jewelry.Data;
-using Lana_jewelry.Domain.Shipment;
+﻿using Lana_jewelry.Domain.Shipment;
 using Lana_jewelry.Facade.Shipment;
+using Lana_jewelry.Infra;
 using Lana_jewelry.Infra.Shipment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Lana_jewelry.Pages.Transports{
     public class TransportPage:PageModel

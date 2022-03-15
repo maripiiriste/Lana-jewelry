@@ -7,13 +7,17 @@ namespace Lana_jewelry.Infra{
         public Lana_jewelryDb(DbContextOptions<Lana_jewelryDb> options) : base(options) { }
         public DbSet<TransportData> Transports { get; set; }
         public DbSet<CostumerData> Costumers { get; set; }
+        public DbSet<InfoData> Infos { get; set; }
+
         protected override void OnModelCreating(ModelBuilder model) {
             base.OnModelCreating(model);
             InitializeTables(model);
         }
         public static void InitializeTables(ModelBuilder model) {
-            model?.Entity<CostumerData>()?.ToTable(nameof(Costumers), nameof(Lana_jewelryDb).Substring(0, 14));
-            model?.Entity<TransportData>()?.ToTable(nameof(Transports), nameof(Lana_jewelryDb).Substring(0, 14));
+            var s = nameof(Lana_jewelryDb).Substring(0, 14);
+            model?.Entity<CostumerData>()?.ToTable(nameof(Costumers),s);
+            model?.Entity<InfoData>()?.ToTable(nameof(Infos),s);
+            model?.Entity<TransportData>()?.ToTable(nameof(Transports),s);
         }
     }   
 }
