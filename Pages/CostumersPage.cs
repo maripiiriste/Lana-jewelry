@@ -7,8 +7,8 @@ namespace Lana_jewelry.Pages {
     // For more details, see https://aka.ms/RazorPagesCRUD.
     public class CostumersPage : BasePage<CostumerView, Costumer, ICostumersRepo>  {
         public CostumersPage(ICostumersRepo r) : base(r) { }
-        protected override Costumer toObject(CostumerView item) => new CostumerViewFactory().Create(item);
-        protected override CostumerView toView(Costumer entity) => new CostumerViewFactory().Create(entity);
+        protected override Costumer toObject(CostumerView? item) => new CostumerViewFactory().Create(item);
+        protected override CostumerView toView(Costumer? entity) => new CostumerViewFactory().Create(entity);
     }
 }
 
