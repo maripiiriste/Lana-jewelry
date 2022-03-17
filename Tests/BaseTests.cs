@@ -2,11 +2,16 @@
 using System.Reflection;
 
 using System.Diagnostics;
+using Lana_jewelry.Tests;
 
 namespace Lana_jewelry.Tests {
-    public abstract class BaseTests<TClass>:IsTypeTested where TClass: class, new()  {
-        protected TClass obj;
-        protected BaseTests() => obj = new TClass();
+}
+    public abstract class BaseTests:IsTypeTested {
+        protected object obj;
+        protected BaseTests() => obj = createObj();
+
+        protected abstract object createObj();
+
         protected void isProperty<T>(T? value = default, bool isReadOnly = false){
             var memberName = getCallingMember(nameof(isProperty)).Replace("Test", string.Empty);
             var propertyInfo = obj.GetType().GetProperty(memberName);
@@ -36,4 +41,4 @@ namespace Lana_jewelry.Tests {
     
   }
 
-}
+

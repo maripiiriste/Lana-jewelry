@@ -6,7 +6,7 @@ using System;
 
 namespace Lana_jewelry.Tests.Data.Party
 {
-    [TestClass] public class CostumerDataTests: BaseTests<CostumerData>{
+    [TestClass] public class CostumerDataTests: SealedClassTests<CostumerData>{
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void FirstNameTest() => isProperty<string?>();
         [TestMethod] public void LastNameTest() => isProperty<string?>();

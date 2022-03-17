@@ -2,7 +2,7 @@
 
 namespace Lana_jewelry.Data.Party
 {
-    public class CostumerData : EntityData
+    public sealed class CostumerData : EntityData
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

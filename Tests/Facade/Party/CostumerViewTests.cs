@@ -5,7 +5,7 @@ using System;
 
 namespace Lana_jewelry.Tests.Facade.Party
 {
-    [TestClass] public class CostumerViewTests : BaseTests<CostumerView>
+    [TestClass] public class CostumerViewTests : SealedClassTests<CostumerView>
     {
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void FirstNameTest() => isProperty<string?>();

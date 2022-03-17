@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Lana_jewelry.Facade.Party {
-    public class CostumerView:BaseView
+    public sealed class CostumerView:BaseView
     {
         [DisplayName("First name")] public string? FirstName { get; set; }
         [DisplayName("Last name")] public string? LastName { get; set; }
@@ -13,5 +13,9 @@ namespace Lana_jewelry.Facade.Party {
     }
     public sealed class CostumerViewFactory : BaseViewFactory<CostumerView, Costumer, CostumerData> {
         protected override Costumer toEntity(CostumerData d) => new(d);
+        public override CostumerView Create(Costumer? e) {
+            var v = base.Create(e);
+            return v;
+        }
     }
 }
