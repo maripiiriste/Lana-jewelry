@@ -8,15 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lana_jewelry.Domain.Shipment{
+    public interface ITransportsRepo : IRepo<Transport> { }
     public class Transport: Entity<TransportData> {
-        private const string defaultStr = "Undefined";
-        private const double defaultNr = 00.00;
-        private DateTime defaultDate => DateTime.MinValue;
         public Transport() : this(new TransportData()) { }
         public Transport(TransportData d) : base(d) { }
-        public string TransportId => Data?.Id ?? defaultStr;
-        public string CostumerAddress => Data?.CostumerAddress ?? defaultStr;
-        public DateTime TransportDuration => Data?.Duration ?? defaultDate;
-        public double TransportPrice => Data?.Price ??defaultNr;
+        public string CostumerAddress => getValue(Data?.CostumerAddress);
+        public DateTime TransportDuration => getValue(Data?.Duration);
+        public double TransportPrice => getValue(Data?.Price);
     }
 }

@@ -1,7 +1,9 @@
 using Lana_jewelry.Data;
 using Lana_jewelry.Domain.Party;
+using Lana_jewelry.Domain.Shipment;
 using Lana_jewelry.Infra;
 using Lana_jewelry.Infra.Party;
+using Lana_jewelry.Infra.Shipment;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +21,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<ICostumersRepo, CostumersRepo>();
 builder.Services.AddTransient<IInfoRepo, InfoRepo>();
+builder.Services.AddTransient<ITransportsRepo, TransportsRepo>();
+builder.Services.AddTransient<IGiftCardRepo, GiftCardRepo>();
 
 var app = builder.Build();
 

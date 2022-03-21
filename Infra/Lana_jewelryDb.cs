@@ -8,16 +8,16 @@ namespace Lana_jewelry.Infra{
         public DbSet<TransportData>? Transports { get; set; }
         public DbSet<CostumerData>? Costumers { get; set; }
         public DbSet<InfoData>? Infos { get; set; }
+        public DbSet<GiftCardData>? GiftCards { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder model) {
-            base.OnModelCreating(model);
-            InitializeTables(model);
+        protected override void OnModelCreating(ModelBuilder b) {
+            base.OnModelCreating(b);
+            InitializeTables(b);
         }
-        public static void InitializeTables(ModelBuilder model) {
+        public static void InitializeTables(ModelBuilder b) {
             var s = nameof(Lana_jewelryDb)[0..^2];
-            _=(model.Entity<CostumerData>()?.ToTable(nameof(Costumers),s));
-            _=(model.Entity<InfoData>()?.ToTable(nameof(Infos),s));
-            _=(model.Entity<TransportData>()?.ToTable(nameof(Transports),s));
+            _=(b?.Entity<TransportData>()?.ToTable(nameof(Transports),s));
+            _=( b?.Entity<GiftCardData>()?.ToTable(nameof(GiftCards), s));
         }
     }   
 }
