@@ -3,10 +3,11 @@ using System.Reflection;
 
 using System.Diagnostics;
 using Lana_jewelry.Tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests {
-}
-    public abstract class BaseTests:IsTypeTested {
+
+public abstract class BaseTests:IsTypeTested {
         protected object obj;
         protected BaseTests() => obj = createObj();
 
