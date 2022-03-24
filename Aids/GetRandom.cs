@@ -58,8 +58,8 @@ namespace Lana_jewelry.Aids
             else if (typeof(T) == typeof(double)) return Double(Convert.ToDouble(min), Convert.ToDouble(max));
             else if (typeof(T) == typeof(int?)) return Int32(Convert.ToInt32(min), Convert.ToInt32(max));
             else if (typeof(T) == typeof(int)) return Int32(Convert.ToInt32(min), Convert.ToInt32(max));
-            else if (typeof(T) == typeof(int?)) return Int64(Convert.ToInt64(min), Convert.ToInt64(max));
-            else if (typeof(T) == typeof(int)) return Int64(Convert.ToInt64(min), Convert.ToInt64(max));
+            else if (typeof(T) == typeof(long?)) return Int64(Convert.ToInt64(min), Convert.ToInt64(max));
+            else if (typeof(T) == typeof(long)) return Int64(Convert.ToInt64(min), Convert.ToInt64(max));
             else if (typeof(T) == typeof(char?)) return Char(Convert.ToChar(min), Convert.ToChar(max));
             else if (typeof(T) == typeof(char)) return Char(Convert.ToChar(min), Convert.ToChar(max));
             else if (typeof(T) == typeof(string)) return String();
@@ -75,8 +75,8 @@ namespace Lana_jewelry.Aids
             else if (t == typeof(double)) return Double();
             else if (t == typeof(int?)) return Int32();
             else if (t == typeof(int)) return Int32();
-            else if (t == typeof(int?)) return Int64();
-            else if (t == typeof(int)) return Int64();
+            else if (t == typeof(long?)) return Int64();
+            else if (t == typeof(long)) return Int64();
             else if (t == typeof(char?)) return Char();
             else if (t == typeof(char)) return Char();
             else if (t == typeof(string)) return String();

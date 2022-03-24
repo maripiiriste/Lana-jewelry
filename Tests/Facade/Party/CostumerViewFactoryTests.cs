@@ -1,4 +1,5 @@
-﻿using Lana_jewelry.Data.Party;
+﻿using Lana_jewelry.Aids;
+using Lana_jewelry.Data.Party;
 using Lana_jewelry.Domain.Party;
 using Lana_jewelry.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,13 +10,7 @@ namespace Lana_jewelry.Tests.Facade.Party
     public class CostumerViewFactoryTests: SealedClassTests<CostumerViewFactory> {
         [TestMethod] public void CreateTest() { }
         [TestMethod] public void CreateViewTest() {
-            var d = new CostumerData() {
-                Id = "Id",
-                FirstName = "First",
-                LastName = "Last",
-                DoB = DateTime.Now,
-                Email = "Email"
-            };
+            var d = GetRandom.Value<CostumerData>();
             var e = new Costumer(d);
             var v = new CostumerViewFactory().Create(e);
             isNotNull(v);
@@ -26,13 +21,7 @@ namespace Lana_jewelry.Tests.Facade.Party
             areEqual(v.DoB, e.DoB);
         }
         [TestMethod] public void CreateEntityTest() {
-            var v = new CostumerView() {
-                Id = "Id",
-                FirstName = "First",
-                LastName = "Last",
-                DoB = DateTime.Now,
-                Email = "Email"
-            };
+            var v = GetRandom.Value<CostumerView>();
             var e = new CostumerViewFactory().Create(v);
             isNotNull(e);
             areEqual(e.Id, v.Id);

@@ -1,7 +1,10 @@
-﻿using Lana_jewelry.Aids;
+﻿using Google.Protobuf.Collections;
+using Lana_jewelry.Aids;
+using Lana_jewelry.Data.Party;
 using Lana_jewelry.Data.Shipment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace Lana_jewelry.Tests.Aids
 {
@@ -25,7 +28,7 @@ namespace Lana_jewelry.Tests.Aids
         [DataRow(1000, -1000)]
         [TestMethod] public void Int32Test(int min, int max) =>test(min, max);
         [DataRow(-1000L, 1000L)]
-        [DataRow(-1000L, 0L)]
+        [DataRow(-1000L, 0L)] 
         [DataRow(0L, 1000L)]
         [DataRow(long.MaxValue - 1000L, long.MaxValue)]
         [DataRow(long.MinValue, long.MinValue + 1000L)]
@@ -55,7 +58,7 @@ namespace Lana_jewelry.Tests.Aids
         }
         [DynamicData(nameof(DateTimeValues), DynamicDataSourceType.Property)]
         [TestMethod] public void DateTimeTest(DateTime min, DateTime max) => test(min, max);
-        private static IEnumerable<object[]> DateTimeValues => new Lists<object[]>()
+        private static IEnumerable<object[]> DateTimeValues => new List<object[]>()
         {
             new object []{DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100) },
             new object []{DateTime.Now.AddYears(100), DateTime.Now.AddYears(-100)},
@@ -69,13 +72,23 @@ namespace Lana_jewelry.Tests.Aids
             isInstanceOfType(y, typeof(string));
             areNotEqual(x, y);
         }
-        [TestMethod] public void ValueTest(){
-            var x = GetRandom.Value<TransportData>()as TransportData;
-            var y = GetRandom.Value<TransportData>()as TransportData;
+        [TestMethod]
+        public void ValueTest() {
+            var x = GetRandom.Value<TransportData>() as TransportData;
+            var y = GetRandom.Value<TransportData>() as TransportData;
             areNotEqual(x.Id, y.Id, nameof(x.Id));
             areNotEqual(x.CostumerAddress, y.CostumerAddress, nameof(x.CostumerAddress));
             areNotEqual(x.Price, y.Price, nameof(x.Price));
             areNotEqual(x.Duration, y.Duration, nameof(x.Price));
-    }
+        }
+        [TestMethod] public void ValueTest2() {
+            var x = GetRandom.Value<CostumerData>() as CostumerData;
+            var y = GetRandom.Value<CostumerData>() as CostumerData;
+            areNotEqual(x.Id, y.Id, nameof(x.Id));
+            areNotEqual(x.FirstName, y.FirstName, nameof(x.FirstName));
+            areNotEqual(x.LastName, y.LastName, nameof(x.LastName));
+            areNotEqual(x.DoB, y.DoB, nameof(x.DoB));
+            areNotEqual(x.Email, y.Email, nameof(x.Email));
+        }
     }
 }
