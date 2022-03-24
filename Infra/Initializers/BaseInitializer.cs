@@ -22,6 +22,8 @@ namespace Lana_jewelry.Infra.Initializers
          new GiftCardInitializer(db).Init();
          new TransportInitializer(db).Init();
          new CountriesInitializer(db).Init();
+         new CostumersInitializer(db).Init();
+         new InfoInitializer(db).Init();
         }
        
     }

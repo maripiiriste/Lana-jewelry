@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lana-jewelry", "Lana-jewelry\Lana-jewelry.csproj", "{A480A1E0-6379-453A-A32C-76197F7EDA66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lana_jewelry", "Lana-jewelry\Lana_jewelry.csproj", "{A480A1E0-6379-453A-A32C-76197F7EDA66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aids", "Aids\Aids.csproj", "{53D53B70-D569-4C90-9100-37498DDBEE8F}"
 EndProject

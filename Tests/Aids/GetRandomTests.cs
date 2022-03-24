@@ -81,14 +81,7 @@ namespace Lana_jewelry.Tests.Aids
             areNotEqual(x.Price, y.Price, nameof(x.Price));
             areNotEqual(x.Duration, y.Duration, nameof(x.Price));
         }
-        [TestMethod] public void ValueTest2() {
-            var x = GetRandom.Value<CostumerData>() as CostumerData;
-            var y = GetRandom.Value<CostumerData>() as CostumerData;
-            areNotEqual(x.Id, y.Id, nameof(x.Id));
-            areNotEqual(x.FirstName, y.FirstName, nameof(x.FirstName));
-            areNotEqual(x.LastName, y.LastName, nameof(x.LastName));
-            areNotEqual(x.DoB, y.DoB, nameof(x.DoB));
-            areNotEqual(x.Email, y.Email, nameof(x.Email));
+
         }
     }
-}
+
