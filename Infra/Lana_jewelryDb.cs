@@ -10,7 +10,7 @@ namespace Lana_jewelry.Infra{
         public DbSet<InfoData>? Infos { get; set; }
         public DbSet<GiftCardData>? GiftCards { get; set; }
         public DbSet<CountryData>? Countries { get; set; }
-        public DbSet<CountryData>? Currencies { get; set; }
+        public DbSet<CurrencyData>? Currencies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder b) {
             base.OnModelCreating(b);
