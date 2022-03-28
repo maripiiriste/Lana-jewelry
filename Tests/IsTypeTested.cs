@@ -15,14 +15,14 @@ namespace Lana_jewelry.Tests
         private Type? typeToBeTested;
         private List<string>? membersOfType;
         private List<string>? membersOfTest; 
-        [TestMethod] public void IsAllTested() => IsAllTested();
+        [TestMethod] public void IsAllTested() => isAllTested();
         protected virtual void isAllTested(){
             nameOfTest = getName(this);
             nameOfType = removeTestsTagFrom(nameOfTest);
             namespaceOfTest = getNamespace(this);
             namespaceOfType = removeTestsTagFrom(namespaceOfTest);
             assemblyToBeTested = getAssembly(namespaceOfType);
-            typeToBeTested = GetType(assemblyToBeTested, namespaceOfType);
+            typeToBeTested = GetType(assemblyToBeTested, nameOfType);
             membersOfType = getMembers(typeToBeTested);
             membersOfTest = getMembers(GetType());
             removeNotTests(GetType());
