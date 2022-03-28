@@ -10,6 +10,7 @@ namespace Lana_jewelry.Infra{
         public DbSet<InfoData>? Infos { get; set; }
         public DbSet<GiftCardData>? GiftCards { get; set; }
         public DbSet<CountryData>? Countries { get; set; }
+        public DbSet<CountryData>? Currencies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder b) {
             base.OnModelCreating(b);
@@ -17,9 +18,12 @@ namespace Lana_jewelry.Infra{
         }
         public static void InitializeTables(ModelBuilder b) {
             var s = nameof(Lana_jewelryDb)[0..^2];
-            _=(b?.Entity<TransportData>()?.ToTable(nameof(Transports),s));
+            _ = (b?.Entity<CostumerData>()?.ToTable(nameof(Costumers), s));
+            _ = (b?.Entity<InfoData>()?.ToTable(nameof(Infos), s));
+            _ =(b?.Entity<TransportData>()?.ToTable(nameof(Transports),s));
             _=( b?.Entity<GiftCardData>()?.ToTable(nameof(GiftCards), s));
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
+            _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));
         }
     }   
 }
