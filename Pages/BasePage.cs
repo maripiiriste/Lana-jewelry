@@ -18,6 +18,7 @@ namespace Lana_jewelry.Pages {
 
         public string ItemId => Item?.Id ?? string.Empty;
         public BasePage(TRepo r) => repo = r;
+
         public IActionResult OnGetCreate() => Page();
 
         public async Task<IActionResult> OnPostCreateAsync() {

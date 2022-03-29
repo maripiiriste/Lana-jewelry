@@ -1,0 +1,11 @@
+﻿@page
+@model Lana_jewelry.Pages.CountriesPage
+@using Lana_jewelry.Pages.Extensions
+
+@{
+     Layout = "_Create";
+}
+<body>
+    @Html.MyEditorFor(x => x.Item.Id)
+    <partial name="_EditCountry"/>
+ </body> 

@@ -3,10 +3,10 @@ using Lana_jewelry.Data;
 
 namespace Lana_jewelry.Domain{
     public abstract class Entity{
-        protected const double defaultNr = 00.00;
-        protected const string defaultStr = "Undefined";
-        protected static DateTime defaultDate => DateTime.MinValue;
-        protected static string getValue(string? v) => v ?? defaultStr;
+        private const double defaultNr = 00.00;
+        public static string DefaultStr => "Undefined";
+        private static DateTime defaultDate => DateTime.MinValue;
+        protected static string getValue(string? v) => v ?? DefaultStr;
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
         protected static double getValue(double? v) => v ?? defaultNr;
     }

@@ -1,4 +1,6 @@
-﻿using Lana_jewelry.Data.Shipment;
+﻿using Lana_jewelry.Data;
+using Lana_jewelry.Data.Shipment;
+using Lana_jewelry.Domain;
 using System.Globalization;
 
 namespace Lana_jewelry.Infra.Initializers
@@ -11,14 +13,15 @@ namespace Lana_jewelry.Infra.Initializers
                 var l = new List<CountryData>();
                 foreach(CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures)){
                     var c = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
+                    if (l.FirstOrDefault(x => x.Id == c.ThreeLetterISORegionName) is not null) continue;
+                    if (string.IsNullOrWhiteSpace(c.ThreeLetterISORegionName) ) continue;
                     var d = createCountry(c.ThreeLetterISORegionName, c.EnglishName, c.NativeName);
-                    if (l.FirstOrDefault(x => x.Id == d.Id) is not null) continue;
                     l.Add(d);
                 }
                 return l; }
-
         }
+
         internal static CountryData createCountry(string code, string name, string description)
-            => new(){Id = code, Code = code, Name = name, Description=description };
+            => new(){Id = code?? EntityData.NewId, Code = code?? Entity.DefaultStr, Name = name, Description=description };
     }
 }

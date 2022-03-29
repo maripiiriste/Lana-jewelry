@@ -24,6 +24,8 @@ builder.Services.AddTransient<ICostumersRepo, CostumersRepo>();
 builder.Services.AddTransient<IInfoRepo, InfoRepo>();
 builder.Services.AddTransient<ITransportsRepo, TransportsRepo>();
 builder.Services.AddTransient<IGiftCardRepo, GiftCardRepo>();
+builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
+builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
 
 var app = builder.Build();
 
