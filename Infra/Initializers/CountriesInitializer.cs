@@ -13,15 +13,16 @@ namespace Lana_jewelry.Infra.Initializers
                 var l = new List<CountryData>();
                 foreach(CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures)){
                     var c = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
-                    if (l.FirstOrDefault(x => x.Id == c.ThreeLetterISORegionName) is not null) continue;
-                    if (string.IsNullOrWhiteSpace(c.ThreeLetterISORegionName) ) continue;
-                    var d = createCountry(c.ThreeLetterISORegionName, c.EnglishName, c.NativeName);
+                    var id = c.ThreeLetterISORegionName;
+                    if (!isCorrectIsoCode(id)) continue;
+                    if (l.FirstOrDefault(x => x.Id == id) is not null) continue;
+                    var d = createCountry(id, c.EnglishName, c.NativeName);
                     l.Add(d);
                 }
                 return l; }
         }
 
         internal static CountryData createCountry(string code, string name, string description)
-            => new(){Id = code?? EntityData.NewId, Code = code?? Entity.DefaultStr, Name = name, Description=description };
+            => new(){Id = code?? UniqueData.NewId, Code = code?? UniqueEntity.DefaultStr, Name = name, Description=description };
     }
 }

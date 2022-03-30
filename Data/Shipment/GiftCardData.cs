@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lana_jewelry.Data.Shipment
 {
-    public sealed class GiftCardData: EntityData{
+    public sealed class GiftCardData: UniqueData{
         public double Price { get; set; }
     }
 }

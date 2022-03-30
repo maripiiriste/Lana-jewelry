@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lana_jewelry.Infra.Initializers
 {
-    public abstract class BaseInitializer<TData> where TData : EntityData{
+    public abstract class BaseInitializer<TData> where TData : UniqueData{
             internal protected DbContext? db;
             internal protected DbSet<TData>? set;
             protected BaseInitializer(DbContext? c, DbSet<TData>? s){
@@ -16,7 +16,9 @@ namespace Lana_jewelry.Infra.Initializers
                 db?.SaveChanges();
             }
             protected abstract IEnumerable<TData> getEntities { get; }
-        }
+            internal static bool isCorrectIsoCode(string id) => string.IsNullOrWhiteSpace(id) ? false : char.IsLetter(id[0]);
+
+    }
     public static class Lana_jewelryDbInitializer {
         public static void Init(Lana_jewelryDb? db) {
          new GiftCardInitializer(db).Init();

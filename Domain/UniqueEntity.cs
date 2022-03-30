@@ -1,8 +1,8 @@
 ﻿
 using Lana_jewelry.Data;
 
-namespace Lana_jewelry.Domain{
-    public abstract class Entity{
+namespace Lana_jewelry.Domain {
+    public abstract class UniqueEntity{
         private const double defaultNr = 00.00;
         public static string DefaultStr => "Undefined";
         private static DateTime defaultDate => DateTime.MinValue;
@@ -10,11 +10,11 @@ namespace Lana_jewelry.Domain{
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
         protected static double getValue(double? v) => v ?? defaultNr;
     }
-    public abstract class Entity<TData> : Entity where TData : EntityData, new() {
+    public abstract class UniqueEntity<TData> : UniqueEntity where TData : UniqueData, new() {
         private readonly TData data;
         public TData Data => data;
-        public Entity() : this(new TData()) { }
-        public Entity(TData d) => data = d;
+        public UniqueEntity() : this(new TData()) { }
+        public UniqueEntity(TData d) => data = d;
         public string Id => getValue(Data?.Id);
     }
 }

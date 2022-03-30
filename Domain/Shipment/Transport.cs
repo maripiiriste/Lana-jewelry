@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lana_jewelry.Domain.Shipment{
     public interface ITransportsRepo : IRepo<Transport> { }
-    public class Transport: Entity<TransportData> {
+    public class Transport: UniqueEntity<TransportData> {
         public Transport() : this(new TransportData()) { }
         public Transport(TransportData d) : base(d) { }
         public string CostumerAddress => getValue(Data?.CostumerAddress);

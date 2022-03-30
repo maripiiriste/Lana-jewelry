@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lana_jewelry.Infra.Repo&lt;TDomain, TData&gt;">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lana_jewelry.Infra.PagedRepo&lt;TDomain, TData&gt;">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PagedRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lana_jewelry.Infra.OrderedRepo&lt;TDomain, TData&gt;">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderedRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lana_jewelry.Infra.FilteredRepo&lt;TDomain, TData&gt;">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FilteredRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lana_jewelry.Infra.CrudRepo&lt;TDomain, TData&gt;">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAAAAEAABEAAAgAAAAAIAAAAIA=</HashCode>
+      <FileName>CrudRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lana_jewelry.Infra.BaseRepo&lt;TDomain, TData&gt;">
+    <Position X="7.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAQAABAAAQAAAEAAAEAAAgAAAAAIAAAAIA=</HashCode>
+      <FileName>BaseRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

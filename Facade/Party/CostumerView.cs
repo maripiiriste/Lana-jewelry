@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Lana_jewelry.Facade.Party {
-    public sealed class CostumerView:BaseView
+    public sealed class CostumerView:UniqueView
     {
         [DisplayName("First name")] public string? FirstName { get; set; }
         [DisplayName("Last name")] public string? LastName { get; set; }

@@ -5,7 +5,7 @@ using Lana_jewelry.Domain.Party;
 
 namespace Lana_jewelry.Facade.Party {
     
-    public sealed class InfoView : BaseView {
+    public sealed class InfoView : UniqueView {
         [DisplayName("Country")] [Required] public string? Country { get; set; }
         [DisplayName("City")] [Required] public string? City { get; set; }
         [DisplayName("Region")] [Required] public string? Region { get; set; }

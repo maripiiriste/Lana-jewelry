@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Lana_jewelry.Facade.Shipment
 {
-    public sealed class TransportView: BaseView
+    public sealed class TransportView: UniqueView
     {
         [DisplayName("Your aadress")] [Required] public string? CostumerAddress { get; set; }
         [DisplayName("Transportation cost")] [Required] public double TransportPrice { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Lana_jewelry.Data.Shipment
 {
-    public sealed class TransportData:EntityData{
+    public sealed class TransportData:UniqueData{
         public string? CostumerAddress { get; set; }
         public double Price { get; set; }
         public DateTime Duration { get; set; }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Lana_jewelry.Facade.Shipment
 {
-    public class GiftCardView : BaseView
+    public class GiftCardView : UniqueView
     {
         [DisplayName("Gift card price")] [Required] public double Price { get; set; }
     }

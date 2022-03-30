@@ -3,7 +3,7 @@
 namespace Lana_jewelry.Domain.Shipment
 {
     public interface IGiftCardRepo : IRepo<GiftCard> { }
-    public sealed class GiftCard: Entity<GiftCardData>
+    public sealed class GiftCard: UniqueEntity<GiftCardData>
     {
         public GiftCard() : this(new GiftCardData()) { }
         public GiftCard(GiftCardData d) : base(d) { }
