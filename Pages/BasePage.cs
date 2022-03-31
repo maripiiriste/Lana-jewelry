@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Lana_jewelry.Pages {
-    public abstract class BasePage<TView, TEntity, TRepo> : PageModel 
-        where TView:UniqueView
-        where TEntity:UniqueEntity
-        where TRepo:IBaseRepo<TEntity>{
+    public abstract class BasePage<TView, TEntity, TRepo> : PageModel
+        where TView : UniqueView
+        where TEntity : UniqueEntity
+        where TRepo : IBaseRepo<TEntity> {
 
         private readonly TRepo repo;
         protected abstract TView toView(TEntity? entity);
@@ -60,10 +60,11 @@ namespace Lana_jewelry.Pages {
             }
             return Page();
         }
-        private async Task<TView> getItem (string id)
+        private async Task<TView> getItem(string id)
             => toView(await repo.GetAsync(id));
     }
 }
+
 
 
 
