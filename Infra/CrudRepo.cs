@@ -39,12 +39,16 @@ namespace Lana_jewelry.Infra {
         }
         public override async Task<List<TDomain>> GetAsync() {
             try {
-                var list = (set is null) ? new List<TData>() : await set.ToListAsync();
+                var query = createSql();
+                var list = await runSql(query);
                 var items = new List<TDomain>();
                 foreach (var d in list) items.Add(toDomain(d));
                 return items;
             } catch { return new List<TDomain>(); }
         }
+
+        internal async Task<List<TData>> runSql(IQueryable<TData> query)=> await query.AsNoTracking().ToListAsync(); //ei taha et süsteem kontrolliks kas on midagi muutnud või mitte
+        internal protected virtual IQueryable<TData>  createSql()=>from s in set select s;
         public override async Task<TDomain> GetAsync(string id) {
             try {
                 if (id == null) return new TDomain();

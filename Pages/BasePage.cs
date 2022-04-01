@@ -9,7 +9,7 @@ namespace Lana_jewelry.Pages {
         where TEntity : UniqueEntity
         where TRepo : IBaseRepo<TEntity> {
 
-        private readonly TRepo repo;
+        protected readonly TRepo repo;
         protected abstract TView toView(TEntity? entity);
         protected abstract TEntity toObject(TView? item);
 
@@ -51,7 +51,7 @@ namespace Lana_jewelry.Pages {
             return RedirectToPage("./Index", "Index");
         }
 
-        public async Task<ActionResult> OnGetIndexAsync() {
+        public async virtual Task<ActionResult> OnGetIndexAsync(int pageIndex=0, string currentFilter=null, string sortOrder=null) {
             var list = await repo.GetAsync();
             Items = new List<TView>();
             foreach (var obj in list) {
