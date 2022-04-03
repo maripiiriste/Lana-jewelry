@@ -13,27 +13,28 @@
 <p>
     <a asp-page="Create" 
     asp-page-handler="Create"
-    asp-route-sortOrder="@Model.CurrentSort"
-    asp-route-pageIndex="@Model.PageIndex" 
-    asp-route-currentFilter="@Model.CurrentFilter"
+   asp-page-order="@Model.CurrentSort"
+    asp-page-idx="@Model.PageIndex" 
+    asp-page-filter="@Model.CurrentFilter"
     >CreateNew</a>
 </p>
 
-<form asp-page="./Index" method="get"
-    asp-route-sortOrder="@Model.CurrentSort"
-    asp-route-pageIndex="@Model.PageIndex" 
-    asp-route-currentFilter="@Model.CurrentFilter"
+<form method="get"
+    asp-page="Index"
+    asp-page-idx="@Model.PageIndex" 
 >
+    <input type="hidden" name="handler" value="Index" />
+
     <div class="form-actions no-color">
         <p>
             Find by name:&nbsp;
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />&nbsp;
-            <input type="submit" value="Search" class="btn btn-primary disabled" />&nbsp;
+            <input type="text" name="filter" value="@Model.CurrentFilter" />&nbsp;
+            <input type="submit" value="Search" class="btn btn-primary" />&nbsp;
             <a asp-page="Index"
                asp-page-handler="Index"
-               asp-route-sortOrder="@Model.CurrentSort"
-               asp-route-pageIndex="@Model.PageIndex" 
-               asp-route-currentFilter="@Model.CurrentFilter"
+              asp-page-order="@Model.CurrentSort"
+               asp-page-idx="@Model.PageIndex" 
+               asp-page-filter="@Model.CurrentFilter"
             >Back to full List</a>
         </p>
     </div>
@@ -44,17 +45,17 @@
 <div>
 <a asp-page="Index" 
    asp-page-handler="Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="0"
-   asp-route-currentFilter="@Model.CurrentFilter"
+  asp-page-order="@Model.CurrentSort"
+   asp-page-idx="0"
+   asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @firstDisabled">
    First
 </a>&nbsp;
 <a asp-page="Index" 
    asp-page-handler="Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.PageIndex - 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
+  asp-page-order="@Model.CurrentSort"
+   asp-page-idx="@(Model.PageIndex - 1)"
+   asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @prevDisabled">
    Previous
 </a>&nbsp;
@@ -62,17 +63,17 @@
     &nbsp
 <a asp-page="Index" 
    asp-page-handler="Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.PageIndex + 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
+  asp-page-order="@Model.CurrentSort"
+   asp-page-idx="@(Model.PageIndex + 1)"
+   asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @nextDisabled">
    Next
 </a>&nbsp;
 <a asp-page="Index" 
    asp-page-handler="Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.TotalPages-1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
+  asp-page-order="@Model.CurrentSort"
+   asp-page-idx="@(Model.TotalPages-1)"
+   asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @lastDisabled">
    Last
 </a>&nbsp;

@@ -9,30 +9,14 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Region)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Street)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].StreetNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].ZipCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].EmailAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].PhoneNumber)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.Items[0].Country)</th>
+            <th>@Html.DisplayNameFor(model => model.Items[0].City)</th>
+            <th>@Html.DisplayNameFor(model => model.Items[0].Region) </th>
+            <th>@Html.DisplayNameFor(model => model.Items[0].Street)</th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].StreetNumber)</th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].ZipCode) </th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].EmailAddress)</th>
+            <th> @Html.DisplayNameFor(model => model.Items[0].PhoneNumber)</th>
             <th></th>
         </tr>
     </thead>
@@ -67,23 +51,23 @@
                  <a asp-page="./Edit" 
                    asp-page-handler="Edit" 
                    asp-route-id="@item.Id"
-                   asp-route-sortOrder="@Model.CurrentSort"
-                   asp-route-pageIndex="@Model.PageIndex" 
-                   asp-route-currentFilter="@Model.CurrentFilter"
+                  asp-page-order="@Model.CurrentSort"
+                   asp-page-idx="@Model.PageIndex" 
+                   asp-page-filter="@Model.CurrentFilter"
                 >Edit</a>&nbsp;
                 <a asp-page="./Details" 
                    asp-page-handler="Details"
                    asp-route-id="@item.Id"
-                   asp-route-sortOrder="@Model.CurrentSort"
-                   asp-route-pageIndex="@Model.PageIndex" 
-                   asp-route-currentFilter="@Model.CurrentFilter"
+                  asp-page-order="@Model.CurrentSort"
+                   asp-page-idx="@Model.PageIndex" 
+                   asp-page-filter="@Model.CurrentFilter"
                 >Details</a>&nbsp;
                 <a asp-page="./Delete" 
                    asp-page-handler="Delete"
                    asp-route-id="@item.Id"
-                   asp-route-sortOrder="@Model.CurrentSort"
-                   asp-route-pageIndex="@Model.PageIndex" 
-                   asp-route-currentFilter="@Model.CurrentFilter"
+                  asp-page-order="@Model.CurrentSort"
+                   asp-page-idx="@Model.PageIndex" 
+                   asp-page-filter="@Model.CurrentFilter"
                 >Delete</a>
             </td>
         </tr>

@@ -11,7 +11,12 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Items[0].FirstName)</th>
-            <th>@Html.DisplayNameFor(model => model.Items[0].LastName)</th>
+            <th><a asp-page="./Index"
+                asp-page-handler="Index"
+               asp-page-order="@Model.SortOrder(nameof(Model.Item.LastName))"
+                asp-page-idx="@Model.PageIndex" 
+                asp-page-filter="@Model.CurrentFilter"
+                >@nameof(Model.Item.LastName)</a></th>
             <th> @Html.DisplayNameFor(model => model.Items[0].DoB)</th>
             <th>@Html.DisplayNameFor(model => model.Items[0].Email)</th>
             <th></th>
@@ -29,23 +34,23 @@
                 <a asp-page="./Edit" 
                    asp-page-handler="Edit" 
                    asp-route-id="@item.Id"
-                   asp-route-sortOrder="@Model.CurrentSort"
-                   asp-route-pageIndex="@Model.PageIndex" 
-                   asp-route-currentFilter="@Model.CurrentFilter"
+                   asp-page-order="@Model.CurrentSort"
+                   asp-page-idx="@Model.PageIndex" 
+                   asp-page-filter="@Model.CurrentFilter"
                 >Edit</a>&nbsp;
                 <a asp-page="./Details" 
                    asp-page-handler="Details"
                    asp-route-id="@item.Id"
-                   asp-route-sortOrder="@Model.CurrentSort"
-                   asp-route-pageIndex="@Model.PageIndex" 
-                   asp-route-currentFilter="@Model.CurrentFilter"
+                   asp-page-order="@Model.CurrentSort"
+                   asp-page-idx="@Model.PageIndex" 
+                   asp-page-filter="@Model.CurrentFilter"
                 >Details</a>&nbsp;
                 <a asp-page="./Delete" 
                    asp-page-handler="Delete"
                    asp-route-id="@item.Id"
-                   asp-route-sortOrder="@Model.CurrentSort"
-                   asp-route-pageIndex="@Model.PageIndex" 
-                   asp-route-currentFilter="@Model.CurrentFilter"
+                   asp-page-order="@Model.CurrentSort"
+                   asp-page-idx="@Model.PageIndex" 
+                   asp-page-filter="@Model.CurrentFilter"
                 >Delete</a>
             </td>
         </tr>
