@@ -3,7 +3,7 @@ using Lana_jewelry.Facade.Shipment;
 
 namespace Lana_jewelry.Pages
 {
-    public class GiftCardsPage : BasePage<GiftCardView, GiftCard, IGiftCardRepo>
+    public class GiftCardsPage : PagedPage<GiftCardView, GiftCard, IGiftCardRepo>
     {
         public GiftCardsPage(IGiftCardRepo r) : base(r) { }
         protected override GiftCard toObject(GiftCardView? item) => new GiftCardViewFactory().Create(item);
