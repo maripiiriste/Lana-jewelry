@@ -9,15 +9,13 @@ namespace Lana_jewelry.Infra {
     // TODO For more details, see https://aka.ms/RazorPagesCRUD.
 
     public abstract class CrudRepo<TDomain, TData> : BaseRepo<TDomain, TData>
-        where TDomain : UniqueEntity<TData>, new () where TData:UniqueData, new ()
-    {
+        where TDomain : UniqueEntity<TData>, new () where TData:UniqueData, new () {
         protected CrudRepo(DbContext? c, DbSet<TData>? s) : base(c, s) { }
         public override bool Add(TDomain obj) => AddAsync(obj).GetAwaiter().GetResult();
         public override bool Delete(string id) => DeleteAsync(id).GetAwaiter().GetResult();
         public override List<TDomain> Get() => GetAsync().GetAwaiter().GetResult();
         public override TDomain Get(string id) => GetAsync(id).GetAwaiter().GetResult();
         public override bool Update(TDomain obj) => UpdateAsync(obj).GetAwaiter().GetResult();
-
         public override async Task<bool> AddAsync(TDomain obj) {
             var d = obj.Data;
             try {
@@ -46,7 +44,6 @@ namespace Lana_jewelry.Infra {
                 return items;
             } catch { return new List<TDomain>(); }
         }
-
         internal async Task<List<TData>> runSql(IQueryable<TData> query)=> await query.AsNoTracking().ToListAsync(); //ei taha et süsteem kontrolliks kas on midagi muutnud või mitte
         internal protected virtual IQueryable<TData>  createSql()=>from s in set select s;
         public override async Task<TDomain> GetAsync(string id) {

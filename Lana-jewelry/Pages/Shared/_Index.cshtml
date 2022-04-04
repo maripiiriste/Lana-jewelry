@@ -13,7 +13,7 @@
 <p>
     <a asp-page="Create" 
     asp-page-handler="Create"
-   asp-page-order="@Model.CurrentSort"
+   asp-page-order="@Model.CurrentOrder"
     asp-page-idx="@Model.PageIndex" 
     asp-page-filter="@Model.CurrentFilter"
     >CreateNew</a>
@@ -32,7 +32,7 @@
             <input type="submit" value="Search" class="btn btn-primary" />&nbsp;
             <a asp-page="Index"
                asp-page-handler="Index"
-              asp-page-order="@Model.CurrentSort"
+              asp-page-order="@Model.CurrentOrder"
                asp-page-idx="@Model.PageIndex" 
                asp-page-filter="@Model.CurrentFilter"
             >Back to full List</a>
@@ -45,7 +45,7 @@
 <div>
 <a asp-page="Index" 
    asp-page-handler="Index"
-  asp-page-order="@Model.CurrentSort"
+  asp-page-order="@Model.CurrentOrder"
    asp-page-idx="0"
    asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @firstDisabled">
@@ -53,7 +53,7 @@
 </a>&nbsp;
 <a asp-page="Index" 
    asp-page-handler="Index"
-  asp-page-order="@Model.CurrentSort"
+  asp-page-order="@Model.CurrentOrder"
    asp-page-idx="@(Model.PageIndex - 1)"
    asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @prevDisabled">
@@ -63,7 +63,7 @@
     &nbsp
 <a asp-page="Index" 
    asp-page-handler="Index"
-  asp-page-order="@Model.CurrentSort"
+  asp-page-order="@Model.CurrentOrder"
    asp-page-idx="@(Model.PageIndex + 1)"
    asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @nextDisabled">
@@ -71,7 +71,7 @@
 </a>&nbsp;
 <a asp-page="Index" 
    asp-page-handler="Index"
-  asp-page-order="@Model.CurrentSort"
+  asp-page-order="@Model.CurrentOrder"
    asp-page-idx="@(Model.TotalPages-1)"
    asp-page-filter="@Model.CurrentFilter"
    class="btn btn-primary @lastDisabled">

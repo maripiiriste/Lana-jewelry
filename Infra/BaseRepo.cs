@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lana_jewelry.Infra {
     public abstract class BaseRepo<TDomain, TData> : IBaseRepo<TDomain>
-        where TDomain : UniqueEntity<TData>, new () where TData:UniqueData, new ()
-    {
+        where TDomain : UniqueEntity<TData>, new () where TData:UniqueData, new () {
         protected readonly DbContext? db;
         protected readonly DbSet<TData>? set;
     protected BaseRepo(DbContext? c, DbSet<TData>? s) {

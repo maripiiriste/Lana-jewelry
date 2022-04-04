@@ -9,36 +9,30 @@ namespace Lana_jewelry.Pages {
         where TRepo : ICrudRepo<TEntity> {
         protected CrudPage(TRepo r) : base(r) { }
         protected override IActionResult getCreate() => Page();
+        protected virtual async Task<IActionResult> getItemPage(string id) {
+            Item = await getItem(id);
+            return Item == null ? NotFound() : Page();
+        }
+        protected override async Task<IActionResult> getDetailsAsync(string id) => await getItemPage(id);
+        protected override async Task<IActionResult> getDeleteAsync(string id) => await getItemPage(id);
+        protected override async Task<IActionResult> getEditAsync(string id) => await getItemPage(id);
         protected override async Task<IActionResult> postCreateAsync() {
             if (!ModelState.IsValid) return Page();
             await repo.AddAsync(toObject(Item));
             return redirectToIndex();
-        }
-        protected override async Task<IActionResult> getDetailsAsync(string id) {
-            Item = await getItem(id);
-            return Item == null ? NotFound() : Page();
-        }
-        protected override async Task<IActionResult> getDeleteAsync(string id) {
-            Item = await getItem(id);
-            return Item == null ? NotFound() : Page();
         }
         protected override async Task<IActionResult> postDeleteAsync(string id) {
             if (id == null) return NotFound();
             await repo.DeleteAsync(id);
             return redirectToIndex();
         }
-        protected override async Task<IActionResult> getEditAsync(string id) {
-            Item = await getItem(id);
-            return Item == null ? NotFound() : Page();
-        }
         protected override async Task<IActionResult> postEditAsync() {
             if (!ModelState.IsValid) return Page();
             var obj = toObject(Item);
             var updated = await repo.UpdateAsync(obj);
-            if (!updated) return NotFound();
-            return redirectToIndex();
+            return !updated ? NotFound() : redirectToIndex();
         }
-        protected override async Task<ActionResult> getIndexAsync() {
+        protected override async Task<IActionResult> getIndexAsync() {
             var list = await repo.GetAsync();
             Items = new List<TView>();
             foreach (var obj in list) {

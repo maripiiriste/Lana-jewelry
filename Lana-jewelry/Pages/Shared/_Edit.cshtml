@@ -13,7 +13,7 @@
 
 <form method="post" 
     asp-page-handler="Edit" 
-    asp-route-order="@Model.CurrentSort"
+    asp-route-order="@Model.CurrentOrder"
     asp-route-idx="@Model.PageIndex" 
     asp-route-filter="@Model.CurrentFilter">
 >
@@ -26,7 +26,7 @@
          
         <a asp-page="Index" 
             asp-page-handler="Index" 
-           asp-page-order="@Model.CurrentSort"
+           asp-page-order="@Model.CurrentOrder"
             asp-page-idx="@Model.PageIndex" 
             asp-page-filter="@Model.CurrentFilter">Back to List</a>
     </div>

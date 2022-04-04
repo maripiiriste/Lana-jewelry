@@ -35,9 +35,9 @@ namespace Lana_jewelry.Pages {
         protected abstract Task<IActionResult> postDeleteAsync(string id);
         protected abstract Task<IActionResult> getEditAsync(string id);
         protected abstract Task<IActionResult> postEditAsync();
-        protected abstract Task<ActionResult> getIndexAsync();
+        protected abstract Task<IActionResult> getIndexAsync();
         internal virtual void removeKey(params string[] keys) {
-            foreach (var key in keys ?? Array.Empty<string>())
+            foreach (var key in keys ?? System.Array.Empty<string>())
                 Safe.Run(() => ModelState.Remove(key));
         }
         public IActionResult OnGetCreate(int idx = 0, string? filter = null, string? order = null) {
@@ -56,7 +56,7 @@ namespace Lana_jewelry.Pages {
              => await perform(() => getEditAsync(id), idx, filter, order);
         public async Task<IActionResult> OnPostEditAsync(int idx = 0, string? filter = null, string? order = null)
              => await perform(() => postEditAsync(), idx, filter, order, true);
-        public async Task<ActionResult> OnGetIndexAsync(int idx = 0, string? filter = null, string? order = null)
+        public async Task<IActionResult> OnGetIndexAsync(int idx = 0, string? filter = null, string? order = null)
            => await perform(() => getIndexAsync(), idx, filter, order);
     }
 }

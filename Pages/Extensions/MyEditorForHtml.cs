@@ -13,7 +13,6 @@ namespace Lana_jewelry.Pages.Extensions
             var s = htmlStrings(h, e);
             return new HtmlContentBuilder(s);
         }
-
         private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e)
         {
             var l = new List<object>();
@@ -27,7 +26,6 @@ namespace Lana_jewelry.Pages.Extensions
             l.Add(new HtmlString("</dd>"));
             l.Add(new HtmlString("</div>"));
             return l;
-
         }
     }
 }
