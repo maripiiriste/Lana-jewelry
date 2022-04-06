@@ -19,10 +19,10 @@ namespace Lana_jewelry.Pages.Extensions {
             foreach (var name in m.IndexColumns) {
                 l.Add(new HtmlString("<td>"));
                 l.Add(h.MyTabHdr(/*m.*//*DisplayName(*/name));
-                l.Add(new HtmlString("/<td>"));
+                l.Add(new HtmlString("</td>"));
             }
             l.Add(new HtmlString("<th></th>"));
-            l.Add(new HtmlString("/<tr"));
+            l.Add(new HtmlString("</tr"));
             l.Add(new HtmlString("</thead>"));
             l.Add(new HtmlString("<tbody>"));
             foreach(var item in items?? new List<TView>()){
@@ -30,15 +30,15 @@ namespace Lana_jewelry.Pages.Extensions {
                 foreach (var name in m.IndexColumns) {
                     l.Add(new HtmlString("<td>"));
                     l.Add(h.Raw(m.GetValue(name, item)));
-                    l.Add(new HtmlString("/<td>"));
+                    l.Add(new HtmlString("</td>"));
                 }
-                l.Add(new HtmlString("<td"));
+                l.Add(new HtmlString("<td>"));
                 l.Add(h.ItemButtons(item.Id));
-                l.Add(new HtmlString("/<td"));
-                l.Add(new HtmlString("/<tr"));
+                l.Add(new HtmlString("</td"));
+                l.Add(new HtmlString("</tr"));
             }
-            l.Add(new HtmlString("/<tbody"));
-            l.Add(new HtmlString("/<table"));
+            l.Add(new HtmlString("</tbody"));
+            l.Add(new HtmlString("</table"));
             return l;
         }
     }

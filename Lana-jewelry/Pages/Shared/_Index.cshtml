@@ -32,9 +32,9 @@
             <input type="submit" value="Search" class="btn btn-primary"/>&nbsp;
             <a asp-page="Index"
                asp-page-handler="Index"
-              asp-page-order="@Model.CurrentOrder"
-               asp-page-idx="@Model.PageIndex" 
-               asp-page-filter="@Model.CurrentFilter"
+              asp-route-order="@Model.CurrentOrder"
+               asp-route-idx="@Model.PageIndex" 
+               asp-route-filter="@Model.CurrentFilter"
             >Back to full List</a>
         </p>
     </div>
@@ -45,17 +45,17 @@
 <div>
 <a asp-page="Index" 
    asp-page-handler="Index"
-  asp-page-order="@Model.CurrentOrder"
-   asp-page-idx="0"
-   asp-page-filter="@Model.CurrentFilter"
+  asp-route-order="@Model.CurrentOrder"
+   asp-route-idx="0"
+   asp-route-filter="@Model.CurrentFilter"
    class="btn btn-primary @firstDisabled">
    First
 </a>&nbsp;
 <a asp-page="Index" 
    asp-page-handler="Index"
-  asp-page-order="@Model.CurrentOrder"
-   asp-page-idx="@(Model.PageIndex - 1)"
-   asp-page-filter="@Model.CurrentFilter"
+  asp-route-order="@Model.CurrentOrder"
+   asp-route-idx="@(Model.PageIndex - 1)"
+   asp-route-filter="@Model.CurrentFilter"
    class="btn btn-primary @prevDisabled">
    Previous
 </a>&nbsp;
@@ -63,17 +63,17 @@
     &nbsp
 <a asp-page="Index" 
    asp-page-handler="Index"
-  asp-page-order="@Model.CurrentOrder"
-   asp-page-idx="@(Model.PageIndex + 1)"
-   asp-page-filter="@Model.CurrentFilter"
+  asp-route-order="@Model.CurrentOrder"
+   asp-route-idx="@(Model.PageIndex + 1)"
+   asp-route-filter="@Model.CurrentFilter"
    class="btn btn-primary @nextDisabled">
    Next
 </a>&nbsp;
 <a asp-page="Index" 
    asp-page-handler="Index"
   asp-page-order="@Model.CurrentOrder"
-   asp-page-idx="@(Model.TotalPages-1)"
-   asp-page-filter="@Model.CurrentFilter"
+   asp-route-idx="@(Model.TotalPages-1)"
+   asp-route-filter="@Model.CurrentFilter"
    class="btn btn-primary @lastDisabled">
    Last
 </a>&nbsp;
