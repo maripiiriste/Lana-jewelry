@@ -1,31 +1,11 @@
 ﻿@page
+@using Lana_jewelry.Pages.Extensions
+@using Lana_jewelry.Facade
 @model Lana_jewelry.Pages.GiftCardsPage
 @{
      Layout = "_Index";
 }
 <body>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Items[0].Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Items) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-page-handler="Edit" asp-route-id="@item.Id">Edit</a> &nbsp;
-                <a asp-page="./Details" asp-page-handler="Details" asp-route-id="@item.Id">Details</a> &nbsp;
-                <a asp-page="./Delete" asp-page-handler="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    @Html.ShowTable(Model.Items);
 </body>
+
