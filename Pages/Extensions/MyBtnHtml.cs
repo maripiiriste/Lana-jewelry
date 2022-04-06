@@ -10,12 +10,12 @@ namespace Lana_jewelry.Pages.Extensions {
         }
         private static List<object> htmlStrings(string handler, string id,IPageModel? m) {
             var l = new List<object>();
-            l.Add(new HtmlString($"<a href=/{pageName(m)}/{handler}?"));
+            l.Add(new HtmlString($"<a style=\"text-decoration:none;\" href=\"/{pageName(m)}/{handler}?"));
             l.Add(new HtmlString($"handler={handler}&amp;"));
             l.Add(new HtmlString($"id={id}&amp;"));
             l.Add(new HtmlString($"order={m?.CurrentOrder}&amp;"));
             l.Add(new HtmlString($"idx={m?.PageIndex ?? 0}&amp;"));
-            l.Add(new HtmlString($"filter={m?.CurrentFilter}>"));
+            l.Add(new HtmlString($"filter={m?.CurrentFilter}\">"));
             l.Add(new HtmlString($"{handler}</a>"));
             return l;
         }
