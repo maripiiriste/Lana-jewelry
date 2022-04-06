@@ -7,7 +7,7 @@ namespace Lana_jewelry.Pages.Party {
         protected override Info toObject(InfoView? item) => new InfoViewFactory().Create(item);
         protected override InfoView toView(Info? entity) => new InfoViewFactory().Create(entity);
         public override string[] IndexColumns { get; } = new[] {
-        nameof(InfoView.Id),
+        //nameof(InfoView.Id),
         nameof(InfoView.Country),
         nameof(InfoView.City),
         nameof(InfoView.Region),

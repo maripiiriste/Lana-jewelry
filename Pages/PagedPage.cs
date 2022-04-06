@@ -31,7 +31,7 @@ namespace Lana_jewelry.Pages {
         public virtual string[] IndexColumns => Array.Empty<string>();
         public object? GetValue(string name, TView v)
            => Safe.Run(() => {
-               var propertyInfo = v?.GetType().GetProperty(name);
+               var propertyInfo = v?.GetType()?.GetProperty(name);
                return propertyInfo == null ? null : propertyInfo.GetValue(v);
            }, null);
     }
