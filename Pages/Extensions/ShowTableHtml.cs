@@ -22,7 +22,7 @@ namespace Lana_jewelry.Pages.Extensions {
                 l.Add(new HtmlString("</td>"));
             }
             l.Add(new HtmlString("<th></th>"));
-            l.Add(new HtmlString("</tr"));
+            l.Add(new HtmlString("</tr>"));
             l.Add(new HtmlString("</thead>"));
             l.Add(new HtmlString("<tbody>"));
             foreach(var item in items?? new List<TView>()){
@@ -34,11 +34,11 @@ namespace Lana_jewelry.Pages.Extensions {
                 }
                 l.Add(new HtmlString("<td>"));
                 l.Add(h.ItemButtons(item.Id));
-                l.Add(new HtmlString("</td"));
-                l.Add(new HtmlString("</tr"));
+                l.Add(new HtmlString("</td>"));
+                l.Add(new HtmlString("</tr>"));
             }
-            l.Add(new HtmlString("</tbody"));
-            l.Add(new HtmlString("</table"));
+            l.Add(new HtmlString("</tbody>"));
+            l.Add(new HtmlString("</table>"));
             return l;
         }
     }
