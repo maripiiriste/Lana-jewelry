@@ -6,5 +6,6 @@ namespace Lana_jewelry.Pages {
         public string[] IndexColumns { get; }
         public IList<TView>? Items{ get; }
         public object? GetValue(string name, TView v);
+        string DisplayName(string name);
     }
 }

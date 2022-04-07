@@ -2,7 +2,6 @@
 @using Lana_jewelry.Pages.Extensions
 
 
-@Html.MyEditorFor(x => x.Item.Country) 
 @Html.MyEditorFor(x => x.Item.City)
 @Html.MyEditorFor(x => x.Item.Region)
 @Html.MyEditorFor(x => x.Item.Street)
@@ -11,5 +10,13 @@
 @Html.MyEditorFor(x => x.Item.EmailAddress)
 @Html.MyEditorFor(x => x.Item.PhoneNumber)
 
-
+<div class="row">
+<dd class="col-sn-2">
+@Html.LabelFor(x=>x.Item.Country, null, new {@class="control-label"})
+</dd>
+<dd class="col-sn-10">
+@Html.DropDownListFor(x=>x.Item.Country, Model.Countries, new {@case="form-control"})
+@Html.ValidationMessageFor(x=>x.Item.Country, null, new {@case="text-danger"})
+</dd>
+</div>
   

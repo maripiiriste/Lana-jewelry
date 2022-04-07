@@ -2,6 +2,7 @@
 using Lana_jewelry.Domain;
 using Lana_jewelry.Facade;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 
 namespace Lana_jewelry.Pages {
     public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>, 
@@ -29,11 +30,17 @@ namespace Lana_jewelry.Pages {
                 currentFilter=CurrentFilter,
                 sortOrder=CurrentOrder } );
         public virtual string[] IndexColumns => Array.Empty<string>();
-        public object? GetValue(string name, TView v)
+        public virtual object? GetValue(string name, TView v)
            => Safe.Run(() => {
                var propertyInfo = v?.GetType()?.GetProperty(name);
                return propertyInfo == null ? null : propertyInfo.GetValue(v);
            }, null);
+        public string? DisplayName(string name) => Safe.Run(() => {
+            var p = typeof(TView).GetProperty(name);
+            var a = p?.CustomAttributes?
+                .FirstOrDefault(x => x.AttributeType == typeof(DisplayNameAttribute));
+            return a?.ConstructorArguments[0].Value?.ToString() ?? name;
+        }, name);
     }
 }
 

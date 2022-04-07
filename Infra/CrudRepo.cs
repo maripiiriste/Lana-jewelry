@@ -1,6 +1,7 @@
 ﻿using Lana_jewelry.Data;
 using Lana_jewelry.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Lana_jewelry.Infra {
     
@@ -14,6 +15,12 @@ namespace Lana_jewelry.Infra {
         public override bool Add(TDomain obj) => AddAsync(obj).GetAwaiter().GetResult();
         public override bool Delete(string id) => DeleteAsync(id).GetAwaiter().GetResult();
         public override List<TDomain> Get() => GetAsync().GetAwaiter().GetResult();
+        public override List<TDomain> GetAll<TKey>(Func<TDomain, TKey>? orderBy=null) {
+            var r = new List<TDomain>();
+            if (set is null) return r;
+            foreach (var d in set) r.Add(toDomain(d));
+            return (orderBy is null)? r: r.OrderBy(orderBy).ToList();
+        }
         public override TDomain Get(string id) => GetAsync(id).GetAwaiter().GetResult();
         public override bool Update(TDomain obj) => UpdateAsync(obj).GetAwaiter().GetResult();
         public override async Task<bool> AddAsync(TDomain obj) {
