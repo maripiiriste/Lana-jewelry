@@ -4,6 +4,7 @@ using Lana_jewelry.Domain.Party;
 using Lana_jewelry.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Reflection;
 
 namespace Lana_jewelry.Tests.Facade.Party
 {
@@ -21,9 +22,11 @@ namespace Lana_jewelry.Tests.Facade.Party
             areEqual(v.DoB, e.DoB);
         }
         [TestMethod] public void CreateEntityTest() {
-            var v = GetRandom.Value<CostumerView>();
+            var v = GetRandom.Value<CostumerView>() as CostumerView;
             var e = new CostumerViewFactory().Create(v);
             isNotNull(e);
+            isNotNull(v);
+            arePropertiesEqual(e, v);
             areEqual(e.Id, v.Id);
             areEqual(e.FirstName, v.FirstName);
             areEqual(e.LastName, v.LastName);

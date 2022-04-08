@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace Lana_jewelry.Pages {
     public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>, 
         IPageModel,IIndexModel<TView>
-        where TView : UniqueView
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : IPagedRepo<TEntity> {
         protected PagedPage(TRepo r) : base(r) { }
@@ -33,7 +33,7 @@ namespace Lana_jewelry.Pages {
         public virtual object? GetValue(string name, TView v)
            => Safe.Run(() => {
                var propertyInfo = v?.GetType()?.GetProperty(name);
-               return propertyInfo == null ? null : propertyInfo.GetValue(v);
+               return propertyInfo?.GetValue(v);
            }, null);
         public string? DisplayName(string name) => Safe.Run(() => {
             var p = typeof(TView).GetProperty(name);

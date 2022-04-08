@@ -7,12 +7,12 @@ namespace Lana_jewelry.Infra.Party {
         protected override Currency toDomain(CurrencyData d) => new (d);
         internal override IQueryable<CurrencyData> addFilter(IQueryable<CurrencyData> q) {
             var y = CurrentFilter;
-            if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(
-                x => x.Code.Contains(y)
-                || x.Id.Contains(y)
-                || x.Name.Contains(y)
-                || x.Description.Contains(y));
+            return string.IsNullOrWhiteSpace(y)
+                ? q : q.Where(
+                x => contains(x.Code,y)
+                || contains(x.Id,y)
+                || contains(x.Name,y)
+                || contains(x.Description,y));
         }
     }
 }

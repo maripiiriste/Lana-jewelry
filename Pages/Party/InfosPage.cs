@@ -30,8 +30,7 @@ namespace Lana_jewelry.Pages.Party {
 
         public override object? GetValue(string name, InfoView v) {
             var r=base.GetValue(name, v);
-            if (name == nameof(InfoView.Country)) return CountryName(r as string);
-            return r;
+            return name == nameof(InfoView.Country) ? CountryName(r as string) : r;
         }
     }
 }

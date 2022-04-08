@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Diagnostics;
 using Lana_jewelry.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Lana_jewelry.Tests
 {
@@ -31,8 +32,8 @@ namespace Lana_jewelry.Tests
             areEqual(canWrite, !isReadOnly);
             return canWrite;
         }
-        private static T random<T>() => GetRandom.Value<T>();
-        private string getCallingMember(string memberName)
+        private static T? random<T>() => GetRandom.Value<T>();
+        private static string getCallingMember(string memberName)
         {
             var s = new StackTrace();
             var isNext = false;
@@ -44,6 +45,20 @@ namespace Lana_jewelry.Tests
                 if (n == memberName) isNext = true;
             }
             return string.Empty;
+        }
+        internal protected static void arePropertiesEqual(object x, object y) {
+            var e = Array.Empty<PropertyInfo>();
+            var px = x?.GetType()?.GetProperties() ?? e;
+            var hasProperites = false;
+            foreach (var p in px) {
+                var a = p.GetValue(x, null);
+                var py = y?.GetType()?.GetProperty(p.Name);
+                if (py is null) continue;
+                var b = py?.GetValue(y, null);
+                areEqual(a, b);
+                hasProperites = true;
+            }
+            isTrue(hasProperites, $"No properties found for {x}");
         }
 
     }

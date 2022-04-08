@@ -9,14 +9,6 @@
 @Html.MyEditorFor(x => x.Item.ZipCode)
 @Html.MyEditorFor(x => x.Item.EmailAddress)
 @Html.MyEditorFor(x => x.Item.PhoneNumber)
+@Html.MyDropDownFor(x=>x.Item.Country, Model.Countries)
 
-<div class="row">
-<dd class="col-sn-2">
-@Html.LabelFor(x=>x.Item.Country, null, new {@class="control-label"})
-</dd>
-<dd class="col-sn-10">
-@Html.DropDownListFor(x=>x.Item.Country, Model.Countries, new {@case="form-control"})
-@Html.ValidationMessageFor(x=>x.Item.Country, null, new {@case="text-danger"})
-</dd>
-</div>
   
