@@ -10,7 +10,7 @@ namespace Lana_jewelry.Pages.Extensions {
             return new HtmlContentBuilder(s);
         }
         public static IHtmlContent MyViewerFor<TModel, TResult>(
-          this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e, TResult value) {
+          this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e, dynamic value) {
             var s = htmlStrings(h, e, value);
             return new HtmlContentBuilder(s);
         }
@@ -29,7 +29,7 @@ namespace Lana_jewelry.Pages.Extensions {
             return l;
         }
         private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h
-            , Expression<Func<TModel, TResult>> e, TResult value) {
+            , Expression<Func<TModel, TResult>> e, dynamic value) {
             var l = new List<object> {
                 new HtmlString("<dl class=\"row\">"),
                 new HtmlString("<dt class=\"col-sm-2\">"),
