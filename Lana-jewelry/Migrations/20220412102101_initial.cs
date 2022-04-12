@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Lana_jewelry.Migrations
 {
-    public partial class initialize : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "Lana_jewelryDb");
+                name: "Lana_jewelry");
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
@@ -53,7 +53,7 @@ namespace Lana_jewelry.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Costumers",
-                schema: "Lana_jewelryDb",
+                schema: "Lana_jewelry",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -68,12 +68,92 @@ namespace Lana_jewelry.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transports",
-                schema: "Lana_jewelryDb",
+                name: "Countries",
+                schema: "Lana_jewelry",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CostumerAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Countries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CountryCurrencies",
+                schema: "Lana_jewelry",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CountryId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CurrencyId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CountryCurrencies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Currencies",
+                schema: "Lana_jewelry",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Currencies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GiftCards",
+                schema: "Lana_jewelry",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GiftCards", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Infos",
+                schema: "Lana_jewelry",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StreetNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Infos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Transports",
+                schema: "Lana_jewelry",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CostumerAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Duration = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -247,11 +327,31 @@ namespace Lana_jewelry.Migrations
 
             migrationBuilder.DropTable(
                 name: "Costumers",
-                schema: "Lana_jewelryDb");
+                schema: "Lana_jewelry");
+
+            migrationBuilder.DropTable(
+                name: "Countries",
+                schema: "Lana_jewelry");
+
+            migrationBuilder.DropTable(
+                name: "CountryCurrencies",
+                schema: "Lana_jewelry");
+
+            migrationBuilder.DropTable(
+                name: "Currencies",
+                schema: "Lana_jewelry");
+
+            migrationBuilder.DropTable(
+                name: "GiftCards",
+                schema: "Lana_jewelry");
+
+            migrationBuilder.DropTable(
+                name: "Infos",
+                schema: "Lana_jewelry");
 
             migrationBuilder.DropTable(
                 name: "Transports",
-                schema: "Lana_jewelryDb");
+                schema: "Lana_jewelry");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

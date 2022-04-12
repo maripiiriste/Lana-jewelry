@@ -1,0 +1,9 @@
+﻿@page
+@model Lana_jewelry.Pages.Party.CountryCurrenciesPage
+@using Lana_jewelry.Pages.Extensions
+
+@Html.MyViewerFor(x => x.Item.CountryId, Model.CountryName(Model.Item.CountryId))
+@Html.MyViewerFor(x => x.Item.CurrencyId, Model.CurrencyName(Model.Item.CurrencyId))
+@Html.MyViewerFor(x => x.Item.Code) 
+@Html.MyViewerFor(x => x.Item.Name)
+

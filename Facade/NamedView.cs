@@ -6,6 +6,5 @@ namespace Lana_jewelry.Facade {
         [DisplayName("Code")] [Required] public string? Code { get; set; }
         [DisplayName("Name")] public string? Name { get; set; }
         [DisplayName("Description")] public string? Description { get; set; }
-
     }
 }

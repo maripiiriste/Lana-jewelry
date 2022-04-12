@@ -44,6 +44,34 @@ namespace Lana_jewelry.Migrations
                     b.ToTable("Costumers", "Lana_jewelry");
                 });
 
+            modelBuilder.Entity("Lana_jewelry.Data.Party.CountryCurrencyData", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CountryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrencyId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CountryCurrencies", "Lana_jewelry");
+                });
+
             modelBuilder.Entity("Lana_jewelry.Data.Party.InfoData", b =>
                 {
                     b.Property<string>("Id")
