@@ -9,10 +9,12 @@ namespace Lana_jewelry.Infra.Party {
             var y = CurrentFilter;
             return string.IsNullOrWhiteSpace(y)
                 ? q : q.Where(
-                x => contains(x.Code, y)
-                || contains(x.Id, y)
-                || contains(x.CountryId, y)
-                || contains(x.CurrencyId, y));
+                 x =>  x.Id.Contains(y)
+                || x.Code.Contains(y)
+                || x.Name.Contains(y)
+                || x.Description.Contains(y)
+                || x.CountryId.Contains(y)
+                || x.CurrencyId.Contains(y)); ;
         }
     }
 }
