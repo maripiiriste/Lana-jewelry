@@ -7,6 +7,11 @@ namespace Lana_jewelry.Pages
         public TransportPage(ITransportsRepo r) : base(r) { }
         protected override Transport toObject(TransportView? item) => new TransportViewFactory().Create(item);
         protected override TransportView toView(Transport? entity) => new TransportViewFactory().Create(entity);
+        public override string[] IndexColumns { get; } = new[] {
+         nameof(TransportView.CostumerAddress),
+         nameof(TransportView.TransportPrice),
+         nameof(TransportView.TransportDuration)
+        };
     }
 }
 

@@ -28,12 +28,12 @@ namespace Lana_jewelry.Pages {
                 pageIndex=PageIndex,
                 currentFilter=CurrentFilter,
                 sortOrder=CurrentOrder } );
-        public virtual string[] IndexColumns => Array.Empty<string>();
         public object? GetValue(string name, TView v)
            => Safe.Run(() => {
-               var propertyInfo = v?.GetType()?.GetProperty(name);
-               return propertyInfo == null ? null : propertyInfo.GetValue(v);
+               var pi = v?.GetType()?.GetProperty(name);
+               return pi == null ? null : pi.GetValue(v);
            }, null);
+        public virtual string[] IndexColumns => Array.Empty<string>();
     }
 }
 
