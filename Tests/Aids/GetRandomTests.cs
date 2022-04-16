@@ -12,6 +12,12 @@ namespace Lana_jewelry.Tests.Aids
         private void test<T>(T min, T max) where T : IComparable<T> {
             var x = GetRandom.Value(min, max);
             var y = GetRandom.Value(min, max);
+            var i = 0;
+            while (x == y) {
+                y = GetRandom.Value(min,max);
+                if (i == 2) areNotEqual(x, y);
+                i++;
+            }
             isInstanceOfType(x, typeof(T));
             isInstanceOfType(y, typeof(T));
             isTrue(x >= (min.CompareTo(max) < 0 ? min : max));
@@ -20,6 +26,7 @@ namespace Lana_jewelry.Tests.Aids
             isTrue(y <= (min.CompareTo(max) < 0 ? max : min));
             areNotEqual(x, y);
         }
+
         [DataRow(-1000, 1000)]
         [DataRow(-1000, 0)]
         [DataRow(0, 1000)]
@@ -27,6 +34,7 @@ namespace Lana_jewelry.Tests.Aids
         [DataRow(int.MinValue, int.MinValue + 100)]
         [DataRow(1000, -1000)]
         [TestMethod] public void Int32Test(int min, int max) =>test(min, max);
+        
         [DataRow(-1000L, 1000L)]
         [DataRow(-1000L, 0L)] 
         [DataRow(0L, 1000L)]
@@ -34,6 +42,7 @@ namespace Lana_jewelry.Tests.Aids
         [DataRow(long.MinValue, long.MinValue + 1000L)]
         [DataRow(1000L, -1000L)]
         [TestMethod] public void Int64Test(long min, long max) => test(min, max);
+       
         [DataRow(-1000.0, 1000.0)]
         [DataRow(-1000.0, 0.0)]
         [DataRow(0.0, 1000.0)]
@@ -41,6 +50,7 @@ namespace Lana_jewelry.Tests.Aids
         [DataRow(double.MinValue, double.MinValue + 1.0E+308)]
         [DataRow(1000.0, -1000)]
         [TestMethod] public void DoubleTest(double min, double max) => test(min, max);
+       
         [DataRow(char.MinValue, char.MaxValue)]
         [DataRow('a', 'z')]
         [DataRow('1', 'p')]

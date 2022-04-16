@@ -14,8 +14,11 @@ namespace Lana_jewelry.Infra.Shipment
             return string.IsNullOrWhiteSpace(y)
                 ?q
                 :q.Where(
-                x => x.CostumerAddressId.Contains(y)
-                || x.Id.Contains(y)
+                x => x.Id.Contains(y)
+                || x.Street.Contains(y)
+                || x.City.Contains(y)
+                || x.ZipCode.Contains(y)
+                || x.CountryId.Contains(y)
                 || x.Duration.ToString().Contains(y)
                 || x.Price.ToString().Contains(y));
         }
