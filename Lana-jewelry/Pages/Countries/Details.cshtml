@@ -19,6 +19,7 @@
     <partial name="_ShowCountry" />
 <br>
     <h4>Currencies</h4>
+@*    <h4>Costumers</h4>*@
 <br>
     
    <table class="table">
@@ -36,7 +37,15 @@
                     </td>
                 }
          </tr>
-            }
+@*          @foreach(var item in Model.Costumers){
+         <tr>
+             @foreach (var name in columns) {
+                    <td>
+                    @Html.Raw(getValue(name, item))
+                    </td>
+                }
+         </tr>
+*@            }
    </tbody>"
    </table>"
 </body>

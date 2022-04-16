@@ -1,0 +1,10 @@
+﻿@page
+@model Lana_jewelry.Pages.Party.CostumerCountryPage
+@using Lana_jewelry.Pages.Extensions
+
+@Html.MyViewerFor(x => x.Item.CountryId, Model.CountryName(Model.Item.CountryId))
+@Html.MyViewerFor(x => x.Item.CostumerId, Model.CostumerName(Model.Item.CostumerId))
+@Html.MyViewerFor(x => x.Item.Code) 
+@Html.MyViewerFor(x => x.Item.Name)
+@Html.MyViewerFor(x => x.Item.Description)
+

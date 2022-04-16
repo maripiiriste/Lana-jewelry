@@ -11,9 +11,10 @@ namespace Lana_jewelry.Infra.Shipment
         internal override IQueryable<TransportData> addFilter(IQueryable<TransportData> q)
         {
             var y = CurrentFilter;
-            if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(
-                x => x.CostumerAddress.Contains(y)
+            return string.IsNullOrWhiteSpace(y)
+                ?q
+                :q.Where(
+                x => x.CostumerAddressId.Contains(y)
                 || x.Id.Contains(y)
                 || x.Duration.ToString().Contains(y)
                 || x.Price.ToString().Contains(y));

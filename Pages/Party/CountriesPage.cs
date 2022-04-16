@@ -12,7 +12,8 @@ namespace Lana_jewelry.Pages.Party {
          nameof(CountryView.Name),
          nameof(CountryView.Description),
         };
-        public List<Currency?> Currencies => toObject(Item).Currencies;   
+        public List<Currency?> Currencies => toObject(Item).Currencies;
+        public List<Costumer?> Costumers => toObject(Item).Costumers;
     }
 }
 

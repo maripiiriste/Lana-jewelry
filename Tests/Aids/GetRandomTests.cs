@@ -79,7 +79,7 @@ namespace Lana_jewelry.Tests.Aids
             isNotNull(x);
             isNotNull(y);
             areNotEqual(x.Id, y.Id, nameof(x.Id));
-            areNotEqual(x.CostumerAddress, y.CostumerAddress, nameof(x.CostumerAddress));
+            areNotEqual(x.CostumerAddressId, y.CostumerAddressId, nameof(x.CostumerAddressId));
             areNotEqual(x.Price, y.Price, nameof(x.Price));
             areNotEqual(x.Duration, y.Duration, nameof(x.Price));
         }

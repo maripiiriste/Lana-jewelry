@@ -8,8 +8,8 @@
          new InfoInitializer(db).Init();
          new CurrenciesInitializer(db).Init();
          new CountryCurrenciesInitializer(db).Init();
-        }
-       
+         new CostumerCountryInitializer(db).Init();
+        }   
     }
 
 }
