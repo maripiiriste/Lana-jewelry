@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Lana_jewelry.Pages {
     public abstract class BasePage<TView, TEntity, TRepo> : PageModel
-        where TView : UniqueView
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : IBaseRepo<TEntity> {
 
@@ -16,8 +16,8 @@ namespace Lana_jewelry.Pages {
         protected abstract TView toView(TEntity? entity);
         protected abstract TEntity toObject(TView? item);
         protected abstract IActionResult redirectToIndex();
-        [BindProperty] public TView? Item { get; set; }
-        public IList<TView>? Items { get; set; }
+        [BindProperty] public TView Item { get; set; } = new TView();
+        public IList<TView> Items { get; set; } =new List<TView>();
         public string ItemId => Item?.Id ?? string.Empty;
         public BasePage(TRepo r) => repo = r;
 
@@ -38,7 +38,7 @@ namespace Lana_jewelry.Pages {
         protected abstract Task<IActionResult> getIndexAsync();
         internal virtual void removeKey(params string[] keys) {
             foreach (var key in keys ?? System.Array.Empty<string>())
-                Safe.Run(() => ModelState.Remove(key));
+                _ = Safe.Run(() => ModelState.Remove(key));
         }
         public IActionResult OnGetCreate(int idx = 0, string? filter = null, string? order = null) {
             setAttributes(idx, filter, order);

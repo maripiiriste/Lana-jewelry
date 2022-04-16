@@ -1,4 +1,5 @@
 using Lana_jewelry.Data;
+using Lana_jewelry.Domain;
 using Lana_jewelry.Domain.Party;
 using Lana_jewelry.Domain.Shipment;
 using Lana_jewelry.Infra;
@@ -26,6 +27,7 @@ builder.Services.AddTransient<ITransportsRepo, TransportsRepo>();
 builder.Services.AddTransient<IGiftCardRepo, GiftCardRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
+builder.Services.AddTransient<ICountryCurrenciesRepo, CountryCurrenciesRepo>();
 
 var app = builder.Build();
 
@@ -40,8 +42,8 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-using (var scope = app.Services.CreateScope())
-{
+using (var scope = app.Services.CreateScope()){
+    GetRepo.SetService(app.Services);
     var db = scope.ServiceProvider.GetService<Lana_jewelryDb>();
     db?.Database?.EnsureCreated();
     Lana_jewelryDbInitializer.Init(db);

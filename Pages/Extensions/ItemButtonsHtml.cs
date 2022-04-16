@@ -9,12 +9,13 @@ namespace Lana_jewelry.Pages.Extensions {
             return new HtmlContentBuilder(s);
         }
         private static List<object> htmlStrings<TModel>(IHtmlHelper<TModel> h,string id) {
-            var l = new List<object>();
-            l.Add(h.MyBtn("Edit", id));
-            l.Add(new HtmlString("&nbsp;"));
-            l.Add(h.MyBtn("Details", id));
-            l.Add(new HtmlString("&nbsp;"));
-            l.Add(h.MyBtn("Delete", id));
+            var l = new List<object> {
+                h.MyBtn("Edit", id),
+                new HtmlString("&nbsp;"),
+                h.MyBtn("Details", id),
+                new HtmlString("&nbsp;"),
+                h.MyBtn("Delete", id)
+            };
             return l;
         }
     }

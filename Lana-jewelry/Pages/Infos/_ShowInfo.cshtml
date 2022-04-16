@@ -2,7 +2,6 @@
 @model Lana_jewelry.Pages.Party.InfosPage
 @using Lana_jewelry.Pages.Extensions
 
-@Html.MyViewerFor(x => x.Item.Country) 
 @Html.MyViewerFor(x => x.Item.City)
 @Html.MyViewerFor(x => x.Item.Region)
 @Html.MyViewerFor(x => x.Item.Street)
@@ -10,3 +9,4 @@
 @Html.MyViewerFor(x => x.Item.ZipCode)
 @Html.MyViewerFor(x => x.Item.EmailAddress)
 @Html.MyViewerFor(x => x.Item.PhoneNumber)
+@Html.MyViewerFor(x => x.Item.Country, Model.CountryName(Model.Item.Country))

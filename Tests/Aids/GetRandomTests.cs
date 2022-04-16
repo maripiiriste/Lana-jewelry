@@ -76,6 +76,8 @@ namespace Lana_jewelry.Tests.Aids
         public void ValueTest() {
             var x = GetRandom.Value<TransportData>() as TransportData;
             var y = GetRandom.Value<TransportData>() as TransportData;
+            isNotNull(x);
+            isNotNull(y);
             areNotEqual(x.Id, y.Id, nameof(x.Id));
             areNotEqual(x.CostumerAddress, y.CostumerAddress, nameof(x.CostumerAddress));
             areNotEqual(x.Price, y.Price, nameof(x.Price));

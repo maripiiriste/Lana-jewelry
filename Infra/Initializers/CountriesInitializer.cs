@@ -3,8 +3,7 @@ using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain;
 using System.Globalization;
 
-namespace Lana_jewelry.Infra.Initializers
-{
+namespace Lana_jewelry.Infra.Initializers {
     public sealed class CountriesInitializer : BaseInitializer<CountryData>
     {
         public CountriesInitializer(Lana_jewelryDb? db): base(db, db?.Countries) { }

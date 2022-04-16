@@ -8,8 +8,8 @@ namespace Lana_jewelry.Infra.Party {
 
         internal override IQueryable<InfoData> addFilter(IQueryable<InfoData> q) {
             var y = CurrentFilter;
-            if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(
+            return string.IsNullOrWhiteSpace(y)
+                ? q : q.Where(
                 x => x.Street.Contains(y)
                 || x.Id.Contains(y)
                 || x.Country.Contains(y)

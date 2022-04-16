@@ -7,11 +7,11 @@ namespace Lana_jewelry.Infra.Party {
         protected override Costumer toDomain(CostumerData d) => new (d);
         internal override IQueryable<CostumerData> addFilter(IQueryable<CostumerData> q) {
             var y = CurrentFilter;
-            if (string.IsNullOrWhiteSpace(y)) return q;
-            return q.Where(
+            return string.IsNullOrWhiteSpace(y)
+                ? q : q.Where(
                 x => x.FirstName.Contains(y)
-                || x.Id.Contains(y)
                 || x.LastName.Contains(y)
+                || x.Id.Contains(y)
                 || x.Email.Contains(y)
                 || x.DoB.ToString().Contains(y));
         }

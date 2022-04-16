@@ -1,0 +1,12 @@
+﻿@model Lana_jewelry.Pages.Party.CountryCurrenciesPage
+@using Lana_jewelry.Pages.Extensions
+
+@Html.MyDropDownFor(x => x.Item.CountryId, Model.Countries)
+@Html.MyDropDownFor(x => x.Item.CurrencyId, Model.Currencies)
+@Html.MyEditorFor(x => x.Item.Code) 
+@Html.MyEditorFor(x => x.Item.Name)
+@Html.MyEditorFor(x => x.Item.Description)
+
+
+
+  

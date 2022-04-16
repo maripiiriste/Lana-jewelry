@@ -2,11 +2,12 @@
 using Lana_jewelry.Domain;
 using Lana_jewelry.Facade;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 
 namespace Lana_jewelry.Pages {
     public abstract class PagedPage<TView, TEntity, TRepo> : OrderedPage<TView, TEntity, TRepo>, 
         IPageModel,IIndexModel<TView>
-        where TView : UniqueView
+        where TView : UniqueView, new()
         where TEntity : UniqueEntity
         where TRepo : IPagedRepo<TEntity> {
         protected PagedPage(TRepo r) : base(r) { }
@@ -28,12 +29,18 @@ namespace Lana_jewelry.Pages {
                 pageIndex=PageIndex,
                 currentFilter=CurrentFilter,
                 sortOrder=CurrentOrder } );
-        public object? GetValue(string name, TView v)
-           => Safe.Run(() => {
-               var pi = v?.GetType()?.GetProperty(name);
-               return pi == null ? null : pi.GetValue(v);
-           }, null);
         public virtual string[] IndexColumns => Array.Empty<string>();
+        public virtual object? GetValue(string name, TView v)
+           => Safe.Run(() => {
+               var propertyInfo = v?.GetType()?.GetProperty(name);
+               return propertyInfo?.GetValue(v);
+           }, null);
+        public string? DisplayName(string name) => Safe.Run(() => {
+            var p = typeof(TView).GetProperty(name);
+            var a = p?.CustomAttributes?
+                .FirstOrDefault(x => x.AttributeType == typeof(DisplayNameAttribute));
+            return a?.ConstructorArguments[0].Value?.ToString() ?? name;
+        }, name);
     }
 }
 
