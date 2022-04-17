@@ -17,7 +17,7 @@ namespace Lana_jewelry.Aids {
             => Safe.Run(() => name is not null && (t?.FullName?.StartsWith(name) ?? false));
         public static bool IsRealType(this Type? t)
             =>Safe.Run(()=>t?.FullName?.IsTypeFullName() ?? false);
-        public static string? GetName(Type? t) => t?.Name ?? string.Empty;
+        public static string? GetName(this Type? t) => t?.Name ?? string.Empty;
         public static List<string>? DeclaredMembers(this Type? t)
             => t?.GetMembers(allDeclaredOnly)?.ToList()?.Select(x=> x.Name)?.ToList() ?? new();
         public static bool IsInherited(this Type? t, Type subclass)
