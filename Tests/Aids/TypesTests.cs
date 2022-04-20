@@ -52,7 +52,8 @@ namespace Lana_jewelry.Tests.Aids {
         }
         [TestMethod] public void DeclaredMembersTest() {
             areEqual(1, type?.DeclaredMembers()?.Count);
-            areNotEqual(randomStr, type.GetName());
+            var l = typeof(NamedData)?.DeclaredMembers();
+            areNotEqual(9, l?.Count);
         }
         [TestMethod] public void IsInheritedTest() {
             Type? nullType = null;

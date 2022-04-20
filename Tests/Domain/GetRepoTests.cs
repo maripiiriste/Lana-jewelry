@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests.Domain {
-    [TestClass] public class IsDomainTests : IsTypeTested { }
+    [TestClass] public class GetRepoTests : IsTypeTested { }
 }

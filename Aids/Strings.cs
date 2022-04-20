@@ -15,6 +15,15 @@
             }
             return s;
         }
+        public static string RemoveHead(this string? s, char seperator = '.') {
+            if (string.IsNullOrEmpty(s)) return string.Empty;
+            for (var i = 0; i <s.Length;) {
+                var c = s[0];
+                s = s[1..];
+                if (c == seperator) return s;
+            }
+            return s;
+        }
     }
       
 }

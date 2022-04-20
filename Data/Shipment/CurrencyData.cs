@@ -1,4 +1,4 @@
 ﻿namespace Lana_jewelry.Data.Shipment {
-    public class CurrencyData : NamedData {
+    public sealed class CurrencyData : NamedData {
     }
 }

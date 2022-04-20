@@ -2,7 +2,7 @@
 
 namespace Lana_jewelry.Domain.Party{
     public interface ICostumersRepo : IRepo<Costumer> { }
-    public class Costumer:UniqueEntity<CostumerData> {
+    public sealed class Costumer:UniqueEntity<CostumerData> {
         public Costumer(): this(new()) { }
         public Costumer(CostumerData d) : base(d) { }
         public string FirstName => getValue(Data?.FirstName);
