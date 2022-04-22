@@ -1,6 +1,7 @@
 ﻿using Lana_jewelry.Aids;
 using Lana_jewelry.Data.Party;
 using Lana_jewelry.Domain.Party;
+using Lana_jewelry.Facade;
 using Lana_jewelry.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -8,7 +9,7 @@ using System.Reflection;
 
 namespace Lana_jewelry.Tests.Facade.Party
 {
-    public class CostumerViewFactoryTests: SealedClassTests<CostumerViewFactory> {
+    public class CostumerViewFactoryTests: SealedClassTests<CostumerViewFactory, BaseViewFactory<CostumerView, Costumer, CostumerData>> {
         [TestMethod] public void CreateTest() { }
         [TestMethod] public void CreateViewTest() {
             var d = GetRandom.Value<CostumerData>();

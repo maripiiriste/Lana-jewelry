@@ -1,8 +1,9 @@
-﻿using Lana_jewelry.Data.Party;
+﻿using Lana_jewelry.Data;
+using Lana_jewelry.Data.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests.Data.Party {
-    [TestClass] public class InfoDataTests : SealedClassTests<InfoData> {
+    [TestClass] public class InfoDataTests : SealedClassTests<InfoData, UniqueData> {
 
         [TestMethod] public void CountryTest() => isProperty<string?>();
         [TestMethod] public void CityTest() => isProperty<string?>();

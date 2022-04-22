@@ -1,30 +1,27 @@
 ﻿using Lana_jewelry.Aids;
 using System.Reflection;
-
 using System.Diagnostics;
-using Lana_jewelry.Tests;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests
 {
 
-    public abstract class BaseTests : IsTypeTested
-    {
-        protected object obj;
+    public abstract class BaseTests<TClass, TBaseClass> : IsTypeTested where TClass : class where TBaseClass : class {
+        protected TClass obj;
         protected BaseTests() => obj = createObj();
 
-        protected abstract object createObj();
-
-        protected void isProperty<T>(T? value = default, bool isReadOnly = false)
-        {
-            var memberName = getCallingMember(nameof(isProperty)).Replace("Test", string.Empty);
+        protected abstract TClass createObj();
+        protected void isProperty<T>(T? value = default, bool isReadOnly = false, string? callingMethod=null) {
+            callingMethod ??= nameof(isProperty);
+            var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
             var propertyInfo = obj.GetType().GetProperty(memberName);
             isNotNull(propertyInfo);
             if (isNullOrDefault(value)) value = random<T>();
             if (canWrite(propertyInfo, isReadOnly)) propertyInfo.SetValue(obj, value);
             areEqual(value, propertyInfo.GetValue(obj));
         }
+        protected void isReadOnly<T>(T? value) => isProperty(value, true, nameof(isReadOnly));
         private static bool isNullOrDefault<T>(T? value) => value?.Equals(default(T)) ?? true;
         private static bool canWrite(PropertyInfo i, bool isReadOnly)
         {
@@ -61,6 +58,7 @@ namespace Lana_jewelry.Tests
             isTrue(hasProperites, $"No properties found for {x}");
         }
 
+        [TestMethod] public void IsCorrectBaseClassTest() => areEqual(typeof(TClass).BaseType, typeof(TBaseClass));
     }
 }
 

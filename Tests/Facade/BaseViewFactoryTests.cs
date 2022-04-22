@@ -7,12 +7,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests.Facade {
     [TestClass]
-    public class BaseViewFactoryTests : AbstractClassTests {
+    public class BaseViewFactoryTests : AbstractClassTests<BaseViewFactory<InfoView, Info, InfoData>, object> {
         private class testClass : BaseViewFactory<InfoView, Info, InfoData> {
             protected override Info toEntity(InfoData d) => new Info(d);
-            
         }
-        protected override object createObj() => new testClass();
+        protected override BaseViewFactory<InfoView, Info, InfoData> createObj() => new testClass();
 
     }
 }

@@ -56,7 +56,7 @@ namespace Lana_jewelry.Aids {
             else if (typeof(T) == typeof(char?)) return Char(Convert.ToChar(min), Convert.ToChar(max));
             else if (typeof(T) == typeof(char)) return Char(Convert.ToChar(min), Convert.ToChar(max));
             else if (typeof(T) == typeof(string)) return String();
-            return TryGetObject<T>();
+            return tryGetObject<T>();
         }
         public static dynamic? Value(Type t) {
             if (t == typeof(bool)) return Bool();
@@ -74,7 +74,7 @@ namespace Lana_jewelry.Aids {
             else if (t == typeof(string)) return String();
             return null;
         }
-        private static T? TryGetObject<T>() {
+        private static T? tryGetObject<T>() {
             var o = tryCreate<T>();
             foreach (var pi in o.GetType().GetProperties() ?? Array.Empty<PropertyInfo>()) {
                 if (!pi.CanWrite) continue;

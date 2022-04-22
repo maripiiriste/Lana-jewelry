@@ -5,8 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Lana_jewelry.Tests.Facade
 {
     [TestClass]
-    public class BaseViewTests : AbstractClassTests {
+    public class UniqueViewTests : AbstractClassTests<UniqueView, object> {
         private class testClass : UniqueView { }
-        protected override object createObj() => new testClass();
+        protected override UniqueView createObj() => new testClass();
     }
 }
