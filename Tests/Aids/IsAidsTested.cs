@@ -2,7 +2,7 @@
 
 namespace Lana_jewelry.Tests.Aids
 {
-    [TestClass] public class IsAidsTested : IsAssemblyTested {
+    [TestClass] public class IsAidsTested : AssemblyTests {
 
 
 

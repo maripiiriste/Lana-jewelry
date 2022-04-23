@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests.Aids
 {
-    [TestClass] public class GetNamespaceTests : IsTypeTested {
+    [TestClass] public class GetNamespaceTests : TypeTests {
     
     [TestMethod] public void OfTypeTest() {
             var obj = new CurrencyData();

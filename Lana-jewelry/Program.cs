@@ -46,7 +46,7 @@ else
 using (var scope = app.Services.CreateScope()){
     GetRepo.SetService(app.Services);
     var db = scope.ServiceProvider.GetService<Lana_jewelryDb>();
-    db?.Database?.EnsureCreated();
+    _= (db?.Database?.EnsureCreated());
     Lana_jewelryDbInitializer.Init(db);
 }
 

@@ -2,6 +2,6 @@
 
 namespace Lana_jewelry.Tests.Data{
     [TestClass]
-    public  class IsDataTested:IsAssemblyTested{
+    public  class IsDataTested:AssemblyTests{
     }
 }

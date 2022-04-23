@@ -4,9 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Lana_jewelry.Tests
-{
-    public class IsTypeTested:TestAsserts{
+namespace Lana_jewelry.Tests {
+    public class TypeTests:HostTests{
         private string? nameOfTest;
         private string? nameOfType;
         private string? namespaceOfTest;
@@ -31,7 +30,6 @@ namespace Lana_jewelry.Tests
             if (allAreTested()) return;
             reportNotAllIsTested();
         }
-
         private void reportNotAllIsTested() => isInconclusive($"Member\"{nameOfFirstNotTested()}\" is not tested");
         private string nameOfFirstNotTested() => membersOfType?.GetFirst() ?? string.Empty;
         private bool allAreTested() => membersOfType.IsEmpty();
@@ -45,7 +43,7 @@ namespace Lana_jewelry.Tests
         private static bool IsCorrectTestMethod(string x, Type t) => isCorrectlyInherited(t) && isTestClass(t) && isTestMethod(x, t);
         private static bool isTestClass(Type x) => x?.HasAttribute<TestClassAttribute>()?? false;
         private static bool isTestMethod(string methodName, Type t)=> t?.Method(methodName).HasAttributes<TestMethodAttribute>()?? false;
-        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
+        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(TypeTests));
         private static List<string>? getMembers(Type? t) => t?.DeclaredMembers();
         private static Type? GetType(Assembly? a, string? name) {
             if (string.IsNullOrWhiteSpace(name)) return null;

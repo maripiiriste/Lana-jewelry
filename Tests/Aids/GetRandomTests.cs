@@ -1,6 +1,4 @@
-﻿using Google.Protobuf.Collections;
-using Lana_jewelry.Aids;
-using Lana_jewelry.Data.Party;
+﻿using Lana_jewelry.Aids;
 using Lana_jewelry.Data.Shipment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -8,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Lana_jewelry.Tests.Aids
 {
-    [TestClass] public class GetRandomTests : IsTypeTested {
+    [TestClass] public class GetRandomTests : TypeTests {
         private void test<T>(T min, T max) where T : IComparable<T> {
             var x = GetRandom.Value(min, max);
             var y = GetRandom.Value(min, max);
@@ -56,16 +54,7 @@ namespace Lana_jewelry.Tests.Aids
         [DataRow('1', 'p')]
         [DataRow('A', 'z')]
         [TestMethod] public void CharTest(char min, char max)=> test(min, max);
-        [TestMethod] public void BoolTest(){
-          var x = GetRandom.Bool();
-          var y = GetRandom.Bool();
-          var i = 0;
-          while(x==y){
-                y = GetRandom.Bool();
-                if (i == 5) areNotEqual(x, y);
-                i++;
-            }
-        }
+        [TestMethod] public void BoolTest() => test(() => GetRandom.Bool());
         [DynamicData(nameof(DateTimeValues), DynamicDataSourceType.Property)]
         [TestMethod] public void DateTimeTest(DateTime min, DateTime max) => test(min, max);
         private static IEnumerable<object[]> DateTimeValues => new List<object[]>()
@@ -93,7 +82,32 @@ namespace Lana_jewelry.Tests.Aids
             areNotEqual(x.Price, y.Price, nameof(x.Price));
             areNotEqual(x.Duration, y.Duration, nameof(x.Price));
         }
-
+        [TestMethod] public void EnumOfGenericTest() => isInconclusive();
+        private void test<T>(Func<T> f, int count = 5) {
+            var x = f();
+            var y = f();
+            var i = 0;
+            while (x.Equals(y)) {
+                y = f();
+                if (i == count) areNotEqual(x, y);
+                i++;
+            }
         }
+
+        [DataRow(typeof(bool?), false)]
+        [DataRow(typeof(int), false)]
+        [DataRow(typeof(decimal?), false)]
+        [DataRow(typeof(string), false)]
+        [DataRow(typeof(DateTime), false)]
+        [TestMethod] public void isEnumTest(Type t, bool expected) => areEqual(expected, GetRandom.isEnum(t));
+
+        [DataRow(typeof(bool?), typeof(bool))]
+        [DataRow(typeof(int?), typeof(int))]
+        [DataRow(typeof(decimal?), typeof(decimal))]
+        [DataRow(typeof(string), typeof(string))]
+        [DataRow(typeof(DateTime?), typeof(DateTime))]
+        [TestMethod] public void GetUnderLyingTypeTest(Type nullable, Type expected)
+            => areEqual(expected, GetRandom.getUnderLyingType(nullable));
     }
+}
 

@@ -2,5 +2,5 @@
 
 namespace Lana_jewelry.Tests.Aids
 {
-    [TestClass] public class IsCoreTests : IsTypeTested { }
+    [TestClass] public class IsCoreTests : TypeTests { }
 }

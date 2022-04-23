@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Lana_jewelry.Tests
 {
-    public abstract class IsAssemblyTested :TestAsserts {
+    public abstract class AssemblyTests :TestAsserts {
         private static string testsStr => "Tests";
         private string notTestedMsg => $"Class \"{fullNameOfFirstNotTested()}\" is not tested";
         private static string testsProjectStr => $"{testsStr}.";
@@ -64,7 +64,7 @@ namespace Lana_jewelry.Tests
         }
         private static bool isCorrectTest(Type x) => isCorrectlyInherited(x) &&  isTestClass(x);
         private static bool isTestClass(Type x) => x?.HasAttribute<TestClassAttribute>()?? false;
-        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(IsTypeTested));
+        private static bool isCorrectlyInherited(Type x) => x.IsInherited(typeof(TypeTests));
         private static bool isTestFor(Type testingType, Type typeToBeTested) {
             var testName = typeToBeTested.FullName?? String.Empty;
             testName = testName.RemoveHead();

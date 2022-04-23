@@ -8,7 +8,7 @@ using System;
 namespace Lana_jewelry.Tests.Aids
 {
     [TestClass]
-    public class GetAssemblyTests : IsTypeTested {
+    public class GetAssemblyTests : TypeTests {
         private string? assemblyName;
         private Assembly? assembly;
         private string[] typenames = Array.Empty<string>();
