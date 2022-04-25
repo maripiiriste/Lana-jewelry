@@ -7,7 +7,6 @@ namespace Lana_jewelry.Infra.Initializers
         internal static TransportData createTransport(string id, string costumerAadress, double price, DateTime duration) {
             var transport = new TransportData {
                 Id = id,
-                CostumerAddressId = costumerAadress,
                 Price = price,
                 Duration = duration
             };

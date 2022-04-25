@@ -19,7 +19,10 @@ namespace Lana_jewelry.Tests.Facade.Shipment
             isNotNull(v);
             areEqual(v.TransportDuration, e.TransportDuration);
             areEqual(v.Id, e.Id);
-            areEqual(v.CostumerAddressId, e.CostumerAddress);
+            areEqual(e.Street, v.Street);
+            areEqual(e.City, v.City);
+            areEqual(e.ZipCode, v.ZipCode);
+            areEqual(e.Country, v.CountryId);
             areEqual(v.TransportPrice, e.TransportPrice);
         }
         [TestMethod] public void CreateEntityTest() {
@@ -30,7 +33,10 @@ namespace Lana_jewelry.Tests.Facade.Shipment
             arePropertiesEqual(e, v);
             areEqual(e.TransportDuration, v.TransportDuration);
             areEqual(e.Id, v.Id);
-            areEqual(e.CostumerAddress, v.CostumerAddressId);
+            areEqual(e.Street, v.Street);
+            areEqual(e.City, v.City);
+            areEqual(e.ZipCode, v.ZipCode);
+            areEqual(e.Country, v.CountryId);
             areEqual(e.TransportPrice, v.TransportPrice);
         }
         internal protected void arePropertiesEqual(object x, object y){

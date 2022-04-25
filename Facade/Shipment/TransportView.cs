@@ -17,6 +17,10 @@ namespace Lana_jewelry.Facade.Shipment
     }
     public sealed class TransportViewFactory : BaseViewFactory<TransportView, Transport, TransportData>{
         protected override Transport toEntity(TransportData d) => new(d);
+        public override Transport Create(TransportView? v){
+            v ??= new TransportView();
+            return base.Create(v);
+        }
 
     }
 }
