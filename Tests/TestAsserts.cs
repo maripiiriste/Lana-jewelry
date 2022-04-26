@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace Lana_jewelry.Tests
 {
@@ -13,5 +14,20 @@ namespace Lana_jewelry.Tests
         protected static void areEqual(object? expected, object? actual, string? message = null) => Assert.AreEqual(expected, actual, message);
       protected static void areNotEqual(object? expected, object? actual, string? message = null) => Assert.AreNotEqual(expected, actual, message);
       protected static void isInstanceOfType(object o, Type expectedType) => Assert.IsInstanceOfType(o, expectedType);
+        protected virtual void equalProperties(object? a, object? b)
+        {
+            isNotNull(a);
+            isNotNull(b);
+            var tA = a?.GetType();
+            var tB = b?.GetType();
+            foreach (var piA in tA?.GetProperties() ?? Array.Empty<PropertyInfo>())
+            {
+                var vA=piA.GetValue(a, null);  
+                var piB = tB?.GetProperty(piA.Name);
+                var vB = piB?.GetValue(b,null) ;
+                areEqual(vA, vB, $"For property {piA.Name}.");
+            }
+        }
     }
+
 }
