@@ -38,7 +38,7 @@ namespace Lana_jewelry.Pages {
         }
         private static bool isThisDisplayName(System.Reflection.PropertyInfo pi, string? displayName)
             => getDisplayName(pi) == displayName;
-        public string? SortOrder(string displayName) => repo.SortOrder(displayName);
+        public string? SortOrder(string displayName) => repo.SortOrder(toCurrentOrder(displayName));
     }
 }
 
