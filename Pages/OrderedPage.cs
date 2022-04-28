@@ -23,7 +23,7 @@ namespace Lana_jewelry.Pages {
         }
 
         private static string? getDisplayName(PropertyInfo? pi) {
-            var dn = pi?.GetCustomAttributes<DisplayNameAttribute>();
+            var dn = pi?.GetCustomAttribute<DisplayNameAttribute>();
             return dn?.DisplayName;
         }
 
