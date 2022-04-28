@@ -3,7 +3,6 @@ using System.Reflection;
 using System.Diagnostics;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Lana_jewelry.Domain;
 
 namespace Lana_jewelry.Tests
 {
@@ -22,12 +21,12 @@ namespace Lana_jewelry.Tests
             var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
             var propertyInfo = obj.GetType().GetProperty(memberName);
             isNotNull(propertyInfo);
-            if (isNullOrDefault(value)) value = random<T>();
+            if (!isReadOnly && isNullOrDefault(value)) value = random<T>();
             if (canWrite(propertyInfo, isReadOnly)) propertyInfo.SetValue(obj, value);
             return propertyInfo.GetValue(obj);
         }
         protected void isReadOnly<T>(T? value) => isProperty(value, true, nameof(isReadOnly));
-        protected object? isReadOnly<T>(string? callingMethod= null){
+        protected override object? isReadOnly<T>(string? callingMethod= null){
             var v=default(T);
             return getProperty(ref v, true, callingMethod?? nameof(isReadOnly));
         }
@@ -65,34 +64,6 @@ namespace Lana_jewelry.Tests
                 hasProperites = true;
             }
             isTrue(hasProperites, $"No properties found for {x}");
-        }
-        protected void testItem<TRepo, TObj, TData>(string id, Func<TData, TObj> toObj, Func<TObj?> getObj)
-          where TRepo : class, IRepo<TObj>
-          where TObj : UniqueEntity
-        {
-
-            var c = isReadOnly<TObj>(nameof(testItem));
-            isNotNull(c);
-            isInstanceOfType(c, typeof(TObj));
-
-            var r = GetRepo.Instance<TRepo>();
-
-            var d = GetRandom.Value<TData>();
-            d.Id = id;
-
-            var cnt = GetRandom.Int32(0, 30);
-            var idx = GetRandom.Int32(0, cnt);
-            for (var i = 0; i < cnt; i++)
-            {
-                var x = (i == idx) ? d : GetRandom.Value<TData>();
-                isNotNull(x);
-                r?.Add(toObj(x));
-            }
-
-            r.PageSize = 30;
-            areEqual(cnt, r.Get().Count);
-
-            arePropertiesEqual(d, getObj());
         }
 
         [TestMethod] public void IsCorrectBaseClassTest() => areEqual(typeof(TClass).BaseType, typeof(TBaseClass));

@@ -18,9 +18,9 @@ namespace Lana_jewelry.Tests.Domain.Shipment
             protected override CostumerCountry createObj() => new(GetRandom.Value<CostumerCountryData>());
             [TestMethod] public void CountryIdTest() => isReadOnly(obj.Data.CountryId);
             [TestMethod] public void CostumerIdTest() => isReadOnly(obj.Data.CostumerId);
-            [TestMethod] public void CountryTest() => testItem<ICountriesRepo, Country, CountryData>( 
+            [TestMethod] public void CountryTest() => itemTest<ICountriesRepo, Country, CountryData>( 
                 obj.CountryId, d=> new Country(d), () => obj.Country);
-            [TestMethod] public void CostumerTest() => testItem<ICostumersRepo, Costumer, CostumerData>(
+            [TestMethod] public void CostumerTest() => itemTest<ICostumersRepo, Costumer, CostumerData>(
                 obj.CostumerId, d => new Costumer(d), () => obj.Costumer);
     }
 }
