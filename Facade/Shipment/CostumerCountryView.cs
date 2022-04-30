@@ -9,8 +9,8 @@ namespace Lana_jewelry.Facade.Shipment
     {
         [Required][DisplayName("Person")] public string CostumerId { get; set; } = string.Empty;
         [Required] [DisplayName("Country")] public string CountryId { get; set; } = string.Empty;
-        [DisplayName("Currency native code")] public new string? Code { get; set; }
-        [DisplayName("Currency native name")] public new string? Name { get; set; }
+        [DisplayName("Country native code")] public new string? Code { get; set; }
+        [DisplayName("Country native name")] public new string? Name { get; set; }
     }
     public sealed class CostumerCountryViewFactory : BaseViewFactory<CostumerCountryView, CostumerCountry, CostumerCountryData>{
         protected override CostumerCountry toEntity(CostumerCountryData d) => new(d);

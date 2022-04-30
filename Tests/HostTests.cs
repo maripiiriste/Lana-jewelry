@@ -17,12 +17,15 @@ namespace Lana_jewelry.Tests {
             (GetRepo.Instance<ICountriesRepo>() as CountriesRepo)?.clear();
             (GetRepo.Instance<ICurrenciesRepo>() as CurrenciesRepo)?.clear();
             (GetRepo.Instance<ICountryCurrenciesRepo>() as CountryCurrenciesRepo)?.clear();
-        }
+            (GetRepo.Instance<ICountriesRepo>() as CountriesRepo)?.clear();
+            (GetRepo.Instance<ICostumersRepo>() as CostumersRepo)?.clear();
+    }
         static HostTests() {
             host = new TestHost<Program>();
             client = host.CreateClient();
         }
         protected virtual object? isReadOnly<T>(string? callingMethod = null) => null;
+        protected virtual void arePropertiesEqual(object? x, object? y) { isInconclusive(); }
 
             protected void itemTest<TRepo, TObj, TData>(string id, Func<TData, TObj> toObj, Func<TObj?> getObj)
             where TRepo : class, IRepo<TObj>
@@ -78,6 +81,35 @@ namespace Lana_jewelry.Tests {
                 var y = l.Find(z => z.Id == d.Id);
                 isNotNull(y);
                 areEqualProperties(d, y);
+            }
+        }
+        protected void relatedItemsTest<TRepo, TRelatedItem, TItem, TData>
+           (Action relatedTest,
+           Func<List<TRelatedItem>> relatedItems,
+           Func<List<TItem?>> items,
+           Func<TRelatedItem, string> detailId,
+           Func<TData, TItem> toObj,
+           Func<TItem?, TData?> toData,
+           Func<TRelatedItem?, TData?> relatedToData)
+           where TRepo : class, IRepo<TItem>
+           where TItem : UniqueEntity
+           where TRelatedItem : UniqueEntity
+         {
+            relatedTest();
+            var l = relatedItems();
+            var r = GetRepo.Instance<TRepo>();
+            foreach (var e in l)
+            {
+                var x = GetRandom.Value<TData>();
+                if (x is not null) x.id = detailId(e);
+                r?.Add(toObj(x));
+            }
+            var c = items();
+            areEqual(l.Count, c.Count);
+            foreach (var e in l)
+            {
+                var a = c.Find(x => x?.Id == detailId(e));
+                arePropertiesEqual(toData(a), relatedToData(e));
             }
         }
     } 

@@ -8,5 +8,6 @@ namespace Lana_jewelry.Tests.Facade
     public class UniqueViewTests : AbstractClassTests<UniqueView, object> {
         private class testClass : UniqueView { }
         protected override UniqueView createObj() => new testClass();
+        [TestMethod] public void IdTest() => isProperty<string>();
     }
 }

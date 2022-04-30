@@ -2,8 +2,10 @@
 
 namespace Lana_jewelry.Aids {
     public static class Methods {
-        public static bool HasAttributes<TAttribute>(this MethodInfo? m) where TAttribute : Attribute
-            => Safe.Run(() => m?.GetCustomAttributes<TAttribute>()?.FirstOrDefault() is not null, false);
+        public static bool HasAttributes<TAttribute>(this MemberInfo? m) where TAttribute : Attribute
+            => m?.GetAttributes<TAttribute>()is not null;
+        public static TAttribute? GetAttributes<TAttribute>(this MemberInfo? m) where TAttribute : Attribute
+    => Safe.Run(() => m?.GetCustomAttributes<TAttribute>()?.FirstOrDefault());
     }
       
 }
