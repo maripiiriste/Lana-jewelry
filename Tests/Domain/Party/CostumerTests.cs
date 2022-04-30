@@ -9,6 +9,9 @@ namespace Lana_jewelry.Tests.Domain.Party {
         [TestMethod] public void LastNameTest() => isInconclusive();
         [TestMethod] public void DoBTest() => isInconclusive();
         [TestMethod] public void EmailTest() => isInconclusive();
-        [TestMethod] public void ToStringTest() => isInconclusive();
+        [TestMethod] public void ToStringTest() {
+            var expected = $"{obj.FirstName} {obj.LastName} {obj.Email} ({obj.DoB})";
+            areEqual(expected, obj.ToString());
+         }
     }
 }
