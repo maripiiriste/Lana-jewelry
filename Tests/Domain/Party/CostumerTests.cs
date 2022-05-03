@@ -2,6 +2,7 @@
 using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain;
 using Lana_jewelry.Domain.Party;
+using Lana_jewelry.Tests.Domain.Shipment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests.Domain.Party {

@@ -68,6 +68,6 @@ namespace Lana_jewelry.Infra {
                 return true;
             } catch { return false; }
         }
-        protected abstract TDomain toDomain(TData d);
+        protected internal abstract TDomain toDomain(TData d);
     }
 }

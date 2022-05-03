@@ -23,8 +23,8 @@ namespace Lana_jewelry.Infra{
             var s = nameof(Lana_jewelryDb)[0..^2];
             _ = (b?.Entity<CostumerData>()?.ToTable(nameof(Costumers), s));
             _ = (b?.Entity<InfoData>()?.ToTable(nameof(Infos), s));
-            _ =(b?.Entity<TransportData>()?.ToTable(nameof(Transports),s));
-            _=( b?.Entity<GiftCardData>()?.ToTable(nameof(GiftCards), s));
+            _ = (b?.Entity<TransportData>()?.ToTable(nameof(Transports),s));
+             _= (b?.Entity<GiftCardData>()?.ToTable(nameof(GiftCards), s));
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
             _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));
             _ = (b?.Entity<CountryCurrencyData>()?.ToTable(nameof(CountryCurrencies), s));

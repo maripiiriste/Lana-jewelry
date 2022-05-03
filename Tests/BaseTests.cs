@@ -12,8 +12,8 @@ namespace Lana_jewelry.Tests
     public abstract class BaseTests<TClass, TBaseClass> : TypeTests where TClass : class where TBaseClass : class {
         protected TClass obj;
         protected BaseTests() => obj = createObj();
-
         protected abstract TClass createObj();
+
         protected void isProperty<T>(T? value = default, bool isReadOnly = false, string? callingMethod=null) {
             callingMethod ??= nameof(isProperty);
             var actual = getProperty( ref value, isReadOnly, callingMethod);
@@ -85,6 +85,10 @@ namespace Lana_jewelry.Tests
         }
 
         [TestMethod] public void IsCorrectBaseClassTest() => areEqual(typeof(TClass).BaseType, typeof(TBaseClass));
+        protected void isAbstractMethod(string name, params Type[] args) {
+            var mi=typeof(TClass).GetMethod(name, args);
+           areEqual(true, mi?.IsAbstract, name);
+        }
     }
 }
 

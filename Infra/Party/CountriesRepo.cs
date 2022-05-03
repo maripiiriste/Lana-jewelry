@@ -2,9 +2,9 @@
 using Lana_jewelry.Domain.Party;
 
 namespace Lana_jewelry.Infra.Party {
-    public class CountriesRepo : Repo<Country, CountryData>, ICountriesRepo {
+    public sealed class CountriesRepo : Repo<Country, CountryData>, ICountriesRepo {
         public CountriesRepo(Lana_jewelryDb? db) : base(db, db?.Countries) { }
-        protected override Country toDomain(CountryData d) => new (d);
+        protected internal override Country toDomain(CountryData d) => new (d);
         internal override IQueryable<CountryData> addFilter(IQueryable<CountryData> q) {
             var y = CurrentFilter;
             return string.IsNullOrWhiteSpace(y)

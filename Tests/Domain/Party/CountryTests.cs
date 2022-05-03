@@ -3,10 +3,8 @@ using Lana_jewelry.Data.Party;
 using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain;
 using Lana_jewelry.Domain.Party;
-using Lana_jewelry.Tests.Domain.Shipment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
 namespace Lana_jewelry.Tests.Domain.Party {
     [TestClass] public class CountryTests : SealedClassTests<Country, NamedEntity<CountryData>> {
@@ -32,8 +30,8 @@ namespace Lana_jewelry.Tests.Domain.Party {
             areEqual(list.Count, currencies.Count);
             foreach(var element in list) {
                 areEqual(obj.Id, element.CountryId);
-                var a = currencies.Find(x => x.Id == element.CurrencyId);
-                arePropertiesEqual(a.Data, element.Currency.Data);
+                var a = currencies.Find(x => x?.Id == element.CurrencyId);
+                arePropertiesEqual(a?.Data, element?.Currency?.Data);
             }
         }
     }

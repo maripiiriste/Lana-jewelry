@@ -3,10 +3,10 @@ using Lana_jewelry.Domain.Shipment;
 
 namespace Lana_jewelry.Infra.Shipment
 {
-    public class GiftCardRepo : Repo<GiftCard, GiftCardData>, IGiftCardRepo
+    public sealed class GiftCardRepo : Repo<GiftCard, GiftCardData>, IGiftCardRepo
     {
         public GiftCardRepo(Lana_jewelryDb? db) : base(db, db?.GiftCards) { }
-        protected override GiftCard toDomain(GiftCardData d) => new (d);
+        protected internal override GiftCard toDomain(GiftCardData d) => new (d);
         internal override IQueryable<GiftCardData> addFilter(IQueryable<GiftCardData> q)
         {
             var y = CurrentFilter;

@@ -3,10 +3,10 @@ using Lana_jewelry.Domain.Party;
 
 namespace Lana_jewelry.Infra.Party
 {
-    public class CostumersCountryRepo : Repo<CostumerCountry, CostumerCountryData>, ICostumersCountryRepo
+    public sealed class CostumersCountryRepo : Repo<CostumerCountry, CostumerCountryData>, ICostumersCountryRepo
     {
         public CostumersCountryRepo(Lana_jewelryDb? db) : base(db, db?.CostumerCountries) { }
-        protected override CostumerCountry toDomain(CostumerCountryData d) => new(d);
+        protected internal override CostumerCountry toDomain(CostumerCountryData d) => new(d);
         internal override IQueryable<CostumerCountryData> addFilter(IQueryable<CostumerCountryData> q)
         {
             var y = CurrentFilter;
