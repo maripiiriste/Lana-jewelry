@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Diagnostics;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace Lana_jewelry.Tests
 {
@@ -17,9 +19,25 @@ namespace Lana_jewelry.Tests
             var actual = getProperty( ref value, isReadOnly, callingMethod);
             areEqual(value, actual);
         }
-        protected object? getProperty<T>(ref T? value, bool isReadOnly, string callingMethod){
+        protected PropertyInfo? isDisplayNamed<T>(string ? displayName=null,T? value = default, bool isReadOnly = false, string? callingMethod=null){
+            callingMethod ??= nameof(isDisplayNamed);
+            var pi = getPropertyInfo(callingMethod);
+            isProperty(value, isReadOnly,callingMethod);
+            if (displayName is null)return pi;
+            var a = pi.GetAttributes<DisplayNameAttribute>();
+            areEqual(displayName, a.DisplayName,nameof(DisplayNameAttribute));
+            return pi;
+        }
+        protected void isRequired<T>(string? displayName = null, T? value = default, bool isReadOnly = false){
+            var pi=isDisplayNamed(displayName, value, isReadOnly, nameof(isRequired));
+            isTrue(pi?.HasAttributes<RequiredAttribute>(), nameof(RequiredAttribute));
+        }
+        protected PropertyInfo? getPropertyInfo(string callingMethod){
             var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
-            var propertyInfo = obj.GetType().GetProperty(memberName);
+            return obj.GetType().GetProperty(memberName);
+        }
+        protected object? getProperty<T>(ref T? value, bool isReadOnly, string callingMethod){
+            var propertyInfo = getPropertyInfo(callingMethod);
             isNotNull(propertyInfo);
             if (!isReadOnly && isNullOrDefault(value)) value = random<T>();
             if (canWrite(propertyInfo, isReadOnly)) propertyInfo.SetValue(obj, value);
@@ -51,7 +69,7 @@ namespace Lana_jewelry.Tests
             }
             return string.Empty;
         }
-        internal protected static void arePropertiesEqual(object x, object y) {
+        protected override void arePropertiesEqual(object? x, object? y) {
             var e = Array.Empty<PropertyInfo>();
             var px = x?.GetType()?.GetProperties() ?? e;
             var hasProperites = false;

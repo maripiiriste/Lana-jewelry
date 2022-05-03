@@ -3,18 +3,12 @@ using Lana_jewelry.Data.Party;
 using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain;
 using Lana_jewelry.Domain.Party;
-using Lana_jewelry.Infra.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace Lana_jewelry.Tests.Domain.Shipment
 {
-    [TestClass] public  class CostumerCountrytests : SealedClassTests<CostumerCountry, NamedEntity<CostumerCountryData>>
+    [TestClass] public  class CostumerCountryTest : SealedClassTests<CostumerCountry, NamedEntity<CostumerCountryData>>
     {
-           [TestInitialize] public void TestInitialize(){
-            (GetRepo.Instance<ICountriesRepo>()as CountriesRepo)?.clear();
-            (GetRepo.Instance<ICostumersRepo>() as CostumersRepo)?.clear();
-           }
             protected override CostumerCountry createObj() => new(GetRandom.Value<CostumerCountryData>());
             [TestMethod] public void CountryIdTest() => isReadOnly(obj.Data.CountryId);
             [TestMethod] public void CostumerIdTest() => isReadOnly(obj.Data.CostumerId);

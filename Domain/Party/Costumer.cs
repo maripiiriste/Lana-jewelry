@@ -10,5 +10,14 @@ namespace Lana_jewelry.Domain.Party{
         public DateTime DoB => getValue(Data?.DoB);
         public string Email=> getValue(Data?.Email);
         public override string ToString() => $"{FirstName} {LastName} {Email} ({DoB})";
+        public List<CostumerCountry> CostumersCountry
+          => GetRepo.Instance<ICostumersCountryRepo>()?
+         .GetAll(x => x.CostumerId)?
+         .Where(x => x.CostumerId == Id)?
+         .ToList() ?? new List<CostumerCountry>();
+        public List<Country?> Country
+            => CostumersCountry
+           .Select(x => x.Country)
+           .ToList() ?? new List<Country?>();
     }
 }
