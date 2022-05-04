@@ -11,6 +11,10 @@ namespace Lana_jewelry.Tests
 
     public abstract class BaseTests<TClass, TBaseClass> : TypeTests where TClass : class where TBaseClass : class {
         protected TClass obj;
+        private readonly BindingFlags allFlags = BindingFlags.Public
+            | BindingFlags.NonPublic
+            | BindingFlags.Instance
+            | BindingFlags.Static;
         protected BaseTests() => obj = createObj();
         protected abstract TClass createObj();
 
@@ -34,7 +38,7 @@ namespace Lana_jewelry.Tests
         }
         protected PropertyInfo? getPropertyInfo(string callingMethod){
             var memberName = getCallingMember(callingMethod).Replace("Test", string.Empty);
-            return obj.GetType().GetProperty(memberName);
+            return obj.GetType().GetProperty(memberName, allFlags);
         }
         protected object? getProperty<T>(ref T? value, bool isReadOnly, string callingMethod){
             var propertyInfo = getPropertyInfo(callingMethod);
@@ -46,7 +50,7 @@ namespace Lana_jewelry.Tests
         protected void isReadOnly<T>(T? value) => isProperty(value, true, nameof(isReadOnly));
         protected override object? isReadOnly<T>(string? callingMethod= null){
             var v=default(T);
-            return getProperty(ref v, true, callingMethod?? nameof(isReadOnly));
+            return getProperty(ref v, true, callingMethod ?? nameof(isReadOnly));
         }
         private static bool isNullOrDefault<T>(T? value) => value?.Equals(default(T)) ?? true;
         private static bool canWrite(PropertyInfo i, bool isReadOnly)
