@@ -3,8 +3,7 @@
 namespace Lana_jewelry.Domain.Party
 {
     public interface ICountriesRepo : IRepo<Country> { }
-    public sealed partial class Country : NamedEntity<CountryData>
-    {
+    public sealed partial class Country : NamedEntity<CountryData>, IComparable{
         public Country() : this(new()) { }
         public Country(CountryData d) : base(d) { }
         public List<CountryCurrency> CountryCurrencies
@@ -25,5 +24,8 @@ namespace Lana_jewelry.Domain.Party
             => CostumersCountry
            .Select(x => x.Costumer)
            .ToList() ?? new List<Costumer?>();
+
+        public int CompareTo(object? x) => compareTo(x as Country);
+        private int compareTo(Country? c) => Name.CompareTo(c?.Name);
     }
 }

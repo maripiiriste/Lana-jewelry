@@ -16,6 +16,15 @@ namespace Lana_jewelry.Tests.Domain.Party {
 
         [TestMethod] public void CurrenciesTest() => relatedItemsTest(CountryCurrenciesTest);
 
+        [TestMethod] public void CompareToTest() {
+            var dX = GetRandom.Value<CountryData>() as CountryData;
+            var dY= GetRandom.Value<CountryData>() as CountryData;
+            isNotNull(dX);
+            isNotNull(dY);
+            var expected = dX?.Name?.CompareTo(dY.Name);
+            areEqual(expected, new Country(dX).CompareTo(new Country(dY)));
+        }
+
         protected void relatedItemsTest(Action relatedTest) {
             relatedTest();
             CountryCurrenciesTest();

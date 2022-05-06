@@ -13,7 +13,7 @@ namespace Lana_jewelry.Tests {
     public abstract class HostTests : TestAsserts {
         internal static readonly TestHost<Program> host;
         internal static readonly HttpClient client;
-        [TestInitialize] public virtual void testInitialize() {
+        [TestInitialize] public virtual void TestInitialize() {
             (GetRepo.Instance<ICountriesRepo>() as CountriesRepo)?.clear();
             (GetRepo.Instance<ICurrenciesRepo>() as CurrenciesRepo)?.clear();
             (GetRepo.Instance<ICountryCurrenciesRepo>() as CountryCurrenciesRepo)?.clear();

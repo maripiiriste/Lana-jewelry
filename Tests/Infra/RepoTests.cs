@@ -13,31 +13,6 @@ namespace Lana_jewelry.Tests.Infra {
         }
         protected override Repo<GiftCard, GiftCardData> createObj() => new testClass(null, null);
     }
-
-    [TestClass] public class CrudRepoTests
-        :AbstractClassTests<CrudRepo<GiftCard, GiftCardData>, BaseRepo<GiftCard, GiftCardData>> {
-        private class testClass : CrudRepo<GiftCard, GiftCardData> {
-            public testClass(DbContext? c, DbSet<GiftCardData>? s) : base(c, s) { }
-            protected internal override GiftCard toDomain(GiftCardData d) => new(d);
-        }
-        protected override CrudRepo<GiftCard, GiftCardData> createObj() => new testClass(null, null);
-    }
-    [TestClass] public class FilteredRepoTests
-        : AbstractClassTests<FilteredRepo<GiftCard, GiftCardData>, FilteredRepo<GiftCard, GiftCardData>> {
-        private class testClass : FilteredRepo<GiftCard, GiftCardData> {
-            public testClass(DbContext? c, DbSet<GiftCardData>? s) : base(c, s) { }
-            protected internal override GiftCard toDomain(GiftCardData d) => new(d);
-        }
-        protected override FilteredRepo<GiftCard, GiftCardData> createObj() => new testClass(null, null);
-    }
-    [TestClass] public class OrderedRepoTests
-        : AbstractClassTests<OrderedRepo<GiftCard, GiftCardData>, OrderedRepo<GiftCard, GiftCardData>> {
-        private class testClass : OrderedRepo<GiftCard, GiftCardData> {
-            public testClass(DbContext? c, DbSet<GiftCardData>? s) : base(c, s) { }
-            protected internal override GiftCard toDomain(GiftCardData d) => new(d);
-        }
-        protected override OrderedRepo<GiftCard, GiftCardData> createObj() => new testClass(null, null);
-    }
     [TestClass] public class PagedRepoTests
         : AbstractClassTests<PagedRepo<GiftCard, GiftCardData>, PagedRepo<GiftCard, GiftCardData>> {
         private class testClass : PagedRepo<GiftCard, GiftCardData> {

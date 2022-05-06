@@ -15,7 +15,7 @@ namespace Lana_jewelry.Infra {
         public override bool Add(TDomain obj) => AddAsync(obj).GetAwaiter().GetResult();
         public override bool Delete(string id) => DeleteAsync(id).GetAwaiter().GetResult();
         public override List<TDomain> Get() => GetAsync().GetAwaiter().GetResult();
-        public override List<TDomain> GetAll<TKey>(Func<TDomain, TKey>? orderBy=null) {
+        public override List<TDomain> GetAll(Func<TDomain, dynamic >? orderBy=null) {
             var r = new List<TDomain>();
             if (set is null) return r;
             foreach (var d in set) r.Add(toDomain(d));
@@ -62,11 +62,15 @@ namespace Lana_jewelry.Infra {
         }
         public override async Task<bool> UpdateAsync(TDomain obj) {
             try {
+                if (db is null) return false;
+                db.ChangeTracker.Clear();
                 var d = obj.Data;
-                if (db is not null) db.Attach(d).State = EntityState.Modified;
-                _ = (db is null) ? 0 : await db.SaveChangesAsync();
+                db.Attach(d).State = EntityState.Modified;
+                _ = await db.SaveChangesAsync();
                 return true;
-            } catch { return false; }
+            } catch { 
+                return false;
+            }
         }
         protected internal abstract TDomain toDomain(TData d);
     }
