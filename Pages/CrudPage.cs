@@ -1,6 +1,8 @@
-﻿using Lana_jewelry.Domain;
+﻿using Lana_jewelry.Aids;
+using Lana_jewelry.Domain;
 using Lana_jewelry.Facade;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Lana_jewelry.Pages {
     public abstract class CrudPage<TView, TEntity, TRepo> : BasePage<TView, TEntity, TRepo>
@@ -13,20 +15,61 @@ namespace Lana_jewelry.Pages {
             Item = await getItem(id);
             return Item == null ? NotFound() : Page();
         }
+        protected IActionResult itemPage() => Item == null ? NotFound() : Page();
         protected override async Task<IActionResult> getDetailsAsync(string id) => await getItemPage(id);
-        protected override async Task<IActionResult> getDeleteAsync(string id) => await getItemPage(id);
-        protected override async Task<IActionResult> getEditAsync(string id) => await getItemPage(id);
+        protected override async Task<IActionResult> getDeleteAsync(string id) {
+            ErrorMessage = TempData["Error"] as string;
+            return await getItemPage(id);
+        }
+        protected override async Task<IActionResult> getEditAsync(string id) {
+            var s = TempData["Item"] as string;
+            TView? v = null;
+            if (s is not null) v = JsonSerializer.Deserialize<TView>(s);
+            if (v is null) return await getItemPage(id);
+            return await getEditAsync(v);
+        }
+        protected async Task<IActionResult> getEditAsync(TView v) {
+            Item = await getItem(v.Id);
+            ModelState.AddModelError(string.Empty,
+                "The record you attempted to edit was modified by another user after you. The "
+                + "edit operation was canceled and the current values in the database "
+                + "have been displayed. If you still want to edit this record, click "
+                + "the Save button again.");
+            foreach (var p in Item.GetType().GetProperties()) {
+                var n = p.Name;
+                var currentValue = p.GetValue(Item)?.ToString();
+                var clientValue = v?.GetType()?.GetProperty(n)?.GetValue(v)?.ToString();
+                if (currentValue != clientValue)
+                    ModelState.AddModelError(
+                        $"{nameof(Item)}.{n}",
+                        $"Your value: {clientValue}");
+            }
+            return itemPage();
+        }
         protected override async Task<IActionResult> postCreateAsync() {
             if (!ModelState.IsValid) return Page();
             _ = await repo.AddAsync(toObject(Item));
             return redirectToIndex();
         }
-        protected override async Task<IActionResult> postDeleteAsync(string id) {
+        protected override async Task<IActionResult> postDeleteAsync(string id, string? token=null) {
             if (id == null) return NotFound();
+            var o = await getItem(id);
+            if (ConcurrencyToken.ToStr(o.Token) == ConcurrencyToken.ToStr()) return redirectToIndex();
+            var oToken = ConcurrencyToken.ToStr(o.Token);
+            if (oToken != token) return redirectToDelete(id);
             _ = await repo.DeleteAsync(id);
             return redirectToIndex();
         }
         protected override async Task<IActionResult> postEditAsync() {
+            var o = repo.Get(Item.Id);
+            if(ConcurrencyToken.ToStr(o.Token)==ConcurrencyToken.ToStr(Array.Empty<byte>() )) {
+                ModelState.AddModelError(string.Empty, "Unable to save. The item was deleted by another user.");
+                return Page();
+            }
+            var oToken = ConcurrencyToken.ToStr(o.Token);
+            var itemToken = ConcurrencyToken.ToStr(Item.Token);
+            if (oToken != itemToken) return redirectToEdit(Item);
+           
             if (!ModelState.IsValid) return Page();
             var obj = toObject(Item);
             var updated = await repo.UpdateAsync(obj);

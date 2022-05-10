@@ -10,12 +10,14 @@ namespace Lana_jewelry.Domain {
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
         protected static double getValue(double? v) => v ?? defaultNr;
         public abstract string Id{get;}
+        public abstract byte[] Token { get; }
     }
     public abstract class UniqueEntity<TData> : UniqueEntity where TData : UniqueData, new() {
         private readonly TData data;
         public TData Data => data;
         public UniqueEntity() : this(new TData()) { }
         public UniqueEntity(TData d) => data = d;
-        public override string Id => getValue(Data?.Id);
+        public override string Id => getValue(Data?.Id); 
+        public override byte[] Token => Data?.Token?? Array.Empty<byte>();
     }
 }

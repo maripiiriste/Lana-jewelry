@@ -25,30 +25,35 @@ namespace Lana_jewelry.Tests {
             client = host.CreateClient();
         }
         protected virtual object? isReadOnly<T>(string? callingMethod = null) => null;
-        protected virtual void arePropertiesEqual(object? x, object? y) { isInconclusive(); }
+        protected virtual void arePropertiesEqual(object? x, object? y, params string[] excluded) { isInconclusive(); }
 
             protected void itemTest<TRepo, TObj, TData>(string id, Func<TData, TObj> toObj, Func<TObj?> getObj)
-            where TRepo : class, IRepo<TObj>
-            where TObj : UniqueEntity {
+            where TRepo : class, IRepo<TObj> where TObj : UniqueEntity {
 
                 var c = isReadOnly<TObj>(nameof(itemTest));
                 isNotNull(c);
                 isInstanceOfType(c, typeof(TObj));
-
                 var r = GetRepo.Instance<TRepo>();
-                var d = GetRandom.Value<TData>();
-                d.Id = id;
-
-                var cnt = GetRandom.Int32(0, 30);
-                var idx = GetRandom.Int32(0, cnt);
-                for (var i = 0; i < cnt; i++) {
-                    var x = (i == idx) ? d : GetRandom.Value<TData>();
-                    isNotNull(x);
-                    r?.Add(toObj(x));
-                }
+                int cnt;
+                var d = addRandomItems(out cnt, toObj,id, r);
                 r.PageSize = 30;
                 areEqual(cnt, r.Get().Count);
-                areEqualProperties(d, getObj());
+                areEqualProperties(d, getObj(), nameof(UniqueData.Token));
+        }
+        internal static TData? addRandomItems<TRepo, TObj, TData>(out int cnt, Func<TData, TObj> toObj, string? id=null, TRepo? r=null)
+            where TRepo : class, IRepo<TObj>
+            where TObj : UniqueEntity {
+            r ??= GetRepo.Instance<TRepo>();
+            var d = GetRandom.Value<TData>();
+            if (id is not null && d is not null) d.Id = id;
+            cnt = GetRandom.Int32(0, 30);
+            var idx = GetRandom.Int32(0, cnt);
+            for (var i = 0; i < cnt; i++) {
+                var x = (i == idx) ? d : GetRandom.Value<TData>();
+                isNotNull(x);
+                r?.Add(toObj(x));
+            }
+            return d;
         }
 
         protected void itemsTest<TRepo, TObj, TData>(Action<TData> setId, Func<TData, TObj> toObj, Func<List<TObj>> getList)  
@@ -57,6 +62,7 @@ namespace Lana_jewelry.Tests {
             var o = isReadOnly<List<TObj>>(nameof(itemsTest));
 
             isNotNull(o);
+            if(o.GetType().Name.Contains("Lasy")) isInstanceOfType(o,typeof(Lazy<List<TObj>>));
             isInstanceOfType(o, typeof(List<TObj>));
 
             var r = GetRepo.Instance<TRepo>();
@@ -80,7 +86,7 @@ namespace Lana_jewelry.Tests {
             foreach (var d in list) {
                 var y = l.Find(z => z.Id == d.Id);
                 isNotNull(y);
-                areEqualProperties(d, y);
+                areEqualProperties(d, y, nameof(UniqueData.Token));
             }
         }
         protected void relatedItemsTest<TRepo, TRelatedItem, TItem, TData>
@@ -109,7 +115,7 @@ namespace Lana_jewelry.Tests {
             foreach (var e in l)
             {
                 var a = c.Find(x => x?.Id == detailId(e));
-                arePropertiesEqual(toData(a), relatedToData(e));
+                arePropertiesEqual(toData(a), relatedToData(e), nameof(UniqueData.Token));
             }
         }
     } 

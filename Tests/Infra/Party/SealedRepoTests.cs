@@ -48,13 +48,13 @@ namespace Lana_jewelry.Tests.Infra.Party {
             var q = obj.createSql();
             var s = q.Expression.ToString();
             foreach (var p in typeof(TData).GetProperties()) {
+                if (p.Name == nameof(UniqueData.Token)) continue; 
                 if (p.PropertyType == typeof(string))
                     isTrue(s.Contains(contains(p.Name)), $"Nowhere part found for the property {p.Name}");
                 else
                     isTrue(s.Contains(toStrContains(p.Name)), $"Nowhere part found for the property {p.Name}");
             }
         }
-
         protected abstract object? getSet(Lana_jewelryDb db);
     }
 }

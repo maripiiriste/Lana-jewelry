@@ -16,9 +16,13 @@ namespace Lana_jewelry.Pages {
         protected abstract TView toView(TEntity? entity);
         protected abstract TEntity toObject(TView? item);
         protected abstract IActionResult redirectToIndex();
+        protected abstract IActionResult redirectToDelete(string id);
+        protected abstract IActionResult redirectToEdit(TView v);
         [BindProperty] public TView Item { get; set; } = new TView();
         public IList<TView> Items { get; set; } =new List<TView>();
         public string ItemId => Item?.Id ?? string.Empty;
+        public string Token => ConcurrencyToken.ToStr(Item?.Token);
+        public string? ErrorMessage { get; set; }
         public BasePage(TRepo r) => repo = r;
 
         protected abstract IActionResult getCreate();
@@ -32,7 +36,7 @@ namespace Lana_jewelry.Pages {
         protected abstract Task<IActionResult> postCreateAsync();
         protected abstract Task<IActionResult> getDetailsAsync(string id);
         protected abstract Task<IActionResult> getDeleteAsync(string id);
-        protected abstract Task<IActionResult> postDeleteAsync(string id);
+        protected abstract Task<IActionResult> postDeleteAsync(string id, string? token=null);
         protected abstract Task<IActionResult> getEditAsync(string id);
         protected abstract Task<IActionResult> postEditAsync();
         protected abstract Task<IActionResult> getIndexAsync();
@@ -50,8 +54,8 @@ namespace Lana_jewelry.Pages {
            => await perform(() => getDetailsAsync(id), idx, filter, order);
         public async Task<IActionResult> OnGetDeleteAsync(string id, int idx = 0, string? filter = null, string? order = null)
              => await perform(() => getDeleteAsync(id), idx, filter, order);
-        public async Task<IActionResult> OnPostDeleteAsync(string id, int idx = 0, string? filter = null, string? order = null)
-            => await perform(() => postDeleteAsync(id), idx, filter, order);
+        public async Task<IActionResult> OnPostDeleteAsync(string id, int idx = 0, string? filter = null, string? order = null, string? token=null)
+            => await perform(() => postDeleteAsync(id, token), idx, filter, order);
         public async Task<IActionResult> OnGetEditAsync(string id, int idx = 0, string? filter = null, string? order = null)
              => await perform(() => getEditAsync(id), idx, filter, order);
         public async Task<IActionResult> OnPostEditAsync(int idx = 0, string? filter = null, string? order = null)

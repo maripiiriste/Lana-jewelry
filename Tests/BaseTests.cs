@@ -5,6 +5,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Lana_jewelry.Tests
 {
@@ -73,11 +74,12 @@ namespace Lana_jewelry.Tests
             }
             return string.Empty;
         }
-        protected override void arePropertiesEqual(object? x, object? y) {
+        protected override void arePropertiesEqual(object? x, object? y, params string[] excluded) {
             var e = Array.Empty<PropertyInfo>();
             var px = x?.GetType()?.GetProperties() ?? e;
             var hasProperites = false;
             foreach (var p in px) {
+                if (excluded?.Contains(p.Name)?? false) continue;
                 var a = p.GetValue(x, null);
                 var py = y?.GetType()?.GetProperty(p.Name);
                 if (py is null) continue;

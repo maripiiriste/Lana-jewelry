@@ -3,7 +3,8 @@
     ViewData["SubTitle"] = Model?.GetType()?.Name?.Replace("Page",string.Empty)?? "Unspecified";
     Layout = "_Layout";
     var itemId = Model?.ItemId??string.Empty;
-
+    var token = Model?.Token??string.Empty;
+    var errorMessage = Model?.ErrorMessage?? string.Empty;
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -11,9 +12,12 @@
 <div>
     <h4>@ViewData["SubTitle"]</h4>
     <hr />
+
     @RenderBody()
+
     <form method="post" 
         asp-route-id="@itemId"
+        asp-route-token="@token"
         asp-route-handler="Delete"
         asp-route-order="@Model?.CurrentOrder"
         asp-route-idx="@Model?.PageIndex" 

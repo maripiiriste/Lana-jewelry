@@ -12,7 +12,7 @@ namespace Lana_jewelry.Pages.Party {
         nameof(CurrencyView.Name),
         nameof(CurrencyView.Description)
         };
-        public List<Country?> Countries => toObject(Item).Countries;
+        public Lazy<List<Country?>> Countries => toObject(Item).Countries;
     }
 }
 
