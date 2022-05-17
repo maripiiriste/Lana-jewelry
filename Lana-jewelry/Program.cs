@@ -28,6 +28,7 @@ builder.Services.AddRazorPages(o=> {
 });
 builder.Services.AddTransient<ICostumersRepo, CostumersRepo>();
 builder.Services.AddTransient<IInfoRepo, InfoRepo>();
+builder.Services.AddTransient<IJewelryRepo, JewelryRepo>();
 builder.Services.AddTransient<ITransportsRepo, TransportsRepo>();
 builder.Services.AddTransient<IGiftCardRepo, GiftCardRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();

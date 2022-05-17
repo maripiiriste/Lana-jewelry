@@ -1,6 +1,7 @@
 ﻿using Lana_jewelry.Aids;
 using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain.Shipment;
+using Lana_jewelry.Facade;
 using Lana_jewelry.Facade.Shipment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -9,7 +10,7 @@ using System.Reflection;
 namespace Lana_jewelry.Tests.Facade.Shipment
 {
     [TestClass]
-    public class TransportViewFactoryTests:SealedClassTests<TransportViewFactory>
+    public class TransportViewFactoryTests : SealedClassTests<TransportViewFactory, BaseViewFactory<TransportView, Transport, TransportData>>
     {
         [TestMethod] public void CreateTest() { }
         [TestMethod] public void CreateViewTest() {

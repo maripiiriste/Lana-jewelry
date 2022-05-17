@@ -1,7 +1,6 @@
 ﻿
 
-namespace Lana_jewelry.Data.Party
-{
+namespace Lana_jewelry.Data.Party{
     public sealed class InfoData:UniqueData {
         public string? Country { get; set; }
         public string? City { get; set; }

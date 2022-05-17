@@ -9,6 +9,7 @@ namespace Lana_jewelry.Infra{
         public DbSet<TransportData>? Transports { get; set; } //tabelid
         public DbSet<CostumerData>? Costumers { get; set; }
         public DbSet<InfoData>? Infos { get; set; }
+        public DbSet<JewelryData>? Jewelries { get; set; }
         public DbSet<GiftCardData>? GiftCards { get; set; }
         public DbSet<CountryData>? Countries { get; set; }
         public DbSet<CurrencyData>? Currencies { get; set; }
@@ -23,6 +24,7 @@ namespace Lana_jewelry.Infra{
             var s = nameof(Lana_jewelryDb)[0..^2];
             _ = (b?.Entity<CostumerData>()?.ToTable(nameof(Costumers), s));
             _ = (b?.Entity<InfoData>()?.ToTable(nameof(Infos), s));
+            _ = (b?.Entity<JewelryData>()?.ToTable(nameof(Jewelries), s));
             _ = (b?.Entity<TransportData>()?.ToTable(nameof(Transports),s));
              _= (b?.Entity<GiftCardData>()?.ToTable(nameof(GiftCards), s));
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
