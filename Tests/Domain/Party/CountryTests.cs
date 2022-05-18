@@ -24,7 +24,7 @@ namespace Lana_jewelry.Tests.Domain.Party {
               x => x.CurrencyId, d => new Currency(d), c => c?.Data, x => x?.Currency?.Data);
 
         [TestMethod] public void CostumersTest() => relatedItemsTest<ICostumersRepo, CostumerCountry, Costumer, CostumerData>
-            (CostumerCountryTest, () => obj.CostumersCountry.Value, () => obj.Costumers.Value,
+            (CostumersCountryTest, () => obj.CostumersCountry.Value, () => obj.Costumers.Value,
               x => x.CostumerId, d => new Costumer(d), c => c?.Data, x => x?.Costumer?.Data);
 
         [TestMethod] public void CompareToTest() {
