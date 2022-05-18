@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
 namespace Lana_jewelry.Pages {
+
     public abstract class CrudPage<TView, TEntity, TRepo> : BasePage<TView, TEntity, TRepo>
         where TView : UniqueView, new()
         where TEntity : UniqueEntity
