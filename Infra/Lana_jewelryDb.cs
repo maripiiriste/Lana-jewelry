@@ -1,4 +1,5 @@
-﻿using Lana_jewelry.Data.Party;
+﻿using Lana_jewelry.Data;
+using Lana_jewelry.Data.Party;
 using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain.Party;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace Lana_jewelry.Infra{
         public DbSet<CurrencyData>? Currencies { get; set; }
         public DbSet<CountryCurrencyData>? CountryCurrencies { get; set; }
         public DbSet<CostumerCountryData>? CostumerCountries { get; set; }
+        public DbSet<ShoppingBagGiftCardData>? ShoppingBagGiftCards { get; set; }
 
         protected override void OnModelCreating(ModelBuilder b) {
             base.OnModelCreating(b);
