@@ -35,5 +35,6 @@ namespace Lana_jewelry.Tests.Domain.Party {
             var expected = dX.Name?.CompareTo(dY.Name);
             areEqual(expected, new Country(dX).CompareTo(new Country(dY)));
         }
+
     }
 }
