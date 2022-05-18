@@ -19,4 +19,19 @@ namespace Lana_jewelry.Tests.Domain.Party {
           (CostumerCountryTest, () => obj.CostumersCountry, () => obj.Country,
            x => x.CountryId, d => new Country(d), c => c?.Data, x => x?.Country?.Data);
     }
+    [TestClass] public class ShoppingBagTests : SealedClassTests<Costumer, UniqueEntity<ShoppingBagData>> {
+        [TestMethod] public void TotalTest() => isInconclusive();
+        [TestMethod] public void DeliveryTest() => isInconclusive();
+        [TestMethod] public void PaymentSystemTest() => isInconclusive();
+        [TestMethod] public void DiscountCodeTest() => isInconclusive();
+        [TestMethod] public void ToStringTest() => isInconclusive();
+        [TestMethod]
+        public void CostumersTest() => relatedItemsTest<ICostumersRepo, CostumerCountry, Costumer, CostumerData>
+          (CostumerCountryTest, () => obj.CostumersCountry, () => obj.Costumer,
+          x => x.CostumerId, d => new Costumer(d), c => c?.Data, x => x?.Costumer?.Data);
+        [TestMethod]
+        public void CountryTest() => relatedItemsTest<ICountriesRepo, CostumerCountry, Country, CountryData>
+          (CostumerCountryTest, () => obj.CostumersCountry, () => obj.Country,
+           x => x.CountryId, d => new Country(d), c => c?.Data, x => x?.Country?.Data);
+    }
 }
