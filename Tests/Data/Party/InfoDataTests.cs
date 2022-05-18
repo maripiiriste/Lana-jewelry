@@ -14,5 +14,6 @@ namespace Lana_jewelry.Tests.Data.Party {
         [TestMethod] public void PhoneNumberTest() => isProperty<string?>();
         [TestMethod] public void EmailAddressTest() => isProperty<string?>();
 
+
     }
 }
