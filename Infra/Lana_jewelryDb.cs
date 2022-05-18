@@ -10,6 +10,7 @@ namespace Lana_jewelry.Infra{
         public DbSet<CostumerData>? Costumers { get; set; }
         public DbSet<InfoData>? Infos { get; set; }
         public DbSet<JewelryData>? Jewelries { get; set; }
+        public DbSet<JewelryData>? ShoppingBags{ get; set; }
         public DbSet<GiftCardData>? GiftCards { get; set; }
         public DbSet<CountryData>? Countries { get; set; }
         public DbSet<CurrencyData>? Currencies { get; set; }

@@ -4,14 +4,12 @@ using Lana_jewelry.Domain.Party;
 using Lana_jewelry.Facade;
 using Lana_jewelry.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Reflection;
 
-namespace Lana_jewelry.Tests.Facade.Party
-{ 
-    public class CostumerViewFactoryTests: SealedClassTests<CostumerViewFactory, BaseViewFactory<CostumerView, Costumer, CostumerData>> {
+namespace Lana_jewelry.Tests.Facade.Party {
+    public class CostumerViewFactoryTests : SealedClassTests<CostumerViewFactory, BaseViewFactory<CostumerView, Costumer, CostumerData>> {
         [TestMethod] public void CreateTest() { }
-        [TestMethod] public void CreateViewTest() {
+        [TestMethod]
+        public void CreateViewTest() {
             var d = GetRandom.Value<CostumerData>();
             var e = new Costumer(d);
             var v = new CostumerViewFactory().Create(e);
@@ -36,3 +34,5 @@ namespace Lana_jewelry.Tests.Facade.Party
         }
     }
 }
+
+

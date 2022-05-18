@@ -1,10 +1,11 @@
-﻿using Lana_jewelry.Facade.Shipment;
+﻿using Lana_jewelry.Facade;
+using Lana_jewelry.Facade.Shipment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 namespace Lana_jewelry.Tests.Facade.Shipment
 {
     [TestClass]
-    public class TransportViewTests: SealedClassTests<TransportView>
+    public class TransportViewTests: SealedClassTests<TransportView, NamedView>
     {
         [TestMethod] public void TransportIdTest() => isProperty<string>();
         [TestMethod] public void StreetTest() => isProperty<string>();

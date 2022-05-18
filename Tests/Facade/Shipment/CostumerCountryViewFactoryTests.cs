@@ -7,7 +7,7 @@ using University.Tests.Facade.Party;
 namespace Lana_jewelry.Tests.Facade.Party
 {
     [TestClass] public class CostumerCountryViewFactoryTests
-        : ViewFactoryTests<CostumerCountryViewFactory, CostumerCountryViewFactoryTests, CostumerCountry, CostumerCountryData>{
+        : ViewFactoryTests<CostumerCountryViewFactory, CostumerCountryView, CostumerCountry, CostumerCountryData>{
         protected override CostumerCountry toObject(CostumerCountryData d) => new(d);
     }
 }
