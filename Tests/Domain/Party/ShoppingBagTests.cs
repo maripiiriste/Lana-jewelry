@@ -4,7 +4,7 @@ using Lana_jewelry.Domain.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Lana_jewelry.Tests.Domain.Party {
-    [TestClass] public class ShoppingBagTests : SealedClassTests<Costumer, UniqueEntity<ShoppingBagData>> {
+    [TestClass] public class ShoppingBagTests : SealedClassTests<ShoppingBag, UniqueEntity<ShoppingBagData>> {
         [TestMethod] public void TotalTest() => isInconclusive();
         [TestMethod] public void DeliveryTest() => isInconclusive();
         [TestMethod] public void PaymentSystemTest() => isInconclusive();

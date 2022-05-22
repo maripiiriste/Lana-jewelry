@@ -1,5 +1,4 @@
-﻿
-namespace Lana_jewelry.Data.Shipment{
+﻿namespace Lana_jewelry.Data.Shipment{
     public sealed class JewelryData:UniqueData{
         public string? Ring { get; set; }
         public string? Necklace { get; set; }

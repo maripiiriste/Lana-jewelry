@@ -18,5 +18,6 @@ namespace Lana_jewelry.Tests.Domain {
         [TestMethod] public void IdTest() => isReadOnly(obj.Data.Id);
         [TestMethod] public void DataTest() => isReadOnly(d);
         [TestMethod] public void DefaultStrTest() => areEqual("Undefined", UniqueEntity.DefaultStr);
+        //[TestMethod] public void DefaultIntTest() => areEqual(0, UniqueEntity.DefaultInt);
     }
 }

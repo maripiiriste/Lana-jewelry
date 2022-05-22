@@ -4,11 +4,13 @@ using Lana_jewelry.Data;
 namespace Lana_jewelry.Domain {
     public abstract class UniqueEntity {
         private const double defaultNr = 00.00;
+        private const int defaultInt=0;
         public static string DefaultStr => "Undefined";
         private static DateTime defaultDate => DateTime.MinValue;
         protected static string getValue(string? v) => v ?? DefaultStr;
         protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
         protected static double getValue(double? v) => v ?? defaultNr;
+        protected static int getValue(int? v) => v ?? defaultInt;
         public abstract string Id{get;}
         public abstract byte[] Token { get; }
     }
