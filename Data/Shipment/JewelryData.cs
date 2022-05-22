@@ -5,5 +5,6 @@ namespace Lana_jewelry.Data.Shipment{
         public string? Necklace { get; set; }
         public string? Bracelet { get; set; }
         public string? Earring { get; set; }
+        public double? Price { get; set; }
     }
 }

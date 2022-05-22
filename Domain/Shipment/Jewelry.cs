@@ -11,5 +11,6 @@ namespace Lana_jewelry.Domain.Shipment
         public string Necklace => getValue(Data?.Necklace);
         public string Bracelet => getValue(Data?.Bracelet);
         public string Earring => getValue(Data?.Earring);
+        public double Price => getValue(Data?.Price);
     }
 }
