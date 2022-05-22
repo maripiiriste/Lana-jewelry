@@ -21,7 +21,7 @@ namespace Lana_jewelry.Pages.Shipment
          nameof(ShoppingBagGiftCardView.GiftCardId),
         };
 
-        public IEnumerable<SelectListItem> giftCard
+        public IEnumerable<SelectListItem> GiftCard
           => giftCard?.GetAll(x => x.ToString())?
          .Select(x => new SelectListItem(x.ToString(), x.Id))
           ?? new List<SelectListItem>();
