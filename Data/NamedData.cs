@@ -1,5 +1,4 @@
-﻿
-namespace Lana_jewelry.Data {
+﻿namespace Lana_jewelry.Data {
     public abstract class NamedData :UniqueData{
         public string Code { get; set; } = string.Empty;
         public string? Name { get; set; }

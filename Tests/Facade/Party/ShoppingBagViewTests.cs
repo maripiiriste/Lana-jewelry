@@ -9,6 +9,5 @@ namespace Lana_jewelry.Tests.Facade.Party {
         [TestMethod] public void DeliveryTest() => isProperty<string?>();
         [TestMethod] public void PaymentSystemTest() => isProperty<string?>();
         [TestMethod] public void DiscountCodeTest() => isProperty<string?>();
-
     }
 }

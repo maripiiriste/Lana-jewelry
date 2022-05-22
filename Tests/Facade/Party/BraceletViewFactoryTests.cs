@@ -4,7 +4,7 @@ using Lana_jewelry.Facade;
 using Lana_jewelry.Facade.Party;
 
 namespace Lana_jewelry.Tests.Facade.Party {
-    public class ShoppingBagViewFactoryTests : SealedClassTests<ShoppingBagViewFactory, BaseViewFactory<ShoppingBagView, ShoppingBag, ShoppingBagData>> { }
+    public class BraceletViewFactoryTests : SealedClassTests<BraceletViewFactory, BaseViewFactory<BraceletView, Bracelet, BraceletData>> { }
 }
 
 

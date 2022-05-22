@@ -1,5 +1,7 @@
 ﻿using Lana_jewelry.Data.Party;
 using Lana_jewelry.Domain.Party;
+using Lana_jewelry.Facade;
+using Lana_jewelry.Facade.Party;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
