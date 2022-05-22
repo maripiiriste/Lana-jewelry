@@ -4,8 +4,7 @@ using Lana_jewelry.Infra;
 using Lana_jewelry.Infra.Party;
 using Lana_jewelry.Tests.Infra.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace Lana_jewelry.Tests.Infra.Shipment
-{
+namespace Lana_jewelry.Tests.Infra.Shipment{
     [TestClass]public class ShoppingBagGiftCardRepoTests : SealedRepoTests<ShoppingBagGiftCardRepo, Repo<ShoppingBagGiftCard, ShoppingBagGiftCardData>
     , ShoppingBagGiftCard, ShoppingBagGiftCardData>
     {
