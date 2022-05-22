@@ -13,4 +13,5 @@ namespace Lana_jewelry.Facade
     public sealed class ShoppingBagGiftCardViewFactory : BaseViewFactory<ShoppingBagGiftCardView, ShoppingBagGiftCard, ShoppingBagGiftCardData>{
         protected override ShoppingBagGiftCard toEntity(ShoppingBagGiftCardData d) => new(d);
     }
+
 }
