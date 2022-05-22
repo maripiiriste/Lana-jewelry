@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Lana_jewelry.Data.Shipment
-{
+﻿namespace Lana_jewelry.Data.Shipment{
     public sealed class TransportData:UniqueData{
         public string? Street { get; set; }
         public string? City { get; set; }
