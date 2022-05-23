@@ -59,13 +59,6 @@ namespace Lana_jewelry.Tests.Infra.Initializers {
             return new TransportInitializer(db);
         }
     }
-    [TestClass] public class CostumerCountriesInitializerTests
-       : SealedBaseTests<CostumerCountryInitializer, BaseInitializer<CostumerCountryData>> {
-        protected override CostumerCountryInitializer createObj() {
-            var db = GetRepo.Instance<Lana_jewelryDb>();
-            return new CostumerCountryInitializer(db);
-        }
-    }
     [TestClass] public class BaseInitializerTests
        : AbstractClassTests<BaseInitializer<GiftCardData>, object> {
         private class testClass : BaseInitializer<GiftCardData> {
