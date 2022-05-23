@@ -13,7 +13,7 @@ namespace Lana_jewelry.Infra.Initializers {
                 foreach (CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures)) {
                     var c = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
                     var countryId = c.ThreeLetterISORegionName;
-                    var costumerId = c.GetType(Costumer);
+                    var costumerId = c.;
                     var nativeName = c.NativeName;
                     var d = createEntity(countryId, costumerId, nativeName);
                     l.Add(d);
