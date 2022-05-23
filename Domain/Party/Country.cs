@@ -23,23 +23,6 @@ namespace Lana_jewelry.Domain.Party
                 return new Lazy<List<Currency?>>(l);
             } 
         }
-        public Lazy<List<CostumerCountry>> CostumersCountry{
-            get{
-                var l = GetRepo.Instance<ICostumersCountryRepo>()?
-                   .GetAll(x => x.CountryId)?
-                   .Where(x => x.CountryId == Id)?
-                   .ToList() ?? new List<CostumerCountry>();
-                return new Lazy<List<CostumerCountry>>(l);
-            }
-        }
-        public Lazy<List<Costumer?>> Costumers{
-            get{
-                var l = CostumersCountry. Value
-                   .Select(x => x.Costumer)
-                   .ToList() ?? new List<Costumer?>();
-                return new Lazy<List<Costumer?>>(l);
-            }
-        }
 
         public int CompareTo(object? x) => compareTo(x as Country);
         private int compareTo(Country? c) => Name.CompareTo(c?.Name);
