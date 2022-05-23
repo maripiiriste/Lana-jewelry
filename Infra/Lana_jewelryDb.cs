@@ -23,6 +23,7 @@ namespace Lana_jewelry.Infra{
         public DbSet<CostumerCountryData>? CostumerCountries { get; set; }
         public DbSet<ShoppingBagGiftCardData>? ShoppingBagGiftCards { get; set; }
         public DbSet<TransportShoppingBagData>? TransportShoppingBags { get; set; }
+        public DbSet<ShoppingBagCostumerData>? ShoppingBagCostumers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder b) {
             base.OnModelCreating(b);
