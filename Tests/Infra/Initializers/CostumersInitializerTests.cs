@@ -5,11 +5,7 @@ using Lana_jewelry.Infra;
 using Lana_jewelry.Infra.Initializers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lana_jewelry.Tests.Infra.Initializers {
     [TestClass] public class CostumersInitializerTests
@@ -78,7 +74,8 @@ namespace Lana_jewelry.Tests.Infra.Initializers {
         }
         protected override BaseInitializer<GiftCardData> createObj() {
             var db = GetRepo.Instance<Lana_jewelryDb>();
-            return new BaseInitializer<GiftCardData>(db);
+            var set = db?.GiftCards;
+            return new testClass(db,set);
         }
     }
     [TestClass] public class Lana_jewelryDbInitializerTests:TypeTests { }
