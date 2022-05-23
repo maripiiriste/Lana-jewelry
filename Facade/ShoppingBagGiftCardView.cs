@@ -4,8 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Lana_jewelry.Facade
-{
+namespace Lana_jewelry.Facade {
     public class ShoppingBagGiftCardView : NamedView{
         [Required] [DisplayName("ShoppingBag")] public string ShoppingBagId { get; set; } = string.Empty;
         [Required] [DisplayName("GiftCard")] public string GiftCardId { get; set; } = string.Empty;

@@ -2,7 +2,7 @@
 using Lana_jewelry.Domain.Party;
 using Lana_jewelry.Domain.Shipment;
 
-namespace Lana_jewelry.Domain{
+namespace Lana_jewelry.Domain {
     public interface IShoppingBagGiftCardRepo : IRepo<ShoppingBagGiftCard> { }
     public sealed class ShoppingBagGiftCard : NamedEntity<ShoppingBagGiftCardData>{
         public ShoppingBagGiftCard() : this(new ShoppingBagGiftCardData()) { }

@@ -4,8 +4,7 @@ using Lana_jewelry.Domain.Shipment;
 using Lana_jewelry.Facade;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Lana_jewelry.Pages.Shipment
-{
+namespace Lana_jewelry.Pages {
     public class ShoppingBagGiftCardsPage : PagedPage<ShoppingBagGiftCardView, ShoppingBagGiftCard, IShoppingBagGiftCardRepo>{
         private readonly IShoppingBagRepo shoppingBag;
         private readonly IGiftCardRepo giftCard;

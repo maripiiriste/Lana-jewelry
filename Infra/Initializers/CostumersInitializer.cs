@@ -18,6 +18,5 @@ namespace Lana_jewelry.Infra.Initializers {
             createCostumer("Elle", "Randoja", new DateTime(2001, 12, 30), "Ellerandoja@gmail.com"),
             createCostumer("Maria", "Kikas", new DateTime(2002, 11, 20), "Mariakikas@gmail.com"),
         };
-
     }
 }
