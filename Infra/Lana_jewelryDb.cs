@@ -22,7 +22,7 @@ namespace Lana_jewelry.Infra{
         public DbSet<CountryCurrencyData>? CountryCurrencies { get; set; }
         public DbSet<CostumerCountryData>? CostumerCountries { get; set; }
         public DbSet<ShoppingBagGiftCardData>? ShoppingBagGiftCards { get; set; }
-        public DbSet<ShoppingBagCostumerData>? ShoppingBagCostumers { get; set; }
+        public DbSet<TransportShoppingBagData>? TransportShoppingBags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder b) {
             base.OnModelCreating(b);
@@ -38,7 +38,8 @@ namespace Lana_jewelry.Infra{
             _ = (b?.Entity<CountryData>()?.ToTable(nameof(Countries), s));
             _ = (b?.Entity<CurrencyData>()?.ToTable(nameof(Currencies), s));
             _ = (b?.Entity<CountryCurrencyData>()?.ToTable(nameof(CountryCurrencies), s));
-            _ = (b?.Entity<CostumerCountryData>()?.ToTable(nameof(CostumerCountry), s));
+            _ = (b?.Entity<CostumerCountryData>()?.ToTable(nameof(CostumerCountries), s));
+            _ = (b?.Entity<TransportShoppingBagData>()?.ToTable(nameof(TransportShoppingBags), s));
         }
     }   
 }
