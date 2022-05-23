@@ -14,7 +14,7 @@ namespace Lana_jewelry.Pages {
             set => repo.CurrentOrder = toCurrentOrder(value);
         }
 
-        private string? fromCurrentOrder(string? value) {
+        private static string? fromCurrentOrder(string? value) {
             var isDesc = value?.Contains("_desc") ?? false;
             var propertyName = value?.Replace("_desc", string.Empty);
             var pi = typeof(TView).GetProperty(propertyName);
@@ -27,7 +27,7 @@ namespace Lana_jewelry.Pages {
             return dn?.DisplayName;
         }
 
-        private string? toCurrentOrder(string? value) {
+        private static string? toCurrentOrder(string? value) {
             var isDesc = value?.Contains("_desc") ?? false;
             var displayName = value?.Replace("_desc", string.Empty);
             foreach (var pi in typeof(TView).GetProperties()) {

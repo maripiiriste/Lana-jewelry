@@ -35,7 +35,6 @@ builder.Services.AddTransient<IGiftCardRepo, GiftCardRepo>();
 builder.Services.AddTransient<ICountriesRepo, CountriesRepo>();
 builder.Services.AddTransient<ICurrenciesRepo, CurrenciesRepo>();
 builder.Services.AddTransient<ICountryCurrenciesRepo, CountryCurrenciesRepo>();
-builder.Services.AddTransient<ICostumersCountryRepo, CostumersCountryRepo>();
 
 var app = builder.Build();
 

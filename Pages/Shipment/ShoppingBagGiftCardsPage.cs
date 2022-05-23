@@ -10,8 +10,8 @@ namespace Lana_jewelry.Pages {
         private readonly IGiftCardRepo giftCard;
         public ShoppingBagGiftCardsPage(IShoppingBagGiftCardRepo r, IGiftCardRepo g, IShoppingBagRepo s) : base(r)
         {
-            shoppingBag = s; //p
-            giftCard = g; //c
+            shoppingBag = s; 
+            giftCard = g; 
         }
         protected override ShoppingBagGiftCard toObject(ShoppingBagGiftCardView? item) => new ShoppingBagGiftCardViewFactory().Create(item);
         protected override ShoppingBagGiftCardView toView(ShoppingBagGiftCard? entity) => new ShoppingBagGiftCardViewFactory().Create(entity);

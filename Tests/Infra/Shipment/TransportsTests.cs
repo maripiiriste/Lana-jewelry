@@ -9,6 +9,6 @@ namespace Lana_jewelry.Tests.Infra.Party {
     [TestClass] public class TransportsTests : SealedRepoTests<TransportsRepo, Repo<Transport, TransportData>, Transport, TransportData> {
         protected override TransportsRepo createObj() => new(GetRepo.Instance<Lana_jewelryDb>());
         protected override object? getSet(Lana_jewelryDb db) => db.Transports;
-        }
     }
+}
 
