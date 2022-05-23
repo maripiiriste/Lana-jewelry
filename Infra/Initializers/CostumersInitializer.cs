@@ -3,10 +3,10 @@
 namespace Lana_jewelry.Infra.Initializers {
     public sealed class CostumersInitializer : BaseInitializer<CostumerData> {
         public CostumersInitializer(Lana_jewelryDb? db) : base(db, db?.Costumers){}
-        internal static CostumerData createCostumer(string firstnName, string lastName, DateTime dob, string email ) {
+        internal static CostumerData createCostumer(string firstName, string lastName, DateTime dob, string email ) {
             var costumer = new CostumerData {
                 Id = email,
-                FirstName = firstnName,
+                FirstName = firstName,
                 LastName = lastName,
                 DoB = dob,
                 Email = email

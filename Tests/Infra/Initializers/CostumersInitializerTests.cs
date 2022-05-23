@@ -15,7 +15,7 @@ namespace Lana_jewelry.Tests.Infra.Initializers {
             return new CostumersInitializer(db);
         }
     }
-    [TestClass] public class CountiresInitializerTests
+    [TestClass] public class CountriesInitializerTests
        : SealedBaseTests<CountriesInitializer, BaseInitializer<CountryData>> {
         protected override CountriesInitializer createObj() {
             var db = GetRepo.Instance<Lana_jewelryDb>();
@@ -29,16 +29,14 @@ namespace Lana_jewelry.Tests.Infra.Initializers {
             return new CurrenciesInitializer(db);
         }
     }
-    [TestClass]
-    public class CountryCurrenciesInitializerTests
+    [TestClass] public class CountryCurrenciesInitializerTests
        : SealedBaseTests<CountryCurrenciesInitializer, BaseInitializer<CountryCurrencyData>> {
         protected override CountryCurrenciesInitializer createObj() {
             var db = GetRepo.Instance<Lana_jewelryDb>();
             return new CountryCurrenciesInitializer(db);
         }
     }
-    [TestClass]
-    public class GiftCardsInitializerTests
+    [TestClass] public class GiftCardsInitializerTests
        : SealedBaseTests<GiftCardInitializer, BaseInitializer<GiftCardData>> {
         protected override GiftCardInitializer createObj() {
             var db = GetRepo.Instance<Lana_jewelryDb>();
@@ -64,6 +62,41 @@ namespace Lana_jewelry.Tests.Infra.Initializers {
         protected override CostumerCountryInitializer createObj() {
             var db = GetRepo.Instance<Lana_jewelryDb>();
             return new CostumerCountryInitializer(db);
+        }
+    }
+    [TestClass] public class BraceletsInitializerTests
+       : SealedBaseTests<BraceletsInitializer, BaseInitializer<BraceletData>> {
+        protected override BraceletsInitializer createObj() {
+            var db = GetRepo.Instance<Lana_jewelryDb>();
+            return new BraceletsInitializer(db);
+        }
+    }
+    [TestClass] public class RingsInitializerTests
+       : SealedBaseTests<RingsInitializer, BaseInitializer<RingData>> {
+        protected override RingsInitializer createObj() {
+            var db = GetRepo.Instance<Lana_jewelryDb>();
+            return new RingsInitializer(db);
+        }
+    }
+    [TestClass] public class EarringsInitializerTests
+       : SealedBaseTests<EarringsInitializer, BaseInitializer<EarringData>> {
+        protected override EarringsInitializer createObj() {
+            var db = GetRepo.Instance<Lana_jewelryDb>();
+            return new EarringsInitializer(db);
+        }
+    }
+    [TestClass] public class NecklacesInitializerTests
+       : SealedBaseTests<NecklacesInitializer, BaseInitializer<NecklaceData>> {
+        protected override NecklacesInitializer createObj() {
+            var db = GetRepo.Instance<Lana_jewelryDb>();
+            return new NecklacesInitializer(db);
+        }
+    }
+    [TestClass] public class ShoppingBagsInitializerTests
+      : SealedBaseTests<ShoppingBagsInitializer, BaseInitializer<ShoppingBagData>> {
+        protected override ShoppingBagsInitializer createObj() {
+            var db = GetRepo.Instance<Lana_jewelryDb>();
+            return new ShoppingBagsInitializer(db);
         }
     }
     [TestClass] public class BaseInitializerTests
