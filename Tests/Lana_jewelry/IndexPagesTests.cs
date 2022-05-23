@@ -30,6 +30,24 @@ namespace Lana_jewelry.Tests.Lana_jewelry {
             var html = await page.Content.ReadAsStringAsync();
             isTrue(html.Contains("<h1>Log in</h1>"));
         }
+        [TestMethod]
+        public async void GetTransportsIndexPageTest()
+        {
+            var page = await client.GetAsync("/Transports?handler=Index");
+            areEqual(HttpStatusCode.OK, page.StatusCode);
+            var html = await page.Content.ReadAsStringAsync();
+            isTrue(html.Contains("<h1>Index</h1>"));
+            isTrue(html.Contains("<h1>Transports</h1>"));
+        }
+        [TestMethod]
+        public async void GetGiftCardsIndexPageTest()
+        {
+            var page = await client.GetAsync("/GiftCards?handler=Index");
+            areEqual(HttpStatusCode.OK, page.StatusCode);
+            var html = await page.Content.ReadAsStringAsync();
+            isTrue(html.Contains("<h1>Index</h1>"));
+            isTrue(html.Contains("<h1>GiftCards</h1>"));
+        }
         [TestMethod] public async void GetCountriesDetailedPageTest() {
             int cnt;
             var id = GetRandom.String();
