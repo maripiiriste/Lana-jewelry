@@ -1,6 +1,7 @@
 ﻿using Lana_jewelry.Data;
 using Lana_jewelry.Data.Party;
 using Lana_jewelry.Domain;
+using Lana_jewelry.Domain.Party;
 using System.Globalization;
 
 namespace Lana_jewelry.Infra.Initializers {
@@ -12,10 +13,9 @@ namespace Lana_jewelry.Infra.Initializers {
                 foreach (CultureInfo cul in CultureInfo.GetCultures(CultureTypes.SpecificCultures)) {
                     var c = new RegionInfo(new CultureInfo(cul.Name, false).LCID);
                     var countryId = c.ThreeLetterISORegionName;
-                    var costumerId = c.ISOCostumerSymbol;
+                    var costumerId = c.GetType(Costumer);
                     var nativeName = c.NativeName;
-                    var costumerCode = c.CostumerSymbol;
-                    var d = createEntity(countryId, costumerId, costumerCode, nativeName);
+                    var d = createEntity(countryId, costumerId, nativeName);
                     l.Add(d);
                 }
                 return l;
