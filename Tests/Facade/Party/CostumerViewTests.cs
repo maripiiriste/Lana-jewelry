@@ -10,6 +10,5 @@ namespace Lana_jewelry.Tests.Facade.Party {
         [TestMethod] public void LastNameTest() => isProperty<string?>();
         [TestMethod] public void DoBTest() => isProperty<DateTime?>();
         [TestMethod] public void EmailTest() => isProperty<string?>();
-
     }
 }

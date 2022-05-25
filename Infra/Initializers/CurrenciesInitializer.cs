@@ -20,7 +20,6 @@ namespace Lana_jewelry.Infra.Initializers
                     l.Add(d);
                 }
                 return l; }
-
         }   internal static CurrencyData createCurrency(string code, string name, string description)
             => new(){Id = code?? UniqueData.NewId, Code = code?? UniqueEntity.DefaultStr, Name = name, Description=description};
     }

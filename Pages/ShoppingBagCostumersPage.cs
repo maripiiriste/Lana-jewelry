@@ -17,7 +17,6 @@ namespace Lana_jewelry.Pages.Shipment {
          nameof(ShoppingBagCostumerView.ShoppingBagId),
          nameof(ShoppingBagCostumerView.CostumerId),
         };
-
         public IEnumerable<SelectListItem> Costumer
           => costumer?.GetAll(x => x.ToString())?
          .Select(x => new SelectListItem(x.ToString(), x.Id))

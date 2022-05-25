@@ -1,12 +1,9 @@
 ﻿using Lana_jewelry.Facade;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
-namespace Lana_jewelry.Tests.Facade
-{
+namespace Lana_jewelry.Tests.Facade{
     [TestClass]
-    public class IsoNamedViewTests : AbstractClassTests<IsoNamedView, NamedView>
-    {
+    public class IsoNamedViewTests : AbstractClassTests<IsoNamedView, NamedView>{
         private class testClass : IsoNamedView { }
         protected override IsoNamedView createObj() => new testClass();
         [TestMethod] public void CodeTest() => isRequired<string>("ISO three-letter code");

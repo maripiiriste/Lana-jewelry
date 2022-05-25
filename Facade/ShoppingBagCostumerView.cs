@@ -3,7 +3,6 @@ using Lana_jewelry.Domain;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Lana_jewelry.Facade {
     public class ShoppingBagCostumerView : NamedView {
         [Required] [DisplayName("ShoppingBag")] public string ShoppingBagId { get; set; } = string.Empty;

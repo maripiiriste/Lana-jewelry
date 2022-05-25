@@ -35,10 +35,8 @@ namespace Lana_jewelry.Tests {
             if(! (c?.Database?.IsInMemory()?? false))
                     throw new ApplicationException($"DBContext {t} is not in memory");
         }
-
         private static void addDb<T>(IServiceCollection s) where T : DbContext
             => s?.AddDbContext<T>(o => { o.UseInMemoryDatabase("Tests"); });
-
         private static void removeDb<T>(IServiceCollection s) where T:DbContext {
             var descriptor = s.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<T>));
             if (descriptor is not null) { s?.Remove(descriptor); }

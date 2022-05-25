@@ -12,18 +12,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lana_jewelry.Tests.Domain.Shipment
-{
-    [TestClass] public class ShoppingBagGiftCardTest : SealedClassTests<ShoppingBagGiftCard, NamedEntity<ShoppingBagGiftCardData>>
-    {
+namespace Lana_jewelry.Tests.Domain.Shipment{
+    [TestClass] public class ShoppingBagGiftCardTest : SealedClassTests<ShoppingBagGiftCard, NamedEntity<ShoppingBagGiftCardData>>{
         protected override ShoppingBagGiftCard createObj() => new(GetRandom.Value<ShoppingBagGiftCardData>());
         [TestMethod] public void GiftCardIdTest() => isReadOnly(obj.Data.GiftCardId);
         [TestMethod] public void ShoppingBagIdTest() => isReadOnly(obj.Data.ShoppingBagId);
-        [TestMethod]
-        public void ShoppingBagTest() => itemTest<IShoppingBagRepo, ShoppingBag, ShoppingBagData>(
+        [TestMethod]public void ShoppingBagTest() => itemTest<IShoppingBagRepo, ShoppingBag, ShoppingBagData>(
             obj.ShoppingBagId, d => new ShoppingBag(d), () => obj.ShoppingBag);
-        [TestMethod]
-        public void GiftCardTest() => itemTest<IGiftCardRepo, GiftCard, GiftCardData>(
+        [TestMethod] public void GiftCardTest() => itemTest<IGiftCardRepo, GiftCard, GiftCardData>(
             obj.GiftCardId, d => new GiftCard(d), () => obj.GiftCard);
     }
 }

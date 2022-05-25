@@ -3,8 +3,7 @@ using Lana_jewelry.Domain.Shipment;
 using Lana_jewelry.Facade.Shipment;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Lana_jewelry.Pages
-{
+namespace Lana_jewelry.Pages{
     public class TransportPage : PagedPage<TransportView, Transport, ITransportsRepo>{
         private readonly  ICountriesRepo countries;
         public TransportPage(ITransportsRepo r, ICountriesRepo c) : base(r)=> countries= c;

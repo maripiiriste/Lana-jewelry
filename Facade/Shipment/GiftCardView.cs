@@ -3,14 +3,11 @@ using Lana_jewelry.Domain.Shipment;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lana_jewelry.Facade.Shipment
-{
-    public class GiftCardView : UniqueView
-    {
+namespace Lana_jewelry.Facade.Shipment{
+    public class GiftCardView : UniqueView{
         [DisplayName("Gift card price")] [Required] public double Price { get; set; }
     }
-    public sealed class GiftCardViewFactory : BaseViewFactory<GiftCardView, GiftCard, GiftCardData>
-    {
+    public sealed class GiftCardViewFactory : BaseViewFactory<GiftCardView, GiftCard, GiftCardData>{
         protected override GiftCard toEntity(GiftCardData d) => new(d);
     }
 }

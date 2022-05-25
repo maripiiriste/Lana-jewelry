@@ -1,5 +1,4 @@
-﻿
-using Lana_jewelry.Facade;
+﻿using Lana_jewelry.Facade;
 
 namespace Lana_jewelry.Pages {
     public interface IIndexModel<TView> where TView:UniqueView {

@@ -1,13 +1,10 @@
-﻿
-using Lana_jewelry.Data.Shipment;
+﻿using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain.Shipment;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lana_jewelry.Facade.Shipment
-{
-    public sealed class TransportView: UniqueView
-    {
+namespace Lana_jewelry.Facade.Shipment{
+    public sealed class TransportView: UniqueView{
         [Required] [DisplayName("Street")] public string? Street { get; set; }
         [DisplayName("City")] public string? City { get; set; }
         [DisplayName("Zip code")] public string? ZipCode { get; set; }
@@ -21,6 +18,5 @@ namespace Lana_jewelry.Facade.Shipment
             v ??= new TransportView();
             return base.Create(v);
         }
-
     }
 }

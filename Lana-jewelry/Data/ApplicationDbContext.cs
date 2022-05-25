@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Lana_jewelry.Infra.Shipment;
 using Lana_jewelry.Infra;
 
-namespace Lana_jewelry.Data
-{
-    public class ApplicationDbContext : IdentityDbContext
-    {
+namespace Lana_jewelry.Data{
+    public class ApplicationDbContext : IdentityDbContext{
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
         protected override void OnModelCreating(ModelBuilder model) {
             base.OnModelCreating(model);

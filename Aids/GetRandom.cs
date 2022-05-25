@@ -1,6 +1,4 @@
-﻿
-
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace Lana_jewelry.Aids {
     public static class GetRandom {

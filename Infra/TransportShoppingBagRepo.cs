@@ -1,19 +1,11 @@
 ﻿using Lana_jewelry.Data.Shipment;
 using Lana_jewelry.Domain.Shipment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lana_jewelry.Infra
-{
-    public sealed class TransportShoppingBagRepo : Repo<TransportShoppingBag, TransportShoppingBagData>, ITransportShoppingBagRepo
-    {
+namespace Lana_jewelry.Infra{
+    public sealed class TransportShoppingBagRepo : Repo<TransportShoppingBag, TransportShoppingBagData>, ITransportShoppingBagRepo{
         public TransportShoppingBagRepo(Lana_jewelryDb? db) : base(db, db?.TransportShoppingBags) { }
         protected internal override TransportShoppingBag toDomain(TransportShoppingBagData d) => new(d);
-        internal override IQueryable<TransportShoppingBagData> addFilter(IQueryable<TransportShoppingBagData> q)
-        {
+        internal override IQueryable<TransportShoppingBagData> addFilter(IQueryable<TransportShoppingBagData> q){
             var y = CurrentFilter;
             return string.IsNullOrWhiteSpace(y)
                 ? q : q.Where(

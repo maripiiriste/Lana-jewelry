@@ -38,8 +38,7 @@ namespace Lana_jewelry.Tests.Infra {
             areEqual(db,obj.db);
             areEqual(set, obj.set);
         }
-        [TestMethod]
-        public async Task ClearTest() {
+        [TestMethod] public async Task ClearTest() {
             BaseRepoTest();
             var cnt = GetRandom.Int32(5, 30);
             var db = obj.db;

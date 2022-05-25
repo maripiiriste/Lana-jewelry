@@ -16,7 +16,5 @@ namespace Lana_jewelry.Infra.Initializers {
             }
             protected abstract IEnumerable<TData> getEntities { get; }
             internal static bool isCorrectIsoCode(string id) => string.IsNullOrWhiteSpace(id) && char.IsLetter(id[0]);
-
     }
-
 }

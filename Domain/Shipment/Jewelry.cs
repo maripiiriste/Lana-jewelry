@@ -1,8 +1,6 @@
 ﻿using Lana_jewelry.Data.Shipment;
-using Lana_jewelry.Domain.Party;
 
-namespace Lana_jewelry.Domain.Shipment
-{
+namespace Lana_jewelry.Domain.Shipment{
     public interface IJewelryRepo : IRepo<Jewelry> { }
     public sealed  class Jewelry: UniqueEntity<JewelryData>{
         public Jewelry() : this(new()) { }

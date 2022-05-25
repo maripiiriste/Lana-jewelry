@@ -21,7 +21,6 @@ namespace Lana_jewelry.Infra.Initializers {
                 return l;
             }
         }
-
         internal static CountryCurrencyData createEntity(string countryId, string currencyId,string code, string? name=null, string? description=null)
             => new() { 
                 Id = UniqueData.NewId,

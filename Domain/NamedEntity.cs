@@ -1,5 +1,4 @@
-﻿
-using Lana_jewelry.Data;
+﻿using Lana_jewelry.Data;
 
 namespace Lana_jewelry.Domain {
     public abstract class NamedEntity<TData> : UniqueEntity<TData> where TData : NamedData, new() {

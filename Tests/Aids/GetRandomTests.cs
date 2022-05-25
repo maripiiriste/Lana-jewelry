@@ -4,8 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
-namespace Lana_jewelry.Tests.Aids
-{
+namespace Lana_jewelry.Tests.Aids{
     [TestClass] public class GetRandomTests : TypeTests {
         private void test<T>(T min, T max) where T : IComparable<T> {
             var x = GetRandom.Value(min, max);
@@ -24,7 +23,6 @@ namespace Lana_jewelry.Tests.Aids
             isTrue(y <= (min.CompareTo(max) < 0 ? max : min));
             areNotEqual(x, y);
         }
-
         [DataRow(-1000, 1000)]
         [DataRow(-1000, 0)]
         [DataRow(0, 1000)]
@@ -71,16 +69,18 @@ namespace Lana_jewelry.Tests.Aids
             isInstanceOfType(y, typeof(string));
             areNotEqual(x, y);
         }
-        [TestMethod]
-        public void ValueTest() {
+        [TestMethod] public void ValueTest() {
             var x = GetRandom.Value<TransportData>() as TransportData;
             var y = GetRandom.Value<TransportData>() as TransportData;
             isNotNull(x);
             isNotNull(y);
             areNotEqual(x.Id, y.Id, nameof(x.Id));
-            areNotEqual(x.CostumerAddressId, y.CostumerAddressId, nameof(x.CostumerAddressId));
+            areNotEqual(x.Street, y.Street, nameof(x.Street));
+            areNotEqual(x.City, y.City, nameof(x.City));
+            areNotEqual(x.ZipCode, y.ZipCode, nameof(x.ZipCode));
+            areNotEqual(x.CountryId, y.CountryId, nameof(x.CountryId));
             areNotEqual(x.Price, y.Price, nameof(x.Price));
-            areNotEqual(x.Duration, y.Duration, nameof(x.Price));
+            areNotEqual(x.Duration, y.Duration, nameof(x.Duration));
         }
         [TestMethod] public void EnumOfGenericTest() => isInconclusive();
         private void test<T>(Func<T> f, int count = 5) {

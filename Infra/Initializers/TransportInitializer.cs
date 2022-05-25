@@ -21,6 +21,5 @@ namespace Lana_jewelry.Infra.Initializers
             createTransport("HermioneGrenger", 5, new DateTime(2022, 03, 29), "Italy", "Rome", "Kauna", "40042"),
             createTransport("RonaldWeasley", 15, new DateTime(2022, 03, 23), "Italy", "Venice", "Nelgi", "30387"),
         };
-
     }
 }

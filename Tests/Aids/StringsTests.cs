@@ -1,8 +1,7 @@
 ﻿using Lana_jewelry.Aids;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Lana_jewelry.Tests.Aids
-{
+namespace Lana_jewelry.Tests.Aids{
     [TestClass] public class StringsTests : TypeTests {
         private string? testStr;
         [TestInitialize] public void Init() => testStr = "a1b1c1.d1e1f1.g1h1i1";

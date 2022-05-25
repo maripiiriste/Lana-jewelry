@@ -1,6 +1,4 @@
-﻿
-
-using Lana_jewelry.Data;
+﻿using Lana_jewelry.Data;
 using Lana_jewelry.Data.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

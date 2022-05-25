@@ -4,8 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
-namespace Lana_jewelry.Tests
-{
+namespace Lana_jewelry.Tests{
     public abstract class TestAsserts{
       protected static void isTrue(bool? b, string? message=null) => Assert.IsTrue(b ?? false, message?? string.Empty);
       protected static void isFalse(bool? b, string? message = null) => Assert.IsFalse(b ?? true, message ?? string.Empty);
@@ -29,5 +28,4 @@ namespace Lana_jewelry.Tests
             }
         }
     }
-
 }

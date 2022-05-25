@@ -5,6 +5,5 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lana_jewelry.Data.Party {
-    public sealed class BraceletData:TypeData {
-    }
+    public sealed class BraceletData:TypeData {}
 }

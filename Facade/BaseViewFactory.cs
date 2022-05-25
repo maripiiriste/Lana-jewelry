@@ -14,7 +14,6 @@ namespace Lana_jewelry.Facade {
             copy(v, d);
             return toEntity(d);
         }
-
         public virtual TView Create(TEntity? e) {
             var d = e?.Data;
             var v = new TView();
@@ -22,7 +21,6 @@ namespace Lana_jewelry.Facade {
             return v;
         }
     }
-
 }
     
     

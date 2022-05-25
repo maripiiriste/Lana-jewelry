@@ -11,7 +11,6 @@ namespace Lana_jewelry.Tests.Data {
         areNotEqual(UniqueData.NewId, UniqueData.NewId);
         var pi=typeof(UniqueData).GetProperty(nameof(UniqueData.NewId));
         isFalse(pi?.CanWrite);
-        
         }
         [TestMethod] public void IdTest() => isProperty<string>();
     }

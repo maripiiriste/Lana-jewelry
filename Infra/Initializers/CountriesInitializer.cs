@@ -20,7 +20,6 @@ namespace Lana_jewelry.Infra.Initializers {
                 }
                 return l; }
         }
-
         internal static CountryData createCountry(string code, string name, string description)
             => new(){Id = code?? UniqueData.NewId, Code = code?? UniqueEntity.DefaultStr, Name = name, Description=description };
     }

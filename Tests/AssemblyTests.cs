@@ -4,8 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Lana_jewelry.Tests
-{
+namespace Lana_jewelry.Tests{
     public abstract class AssemblyTests :TestAsserts {
         private static string testsStr => "Tests";
         private string notTestedMsg => $"Class \"{fullNameOfFirstNotTested()}\" is not tested";
@@ -18,7 +17,6 @@ namespace Lana_jewelry.Tests
         private string? namespaceOfType;
 
         [TestMethod] public void IsAllTested() => isAllTested();
-
         protected virtual void isAllTested() {
             testingAssembly = getAssembly(this);
             testingTypes = getTypes(testingAssembly);

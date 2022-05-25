@@ -19,7 +19,6 @@ namespace Lana_jewelry.Pages.Party {
         nameof(InfoView.PhoneNumber),
         nameof(InfoView.EmailAddress)
         };
-
         public IEnumerable<SelectListItem> Countries
             => countries?.GetAll(x => x.Name)?
             .Select(x => new SelectListItem(x.Name, x.Id))

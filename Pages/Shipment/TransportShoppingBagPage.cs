@@ -3,14 +3,11 @@ using Lana_jewelry.Domain.Shipment;
 using Lana_jewelry.Facade;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Lana_jewelry.Pages.Shipment
-{
-    public class TransportShoppingBagPage : PagedPage<TransportShoppingBagView, TransportShoppingBag, ITransportShoppingBagRepo>
-    {
+namespace Lana_jewelry.Pages.Shipment{
+    public class TransportShoppingBagPage : PagedPage<TransportShoppingBagView, TransportShoppingBag, ITransportShoppingBagRepo>{
         private readonly ITransportsRepo transports;
         private readonly IShoppingBagRepo shoppingBags;
-        public TransportShoppingBagPage(ITransportShoppingBagRepo r, ITransportsRepo t, IShoppingBagRepo s) : base(r)
-        {
+        public TransportShoppingBagPage(ITransportShoppingBagRepo r, ITransportsRepo t, IShoppingBagRepo s) : base(r){
             transports = t;
             shoppingBags = s;
         }
@@ -40,6 +37,5 @@ namespace Lana_jewelry.Pages.Shipment
                  : name == nameof(TransportShoppingBagView.ShoppingBagId) ? ShoppingBagName(r as string)
                  : r;
         }
-
     }
 }

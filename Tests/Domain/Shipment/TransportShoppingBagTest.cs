@@ -11,10 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lana_jewelry.Tests.Domain.Shipment
-{
-    [TestClass] public class TransportShoppingBagTest : SealedClassTests<TransportShoppingBag, NamedEntity<TransportShoppingBagData>>
-    {
+namespace Lana_jewelry.Tests.Domain.Shipment{
+    [TestClass] public class TransportShoppingBagTest : SealedClassTests<TransportShoppingBag, NamedEntity<TransportShoppingBagData>>{
         protected override TransportShoppingBag createObj() => new(GetRandom.Value<TransportShoppingBagData>());
         [TestMethod] public void TransportIdTest() => isReadOnly(obj.Data.TransportId);
         [TestMethod] public void ShoppingBagIdTest() => isReadOnly(obj.Data.ShoppingBagId);

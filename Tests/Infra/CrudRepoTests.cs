@@ -44,7 +44,6 @@ namespace Lana_jewelry.Tests.Infra {
             isNotNull(x);
             areNotEqual(d.Id, x.Id);
         }
-
         [TestMethod] public async Task AddTest() {
             isNotNull(g);
             isNotNull(set);

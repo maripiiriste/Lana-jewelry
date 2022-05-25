@@ -10,5 +10,5 @@ namespace Lana_jewelry.Tests.Infra.Party {
         protected override CurrenciesRepo createObj() => new(GetRepo.Instance<Lana_jewelryDb>());
         protected override object? getSet(Lana_jewelryDb db) => db.Currencies;
     }
-    }
+}
 

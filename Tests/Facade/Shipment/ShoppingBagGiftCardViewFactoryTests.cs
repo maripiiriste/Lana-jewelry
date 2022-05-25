@@ -4,11 +4,9 @@ using Lana_jewelry.Facade;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using University.Tests.Facade.Party;
 
-namespace Lana_jewelry.Tests.Facade.Shipment
-{
+namespace Lana_jewelry.Tests.Facade.Shipment{
     [TestClass] public class ShoppingBagGiftCardViewFactoryTests
-        : ViewFactoryTests<ShoppingBagGiftCardViewFactory, ShoppingBagGiftCardView, ShoppingBagGiftCard, ShoppingBagGiftCardData>
-    {
+        : ViewFactoryTests<ShoppingBagGiftCardViewFactory, ShoppingBagGiftCardView, ShoppingBagGiftCard, ShoppingBagGiftCardData>{
         protected override ShoppingBagGiftCard toObject(ShoppingBagGiftCardData d) => new(d);
     }
 }

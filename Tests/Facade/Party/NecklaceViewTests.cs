@@ -8,6 +8,5 @@ namespace Lana_jewelry.Tests.Facade.Party {
         [TestMethod] public void PriceTest() => isProperty<double>();
         [TestMethod] public void QuantityTest() => isProperty<string?>();
         [TestMethod] public void NameTest() => isProperty<string?>();
-
     }
 }

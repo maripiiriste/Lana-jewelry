@@ -2,17 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Lana_jewelry.Tests.Aids
-{
+namespace Lana_jewelry.Tests.Aids{
     [TestClass] public class SafeTests : TypeTests {
         private int expected;
         private int def;
-
         [TestInitialize] public void Init() {
             expected = GetRandom.Int32();
             def = GetRandom.Int32();
         }
-        
         [TestMethod] public void RunFuncTest() {
             var actual = Safe.Run(() =>expected,def);
             areEqual(expected,actual);

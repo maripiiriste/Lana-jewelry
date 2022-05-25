@@ -13,7 +13,5 @@ namespace Lana_jewelry.Tests.Data.Party {
         [TestMethod] public void ZipCodeTest() => isProperty<string?>();
         [TestMethod] public void PhoneNumberTest() => isProperty<string?>();
         [TestMethod] public void EmailAddressTest() => isProperty<string?>();
-
-
     }
 }

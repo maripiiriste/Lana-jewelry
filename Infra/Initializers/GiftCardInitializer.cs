@@ -3,7 +3,6 @@
 namespace Lana_jewelry.Infra.Initializers
 {
     public sealed class GiftCardInitializer:BaseInitializer<GiftCardData>{
-
         public GiftCardInitializer(Lana_jewelryDb? db) : base(db, db?.GiftCards) { }
         protected override IEnumerable<GiftCardData> getEntities => new []{
             createGiftCard("HarryPotter", 25),

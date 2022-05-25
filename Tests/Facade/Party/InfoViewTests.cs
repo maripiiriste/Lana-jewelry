@@ -2,8 +2,7 @@
 using Lana_jewelry.Facade.Party;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Lana_jewelry.Tests.Facade.Party
-{
+namespace Lana_jewelry.Tests.Facade.Party{
     [TestClass] public class InfoViewTests: SealedClassTests<InfoView, UniqueView> {
         [TestMethod] public void IdTest() => isProperty<string>();
         [TestMethod] public void CountryTest() => isProperty<string>();

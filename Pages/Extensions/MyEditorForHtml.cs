@@ -4,16 +4,14 @@ using System.Linq.Expressions;
 
 
 namespace Lana_jewelry.Pages.Extensions {
-    public static class MyEditorForHtml
-    {
+    public static class MyEditorForHtml{
         public static IHtmlContent MyEditorFor<TModel, TResult>(
             this IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e)
         {
             var s = htmlStrings(h, e);
             return new HtmlContentBuilder(s);
         }
-        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e)
-        {
+        private static List<object> htmlStrings<TModel, TResult>(IHtmlHelper<TModel> h, Expression<Func<TModel, TResult>> e){
             var l = new List<object> {
                 new HtmlString("<dl class=\"row\">"),
                 new HtmlString("<dd class=\"col-sm-2\">"),

@@ -12,7 +12,6 @@ namespace Lana_jewelry.Tests.Aids {
         private string? fullName;
         private string? name;
         private string? randomStr;
-
         [TestInitialize] public void Init() {
             type = typeof(CountryData);
             nameSpace = type.Namespace;

@@ -16,7 +16,6 @@ namespace Lana_jewelry.Infra.Initializers{
             };
             return jewelry;
         }
-    }
-   
+    }  
 }
 

@@ -5,8 +5,7 @@ using Lana_jewelry.Facade;
 using Lana_jewelry.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace University.Tests.Facade.Party
-{
+namespace University.Tests.Facade.Party{
     public abstract class ViewFactoryTests<TFactory, TView, TObj, TData>
         : SealedClassTests<TFactory, BaseViewFactory<TView, TObj, TData>>
         where TFactory : BaseViewFactory<TView, TObj, TData>, new()
@@ -15,16 +14,12 @@ namespace University.Tests.Facade.Party
         where TObj : UniqueEntity<TData>
     {
         [TestMethod] public void CreateTest() { }
-        [TestMethod]
-        public void CreateViewTest()
-        {
+        [TestMethod]public void CreateViewTest(){
             var v = GetRandom.Value<TView>();
             var o = obj.Create(v);
             areEqualProperties(v, o.Data);
         }
-        [TestMethod]
-        public void CreateObjectTest()
-        {
+        [TestMethod] public void CreateObjectTest(){
             var d = GetRandom.Value<TData>();
             var v = obj.Create(toObject(d));
             areEqualProperties(d, v);

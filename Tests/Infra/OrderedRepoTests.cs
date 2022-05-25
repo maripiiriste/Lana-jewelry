@@ -31,9 +31,7 @@ namespace Lana_jewelry.Tests.Infra {
                 $".Select(s => s).OrderByDescending(x => Convert(x.{s}, Object))"));
             else isTrue(actual.EndsWith(
                 $".Select(s => s).OrderBy(x => Convert(x.{s}, Object))"));
-
         }
-      
         [DataRow(true, true)]
         [DataRow(false, true)]
         [DataRow(true, false)]

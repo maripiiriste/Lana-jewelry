@@ -3,8 +3,7 @@ using Lana_jewelry.Data.Shipment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Lana_jewelry.Tests.Aids
-{
+namespace Lana_jewelry.Tests.Aids{
     [TestClass] public class ListsTests : TypeTests {
         private List<int> list = new();
         [TestInitialize] public void Init() => list = new List<int> { 1, 2, 3, 4, 5, 6 };

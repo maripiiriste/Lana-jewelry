@@ -55,7 +55,6 @@ namespace Lana_jewelry.Tests {
             }
             return d;
         }
-
         protected void itemsTest<TRepo, TObj, TData>(Action<TData> setId, Func<TData, TObj> toObj, Func<List<TObj>> getList)  
             where TRepo : class, IRepo<TObj> where TObj : UniqueEntity<TData> where TData : UniqueData, new() {
 

@@ -1,16 +1,15 @@
-﻿
-using Lana_jewelry.Data;
+﻿using Lana_jewelry.Data;
 
 namespace Lana_jewelry.Domain {
     public abstract class UniqueEntity {
-        private const double defaultNr = 00.00;
-        private const int defaultInt=0;
+        private const double DefaultNr = 00.00;
+        public static int DefaultInt=0;
         public static string DefaultStr => "Undefined";
-        private static DateTime defaultDate => DateTime.MinValue;
+        private static DateTime DefaultDate => DateTime.MinValue;
         protected static string getValue(string? v) => v ?? DefaultStr;
-        protected static DateTime getValue(DateTime? v) => v ?? defaultDate;
-        protected static double getValue(double? v) => v ?? defaultNr;
-        protected static int getValue(int? v) => v ?? defaultInt;
+        protected static DateTime getValue(DateTime? v) => v ?? DefaultDate;
+        protected static double getValue(double? v) => v ?? DefaultNr;
+        protected static int getValue(int? v) => v ?? DefaultInt;
         public abstract string Id{get;}
         public abstract byte[] Token { get; }
     }

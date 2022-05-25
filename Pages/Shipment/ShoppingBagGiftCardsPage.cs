@@ -8,8 +8,7 @@ namespace Lana_jewelry.Pages {
     public class ShoppingBagGiftCardsPage : PagedPage<ShoppingBagGiftCardView, ShoppingBagGiftCard, IShoppingBagGiftCardRepo>{
         private readonly IShoppingBagRepo shoppingBag;
         private readonly IGiftCardRepo giftCard;
-        public ShoppingBagGiftCardsPage(IShoppingBagGiftCardRepo r, IGiftCardRepo g, IShoppingBagRepo s) : base(r)
-        {
+        public ShoppingBagGiftCardsPage(IShoppingBagGiftCardRepo r, IGiftCardRepo g, IShoppingBagRepo s) : base(r){
             shoppingBag = s; 
             giftCard = g; 
         }
@@ -24,8 +23,5 @@ namespace Lana_jewelry.Pages {
           => giftCard?.GetAll(x => x.ToString())?
          .Select(x => new SelectListItem(x.ToString(), x.Id))
           ?? new List<SelectListItem>();
-
-        //et lisada gifCardi price total 
-
     }
 }

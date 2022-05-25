@@ -1,5 +1,4 @@
 ﻿
-
 namespace Lana_jewelry.Data.Party{
     public sealed class CostumerData : UniqueData{
         public string? FirstName { get; set; }
