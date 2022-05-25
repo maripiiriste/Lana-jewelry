@@ -9,11 +9,11 @@ namespace Lana_jewelry.Facade.Shipment
     public sealed class TransportView: UniqueView
     {
         [Required] [DisplayName("Street")] public string? Street { get; set; }
-        [DisplayName("City")] public string? City { get; set; }
-        [DisplayName("Zip code")] public string? ZipCode { get; set; }
-        [DisplayName("Country")] public string? CountryId { get; set; }
-        [DisplayName("Transportation cost")] [Required] public double TransportPrice { get; set; }
-        [DisplayName("Arrival time")] [Required] public DateTime TransportDuration { get; set; }
+        [Required] [DisplayName("City")] public string? City { get; set; }
+        [Required] [DisplayName("Zip code")] public string? ZipCode { get; set; }
+        [Required] [DisplayName("Country")] public string? CountryId { get; set; }
+        [Required] [DisplayName("Transportation cost")] public double TransportPrice { get; set; }
+        [Required] [DisplayName("Arrival time")] public DateTime TransportDuration { get; set; }
     }
     public sealed class TransportViewFactory : BaseViewFactory<TransportView, Transport, TransportData>{
         protected override Transport toEntity(TransportData d) => new(d);
