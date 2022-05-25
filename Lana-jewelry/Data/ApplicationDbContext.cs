@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Lana_jewelry.Infra.Shipment;
 using Lana_jewelry.Infra;
 
 namespace Lana_jewelry.Data

@@ -1,6 +1,4 @@
-﻿
-namespace Lana_jewelry.Domain
-{
+﻿namespace Lana_jewelry.Domain{
     public interface IRepo<T>: IPagedRepo<T> where T : UniqueEntity { }
     public interface IPagedRepo<T> : IOrderedRepo<T> where T : UniqueEntity {
         public int PageIndex { get; set; }
@@ -8,7 +6,7 @@ namespace Lana_jewelry.Domain
         public bool HasNextPage { get; }
         public bool HasPreviousPage { get;}
         public int PageSize { get; set; }
-}
+    }
     public interface IOrderedRepo<T> : IFilteredRepo<T> where T : UniqueEntity {
         public string? CurrentOrder { get; set; }
         public string SortOrder(string propertyName);
