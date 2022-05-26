@@ -3,7 +3,6 @@ using Lana_jewelry.Domain.Party;
 
 namespace Lana_jewelry.Domain.Shipment{
     public interface ITransportShoppingBagRepo : IRepo<TransportShoppingBag> { }
-    public sealed class TransportShoppingBag : NamedEntity<TransportShoppingBagData>{
     public sealed class TransportShoppingBag : NamedEntity<TransportShoppingBagData> {
         public TransportShoppingBag() : this(new TransportShoppingBagData()) { }
         public TransportShoppingBag(TransportShoppingBagData d) : base(d) { }
