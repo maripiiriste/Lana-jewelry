@@ -6,7 +6,7 @@
         public bool HasNextPage { get; }
         public bool HasPreviousPage { get;}
         public int PageSize { get; set; }
-}
+    }
     public interface IOrderedRepo<T> : IFilteredRepo<T> where T : UniqueEntity {
         public string? CurrentOrder { get; set; }
         public string SortOrder(string propertyName);
